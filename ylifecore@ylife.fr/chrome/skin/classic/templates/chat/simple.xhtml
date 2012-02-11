@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Chat</title>
+    <style>
+      #chat-area {
+        overflow-y: auto;
+        overflow-x: hidden;
+        font-family: Verdana, sans-serif;
+        font-size: 70%;
+      }
+      
+      #messagetoclone {
+        display: none;
+      }
+
+      .date {
+        color: #D3D3D3;
+        padding-right: 5px;
+      }
+
+      .nickname {
+        vertical-align: top;
+        width: 140px;
+        padding-right: 5px;
+        text-align: right;
+      }
+
+      .message {
+        padding-left: 5px;
+        padding-bottom: 5px;
+        border-left: 1px solid #969696;
+      }
+
+      .message_in {
+        color : black;
+      }
+
+      .message_out {
+        color : Highlight;
+      }
+
+      .message_neutral {
+        font-style: italic;
+        color: #969696;
+      }
+    </style> 
+  </head>
+
+  <body>
+    <div id="chat-area">
+      <table width="100%" border="0" cellspacing="0" id="messages">
+        <tr id="messagetoclone" class="message_{type}">
+          <td class="nickname"><span class="date">[{h}:{m}:{s}]</span><![CDATA[{nickname}]]></td>
+          <td class="message"><![CDATA[ {message} ]]></td>
+        </tr>
+      </table>
+    </div>
+    <div id="bottom"></div>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!ENTITY close "Close">
+
+<!ENTITY addons "Addons">
+<!ENTITY addons.update.available.top "Addon updates have been detected. You should install it.">
+<!ENTITY addons.update "Update">
+<!ENTITY addons.update.available "Addon updates">
+
+<!ENTITY profile "User Profile">
+<!ENTITY profile.initialized.top "User profile has been initialized (Deck directory, printing templates,...)">
+<!ENTITY profile.initialized "Profile initialized">
+
+<!ENTITY preferences "Preferences">
+<!ENTITY preferences.saved.top "Preferences have been correctly saved (Think about rebooting to activate new language)">
+<!ENTITY preferences.saved "Preferences saved">
+
+<!ENTITY deckbuilder.ycd.loaded "YCD loaded">
+
+<!ENTITY jabber "Jabber">
+<!ENTITY jabber.error.top "An unknown error has occured.">
+<!ENTITY jabber.error "Unknown connection error">
+<!ENTITY jabber.connecting "Connecting to jabber server...">
+<!ENTITY jabber.connfail.top "Unable to establish a connection with user's Jabber server.">
+<!ENTITY jabber.connfail "Connection failed">
+<!ENTITY jabber.authenticating "Authenticating...">
+<!ENTITY jabber.authfail.top "Authenticating error.">
+<!ENTITY jabber.authfail "Authentication failed.">
+<!ENTITY jabber.disconnecting "Disconnecting from Jabber server...">
+<!ENTITY jabber.disconnected "Disconnected">
+<!ENTITY jabber.connected.top "You are now connected to Jabber network.">
+<!ENTITY jabber.connected "Connected">
+
+<!ENTITY jabber.connect.first "Please, connect first...">
+<!ENTITY jabber.update.presence "Presence update">
+<!ENTITY jabber.update.vcard "vCard update">
+
+<!ENTITY jabber.contact.presence "Presence update">
+<!ENTITY jabber.contact.vcard "vCard update">
+
+<!ENTITY jabber.chat.message "Message received">
+
+<!ENTITY jabber.muc.message "Message received from room">
+<!ENTITY jabber.muc.presence "Presence received from room">
+<!ENTITY jabber.muc.presence.error.top "A connection error has occured">
+<!ENTITY jabber.muc.presence.error "This nickname is already used in this room">
+<!ENTITY jabber.muc.no.jid.top "JID inaccessible (anonymous room). You should ask for it to your correspondent.">
+<!ENTITY jabber.muc.no.jid "JID inaccessible (anonymous room)">
+
+<!ENTITY deckbuilder "Deck Builder">
+<!ENTITY deckbuilder.restrictions "Sorry, you've already reached the limit number of copies for this card">
+<!ENTITY deckbuilder.file.read.error "Deck reading error">
+<!ENTITY deckbuilder.file.read.success "Deck loaded">
+<!ENTITY deckbuilder.file.write.error "Deck writing error">
+<!ENTITY deckbuilder.file.write.success "Deck saved">
+

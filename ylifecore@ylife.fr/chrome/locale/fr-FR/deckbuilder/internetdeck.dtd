@@ -1,0 +1,9 @@
+<!ENTITY title "Export du deck vers un Forum, Wiki,... (BBCode, WikiCode,...)">
+
+<!ENTITY template "Charger un exemple de Modèle / Template pour l'export du Deck">
+<!ENTITY template.deck "Modèle / Template du Deck">
+<!ENTITY template.card "Modèle / Template d'une Carte">
+
+<!ENTITY cancel "Annuler">
+<!ENTITY copy "Copier dans le presse-papier">
+

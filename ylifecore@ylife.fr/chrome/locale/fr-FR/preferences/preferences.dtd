@@ -1,0 +1,44 @@
+<!ENTITY title "Préférences">
+
+<!ENTITY personal.informations "Informations personnelles">
+<!ENTITY language "Langue">
+<!ENTITY lastname "Nom">
+<!ENTITY firstname "Prénom">
+<!ENTITY ude "Numéro UDE">
+<!ENTITY jabber.jid "Jabber ID">
+<!ENTITY jabber.pwd "Mot de passe">
+<!ENTITY jabber.status "Phrase d'état (par défaut à la connexion)">
+
+<!ENTITY filter.settings "Filtres (par défaut)">
+<!ENTITY filter.reprints "Rééditions">
+<!ENTITY filter.reprints.group "Grouper">
+<!ENTITY filter.format "Format">
+<!ENTITY filter.country "Pays">
+<!ENTITY filter.language "Langue">
+
+<!ENTITY decks.settings "Gestion des Decks (par défaut)">
+<!ENTITY decks.format "Format">
+<!ENTITY decks.folder "Répertoire">
+
+<!ENTITY display.settings "Paramètres d'affichage">
+<!ENTITY template.card "Thème de Carte">
+<!ENTITY template.card.oldish "Oldish (aspect scan)">
+<!ENTITY template.card.scalable "Scalable (aspect moderne)">
+<!ENTITY resolution.card "Résolution des Cartes">
+<!ENTITY resolution.card.0 "0 (1024x768 min.)">
+<!ENTITY template.deck "Thème de Deck">
+<!ENTITY template.deck.noimage "Sans image (1 ligne)">
+<!ENTITY template.deck.image "Avec image (2 lignes)">
+<!ENTITY template.chat "Thème de Chat">
+<!ENTITY template.muc "Thème de Salon">
+<!ENTITY template.duel "Thème de Duel">
+<!ENTITY resolution.duel "Résolution des Duels">
+<!ENTITY resolution.duel.0 "0 (1024x768 min.)">
+
+<!ENTITY debug.settings "Paramètres de débuggage">
+<!ENTITY debug.javascript "Afficher la console Javascript">
+<!ENTITY debug.jabber "Afficher la console Jabber">
+
+<!ENTITY muc.rooms "Salons de discussions">
+
+<!ENTITY save "Enregistrer">

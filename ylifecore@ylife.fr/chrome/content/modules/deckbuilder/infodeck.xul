@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<?xml-stylesheet href="chrome://ylifecore/skin/infodeck.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://ylifecore/locale/deckbuilder/infodeck.dtd">
+
+<dialog
+  id="infodeck"
+  title="&title;"
+  orient="vertical"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  buttons="accept,cancel"
+  ondialogaccept="return save();"
+  ondialogcancel="return true;">
+  
+  <script src="chrome://ylifecore/content/modules/deckbuilder/libs/infodeck.js" />
+  
+  <grid>
+    <columns>
+      <column />
+      <column flex="1" />
+    </columns>
+    <rows>
+      <row align="center">
+        <label value="&name; :" />
+        <textbox id="name" readonly="true" />
+      </row>
+      <row align="center">
+        <label value="&created; :" />
+        <textbox id="created" readonly="true" />
+      </row>
+      <row align="center">
+        <label value="&updated; :" />
+        <textbox id="updated" readonly="true" />
+      </row>
+      <row align="center">
+        <label value="&format; :" />
+        <menulist id="format" />
+      </row>
+      <row align="center" flex="1">
+        <label value="&notes; :" />
+        <textbox id="notes" multiline="true" rows="10" flex="1" />
+      </row>
+    </rows>
+  </grid>
+
+  <hbox align="center">
+    <spacer flex="1" />
+    <button dlgtype="cancel">
+      <image class="bt_close" />
+      <spacer flex="1" />
+      <label value="&close;" />
+    </button>
+    <button dlgtype="accept">
+      <image class="bt_ok" />
+      <spacer flex="1" />
+      <label value="&save;" />
+    </button>
+  </hbox>
+</dialog>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ygotemplate type="code">
+  <deck><![CDATA[ <box 30% left orange| **Monsters : {maindeck_nb_monsters}**>
+{maindeck_monsters}
+</box> ]]>
+<![CDATA[ <box 30% left green| **Spells : {maindeck_nb_spells}**>
+{maindeck_spells}
+</box> ]]>
+<![CDATA[ <box 30% left red| **Traps : {maindeck_nb_traps}**>
+{maindeck_traps}
+</box> ]]>
+=====  =====
+<![CDATA[ <box 47% left blue| **Extra Deck : {extradeck_nb_monsters}**>
+{extradeck_monsters}
+</box> ]]>
+<![CDATA[ <box 47% left blue| **Side Deck : {sidedeck_nb_cards}**>
+{sidedeck_monsters}{sidedeck_spells}{sidedeck_traps}
+</box> ]]>
+  </deck>
+  <card>| {number}  :  <![CDATA[ <card> ]]>{card_id}:{name}<![CDATA[ </card> ]]>   |</card>
+</ygotemplate>

@@ -1,0 +1,9 @@
+<!ENTITY title "Informations sur le deck">
+
+<!ENTITY name "Nom">
+<!ENTITY created "Créé le">
+<!ENTITY updated "Dernière MAJ le">
+<!ENTITY format "Format de jeu">
+<!ENTITY notes "Notes">
+<!ENTITY close "Fermer">
+<!ENTITY save "Enregistrer">

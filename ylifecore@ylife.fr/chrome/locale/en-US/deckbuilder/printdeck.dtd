@@ -1,0 +1,14 @@
+<!ENTITY title "Deck printing">
+
+<!ENTITY informations "Decklist informations">
+<!ENTITY name "Name">
+<!ENTITY ude "UDE Number">
+<!ENTITY event "Event">
+<!ENTITY date "Date">
+<!ENTITY print.preview "Print preview">
+<!ENTITY template "Template">
+<!ENTITY preview "Print preview">
+<!ENTITY code "Source code">
+<!ENTITY cancel "Cancel">
+<!ENTITY print "Print">
+

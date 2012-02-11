@@ -1,0 +1,96 @@
+/****************************************************************************************************************************************************************************************/
+/** POLICES D'ECRITURE
+/****************************************************************************************************************************************************************************************/
+@font-face {
+  font-family: "LaffayetteComicPro";
+  src: url("chrome://ylifecore/skin/fonts/LaffayetteComicPro.ttf");
+}
+
+/****************************************************************************************************************************************************************************************/
+/** ELEMENTS DE LA CARTE
+/****************************************************************************************************************************************************************************************/
+#deckcard {
+  border: 1px solid black;
+  margin: 4px;
+  border-radius: 4px;
+  color: #1f1204;
+}
+#deckcard_number {
+  font-family: "LaffayetteComicPro";
+  padding-top: 6px;
+  padding-right: 0px;
+  text-align: center;
+  text-shadow: 0 0 0.8em #FFFFFF, 0 0 0.8em #FFFFFF, 0 0 0.8em #FFFFFF;
+}
+#deckcard_number_background {
+  width: 20px;
+}
+#deckcard_image {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 1px;
+  margin-right: 4px;
+  border: 1px solid black;
+}
+#deckcard_name {
+  
+}
+#deckcard_name_background {
+  margin-top: 4px;
+  margin-left: 0px;
+  margin-right: 4px;
+  padding: 0px;
+  border-radius: 2px;
+}
+#deckcard_details {
+  
+}
+#deckcard_details_background {
+  font-size: 80%;
+}
+
+/****************************************************************************************************************************************************************************************/
+/** CLASS_CARD (Couleurs)
+/****************************************************************************************************************************************************************************************/
+#deckcard.monster_normal {
+  background-color: #c99f4c;
+}
+#deckcard_name_background.monster_normal {
+  background-color: #f9f6e8;
+}
+#deckcard.monster_effect {
+  background-color: #ba783b;
+}
+#deckcard_name_background.monster_effect {
+  background-color: #f9f2eb;
+}
+#deckcard.monster_ritual {
+  background-color: #4c93c7;
+}
+#deckcard_name_background.monster_ritual {
+  background-color: #ecf4f9;
+}
+#deckcard.monster_fusion {
+  background-color: #845ba9;
+}
+#deckcard_name_background.monster_fusion {
+  background-color: #f5effb;
+}
+#deckcard.monster_synchro {
+  background-color: #f4f2f3;
+}
+#deckcard_name_background.monster_synchro {
+  background-color: #fbfbfb;
+}
+#deckcard.spell {
+  background-color: #478a79;
+}
+#deckcard_name_background.spell {
+  background-color: #f2f8f7;
+}
+#deckcard.trap {
+  background-color: #c25998;
+}
+#deckcard_name_background.trap {
+  background-color: #f6ecf2;
+}

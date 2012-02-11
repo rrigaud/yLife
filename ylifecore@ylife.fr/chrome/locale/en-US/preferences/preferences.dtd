@@ -1,0 +1,44 @@
+<!ENTITY title "Preferences">
+
+<!ENTITY personal.informations "Personal informations">
+<!ENTITY language "Language">
+<!ENTITY lastname "Lastname">
+<!ENTITY firstname "Firstname">
+<!ENTITY ude "UDE Number">
+<!ENTITY jabber.jid "Jabber ID">
+<!ENTITY jabber.pwd "Password">
+<!ENTITY jabber.status "Status (by default on Jabber logging)">
+
+<!ENTITY filter.settings "Filter settings (by default)">
+<!ENTITY filter.reprints "Reprints">
+<!ENTITY filter.reprints.group "Group">
+<!ENTITY filter.format "Format">
+<!ENTITY filter.country "Country">
+<!ENTITY filter.language "Language">
+
+<!ENTITY decks.settings "Decks settings (by default)">
+<!ENTITY decks.format "Format">
+<!ENTITY decks.folder "Folder">
+
+<!ENTITY display.settings "Display settings">
+<!ENTITY template.card "Card template">
+<!ENTITY template.card.oldish "Oldish (scan appearance)">
+<!ENTITY template.card.scalable "Scalable (modern appearance)">
+<!ENTITY resolution.card "Card resolution">
+<!ENTITY resolution.card.0 "0 (1024x768 min.)">
+<!ENTITY template.deck "Deck template">
+<!ENTITY template.deck.noimage "Without image">
+<!ENTITY template.deck.image "With image">
+<!ENTITY template.chat "Chat template">
+<!ENTITY template.muc "MUC template">
+<!ENTITY template.duel "Duel template">
+<!ENTITY resolution.duel "Duel resolution">
+<!ENTITY resolution.duel.0 "0 (1024x768 min.)">
+
+<!ENTITY debug.settings "Debug settings">
+<!ENTITY debug.javascript "Display Javascript console">
+<!ENTITY debug.jabber "Display Jabber console">
+
+<!ENTITY muc.rooms "MUC : Multi-User-Chatrooms">
+
+<!ENTITY save "Save">

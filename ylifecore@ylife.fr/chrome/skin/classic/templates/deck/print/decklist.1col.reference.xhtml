@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Decklist générée par yLife</title>
+    <style>
+      body {
+        background-color: #FFFFFF;
+        color: black;
+        font-size: 12px;
+      }
+      #decklisttoclone {
+        display: none;
+      }
+      #cardtoclone {
+        display: none;
+      }
+      #deckinfos {
+        border: 1px solid;
+        padding: 10px;
+      }
+      #maindeck {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 1px solid;
+        padding: 6px 8px;
+      }
+      #maindeck_monsters {
+        width: 100%;
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+      #maindeck_spells {
+        width: 100%;
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+      #maindeck_traps {
+        width: 100%;
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+      #sidedeck {
+        margin-top: 20px;
+        border: 1px solid;
+        padding: 6px 8px;
+      }
+      #sidedeck_monsters {
+        width: 100%;
+        margin-top: 16px;
+      }
+      #sidedeck_spells {
+        width: 100%;
+      }
+      #sidedeck_traps {
+        width: 100%;
+      }
+      #extradeck {
+        margin-top: 20px;
+        border: 1px solid;
+        padding: 6px 8px;
+      }
+      #extradeck_monsters {
+        width: 100%;
+        margin-top: 16px;
+      }
+
+
+      .title {
+        font-family: Times New Roman, Serif;
+        padding-top: 6px;
+        padding-bottom: 4px;
+        border-bottom: 1px dotted;
+        display: block;
+        width:100%;
+      }
+      .col1 {
+        width: 20px;
+      }
+      .col2 {
+        width: 90px;
+      }
+      .col3 {
+        
+      }
+      .droite {
+        float: right;
+      }
+
+      .blockg {
+        float:left;
+        display: block;
+        width: 49%;
+      }
+      .blockd {
+        float:right;
+        display: block;
+        width: 49%;
+      }
+    </style> 
+  </head>
+
+  <body>
+    <div id="content">
+      <div id="decklisttoclone">
+        <div id="deckinfos">
+          <span class="droite"><i>{event} ({date})</i></span>
+          <strong>{name} ( {ude} )</strong>
+        </div>
+
+        <div id="deckcontent">
+          <div id="maindeck">
+            <span class="droite">MAIN DECK &nbsp;&nbsp; [ {maindeck_nb_cards} ]</span>
+            <span class="title">Monsters &nbsp;&nbsp; [ {maindeck_nb_monsters} ]</span>
+            <table id="maindeck_monsters">
+              <tr id="cardtoclone"><td class="col1">{number}</td><td class="col2">{reference}</td><td class="col3">{name}</td></tr>
+              {maindeck_monsters}
+            </table>
+            <span class="title">Spells &nbsp;&nbsp; [ {maindeck_nb_spells} ]</span>
+            <table id="maindeck_spells">
+              {maindeck_spells}
+            </table>
+            <span class="title">Traps &nbsp;&nbsp; [ {maindeck_nb_traps} ]</span>
+            <table id="maindeck_traps">
+              {maindeck_traps}
+            </table>
+          </div>
+          <div id="sidedeck">
+            <span class="droite">SIDE DECK &nbsp;&nbsp; [ {sidedeck_nb_cards} ]</span>
+            <table id="sidedeck_monsters">
+              {sidedeck_monsters}
+            </table>
+            <table id="sidedeck_spells">
+              {sidedeck_spells}
+            </table>
+            <table id="sidedeck_traps">
+              {sidedeck_traps}
+            </table>
+          </div>
+          <div id="extradeck">
+            <span class="droite">EXTRA DECK &nbsp;&nbsp; [ {extradeck_nb_monsters} ]</span>
+            <table id="extradeck_monsters">
+              {extradeck_monsters}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

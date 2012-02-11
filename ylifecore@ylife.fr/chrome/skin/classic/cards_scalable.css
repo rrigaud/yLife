@@ -1,0 +1,263 @@
+#card_stack {
+  width: 333px;
+  height: 493px;
+}
+
+/****************************************************************************************************************************************************************************************/
+/** BARRE DE TITRE : NOM et ATTRIBUT
+/****************************************************************************************************************************************************************************************/
+#card_hbox_name {
+  margin-left: 29px;
+}
+#card_vbox_titlebar {
+  
+}
+#card_name {
+  font-family: "MatrixBookSmallCaps";
+}
+.card_name_monster {
+  margin-top: 35px;
+  font-size: 28px;
+  color: #1f1204;
+}
+.card_name_monster_little_1 {
+  margin-top: 36px;
+  font-size: 25px;
+  color: #1f1204;
+}
+.card_name_monster_little_2 {
+  margin-top: 37px;
+  font-size: 22px;
+  color: #1f1204;
+}
+.card_name_spelltrap {
+  margin-top: 35px;
+  font-size: 28px;
+  color: #ffffff;
+}
+.card_name_spelltrap_little_1 {
+  margin-top: 36px;
+  font-size: 25px;
+  color: #ffffff;
+}
+.card_name_spelltrap_little_2 {
+  margin-top: 37px;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+
+#card_hbox_attribute {
+  
+}
+#card_attribute {
+  width: 32px;
+  height: 32px;
+  margin-top: 31px;
+  margin-right: 32px;
+}
+
+
+
+/****************************************************************************************************************************************************************************************/
+/** BARRE DE TITRE : NOM et ATTRIBUT
+/****************************************************************************************************************************************************************************************/
+#card_hbox_level {
+  margin-top: 73px;
+}
+#card_level_1 {
+  margin-right: 40px;
+}
+.card_level {
+  width: 22px;
+  height: 22px;
+}
+
+#card_hbox_type {
+  margin-top: 72px;
+  margin-right: 36px;
+}
+#card_hbox_type_name {
+  margin-top: 5px;
+}
+#card_type_bracket_left {
+  font-family: "Times New Roman";
+  font-size: 17px;
+  font-weight: 800;
+  color: #1f1204;
+}
+#card_type_name {
+  font-family: "MatrixBookSmallCaps";
+  font-size: 19px;
+  font-weight: 600;
+  color: #1f1204;
+}
+#card_type_icon {
+  width: 18px;
+  height: 18px;
+  margin-top: 4px;
+}
+#card_type_bracket_right {
+  font-family: "Times New Roman";
+  font-size: 17px;
+  font-weight: 800;
+  color: #1f1204;
+}
+
+
+
+/****************************************************************************************************************************************************************************************/
+/** IMAGE DE LA CARTE
+/****************************************************************************************************************************************************************************************/
+#card_hbox_image {
+  
+}
+#card_image {
+  width: 246px;
+  height: 249px;
+  margin-top: 105px;
+  margin-left: 43px;
+}
+
+
+
+/****************************************************************************************************************************************************************************************/
+/** REFERENCE
+/****************************************************************************************************************************************************************************************/
+#card_hbox_reference {
+  margin-top: 360px;
+  margin-right: 34px;
+}
+#card_reference {
+  font-family: "MatrixBookSmallCaps";
+  font-size: 11px;
+  color: #1f1204;
+}
+
+
+
+/****************************************************************************************************************************************************************************************/
+/** TEXTE SPELLTRAP
+/****************************************************************************************************************************************************************************************/
+#card_hbox_description_spelltrap {
+  margin-top: 374px;
+  margin-bottom: 24px;
+  margin-left: 2px;
+}
+#card_description_spelltrap {
+  -moz-appearance: none;
+  background-color: transparent;
+  border: none;
+  width:280px;
+  font-family: "MatrixBook";
+  font-size: 11px;
+  color: #1f1204;
+}
+
+
+
+
+/****************************************************************************************************************************************************************************************/
+/** TEXTE MONSTRE
+/****************************************************************************************************************************************************************************************/
+#card_hbox_monster_type {
+  margin-top: 374px;
+  margin-left: 32px;
+}
+#card_vbox_monster_type {
+  margin-top: 4px;
+}
+#card_monster_type_bracket_left {
+  font-family: "Times New Roman";
+  font-size: 14px;
+  font-weight: 800;
+  color: #1f1204;
+}
+#card_monster_type {
+  font-family: "MatrixBookSmallCapsBold";
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f1204;
+}
+#card_monster_type_bracket_right {
+  font-family: "Times New Roman";
+  font-size: 14px;
+  font-weight: 800;
+  color: #1f1204;
+}
+
+
+#card_hbox_description_monster {
+  margin-top: 386px;
+  margin-bottom: 40px;
+  margin-left: 2px;
+}
+#card_description_monster {
+  -moz-appearance: none;
+  background-color: transparent;
+  border: none;
+  width:280px;
+  font-family: "MatrixBook";
+  font-size: 11px;
+  color: #1f1204;
+}
+
+
+#card_hbox_monster_atk_label {
+  margin-top: 450px;
+  margin-left: 156px;
+}
+#card_monster_atk_label {
+  font-family: "MatrixBookSmallCaps";
+  font-weight: 600;
+  font-size: 15px;
+  color: #1f1204;
+}
+#card_hbox_monster_atk {
+  margin-top: 451px;
+  margin-right: 106px;
+}
+#card_monster_atk {
+  font-family: "MatrixBookSmallCaps";
+  font-weight: 600;
+  font-size: 15px;
+  color: #1f1204;
+}
+#card_hbox_monster_def_label {
+  margin-top: 450px;
+  margin-left: 231px;
+}
+#card_monster_def_label {
+  font-family: "MatrixBookSmallCaps";
+  font-weight: 600;
+  font-size: 15px;
+  color: #1f1204;
+}
+#card_hbox_monster_def {
+  margin-top: 451px;
+  margin-right: 34px;
+}
+#card_monster_def {
+  font-family: "MatrixBookSmallCaps";
+  font-weight: 600;
+  font-size: 15px;
+  color: #1f1204;
+}
+
+
+
+
+/****************************************************************************************************************************************************************************************/
+/** CODE
+/****************************************************************************************************************************************************************************************/
+#card_hbox_code {
+  margin-top: 469px;
+  margin-left: 7px;
+}
+#card_code {
+  font-family: "MatrixBookSmallCaps";
+  font-size: 12px;
+  color: #1f1204;
+}
+
+

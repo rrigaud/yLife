@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<?xml-stylesheet href="chrome://ylifecore/skin/deckbuilder.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://ylifecore/locale/deckbuilder/deckbuilder.dtd">
+
+<window
+  id="deckbuilder"
+  title="&title;"
+  orient="horizontal"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+  <stringbundleset>
+    <stringbundle id="i18n" src="chrome://ylifecore/locale/deckbuilder/deckbuilder.properties"/>
+  </stringbundleset>
+
+  <script src="chrome://ylifecore/content/modules/deckbuilder/libs/deckbuilder.js" />
+  
+  <popuset>
+    <menupopup id="deck_menu" position="after_start">
+      <menuitem label="&deck.new;" class="menuitem-iconic bt_new" oncommand="Deckbuilder.newDeck();" />
+      <menuitem label="&deck.open;" class="menuitem-iconic bt_open" oncommand="Deckbuilder.openDeck();" />
+      <menu label="&deck.open.last;" class="menu-iconic bt_open_last">
+        <menupopup>
+          <menuitem id="deck_last_1" class="menuitem-iconic bt_file" oncommand="Deckbuilder.openDeck(this.value);" />
+          <menuitem id="deck_last_2" class="menuitem-iconic bt_file" oncommand="Deckbuilder.openDeck(this.value);" />
+          <menuitem id="deck_last_3" class="menuitem-iconic bt_file" oncommand="Deckbuilder.openDeck(this.value);" />
+        </menupopup>
+      </menu>
+      <menuseparator />
+      <menuitem label="&deck.save;" class="menuitem-iconic bt_save" oncommand="Deckbuilder.saveDeck();" />
+      <menuitem label="&deck.save.as;" class="menuitem-iconic bt_save_as" oncommand="Deckbuilder.saveDeckAs();" />
+      <menuseparator />
+      <menu label="&deck.export;" class="menu-iconic bt_export">
+        <menupopup>
+          <menuitem label="&deck.export.internet;" class="menuitem-iconic bt_internet" oncommand="Deckbuilder.exportToInternet();" />
+          <menuitem label="&deck.export.yvd;" class="menuitem-iconic bt_yvd" oncommand="Deckbuilder.exportToYVD();" />
+          <menuitem label="&deck.print;" class="menuitem-iconic bt_print" oncommand="Deckbuilder.print();" />
+        </menupopup>
+      </menu>
+      <menuseparator />
+      <menuitem label="&deck.info;" class="menuitem-iconic bt_info" oncommand="Deckbuilder.infoDeck();" />
+    </menupopup>
+  </popuset>
+  
+  <!-- ######################################## PANNEAU DE GAUCHE : DECKS ######################################## -->
+  <vbox class="panel" flex="1">
+    <hbox id="hbox_deck_button" align="center" popup="deck_menu" tooltiptext="&deck;">
+      <image src="chrome://ylifecore/skin/icons/various/deck.png" width="48" height="24" />
+      <vbox id="vbox_deck_button">
+        <spacer flex="1" />
+        <label id="deck_button" value="&deck;" />
+        <spacer flex="1" />
+      </vbox>
+      <spacer flex="1" />
+      <vbox id="vbox_nb_monster">
+        <spacer flex="1" />
+        <label id="nb_monster" value="0" />
+      </vbox>
+      <label value="+" style="cursor: pointer;" class="small-margin" />
+      <vbox id="vbox_nb_spell">
+        <spacer flex="1" />
+        <label id="nb_spell" value="0" />
+      </vbox>
+      <label value="+" style="cursor: pointer;" class="small-margin" />
+      <vbox id="vbox_nb_trap">
+        <spacer flex="1" />
+        <label id="nb_trap" value="0" />
+      </vbox>
+      <label value="=" style="cursor: pointer;" class="small-margin" />
+      <vbox id="vbox_nb_total">
+        <spacer flex="1" />
+        <label id="nb_total" value="0" />
+      </vbox>
+    </hbox>
+    <radiogroup id="radio_deck" orient="horizontal" oncommand="document.getElementById('deck').setAttribute('selectedIndex',this.selectedIndex);">
+      <radio id="radio_maindeck" class="button left" value="maindeck" ondragover="return radiodeckDragOver(event,this)" ondragleave="return radiodeckDragLeave(event,this)" ondrop="return radiodeckDrop(event,this)" flex="1">
+        <spacer flex="1" />
+        <label id="nb_main" value="&maindeck; ( 0 )" class="button_label" style="margin-left:0px; margin-right:0px;" />
+        <spacer flex="1" />
+      </radio>
+      <radio id="radio_sidedeck" class="button middle" value="sidedeck" ondragover="return radiodeckDragOver(event,this)" ondragleave="return radiodeckDragLeave(event,this)" ondrop="return radiodeckDrop(event,this)" flex="1">
+        <spacer flex="1" />
+        <label id="nb_side" value="&sidedeck; ( 0 )" class="button_label" style="margin-left:0px; margin-right:0px;" />
+        <spacer flex="1" />
+      </radio>
+      <radio id="radio_extradeck" class="button right" value="extradeck" ondragover="return radiodeckDragOver(event,this)" ondragleave="return radiodeckDragLeave(event,this)" ondrop="return radiodeckDrop(event,this)" flex="1">
+        <spacer flex="1" />
+        <label id="nb_extra" value="&extradeck; ( 0 )" class="button_label" style="margin-left:0px; margin-right:0px;" />
+        <spacer flex="1" />
+      </radio>
+    </radiogroup>
+    <deck id="deck" flex="1">
+      <richlistbox id="maindeck" class="deck" onselect="Deckbuilder.setCard(this.selectedItem.firstChild.getAttribute('card_id'));" onclick="Deckbuilder.setCard(this.selectedItem.firstChild.getAttribute('card_id'));" ondragenter="return deckDragEnter(event,this)" ondragover="return deckDragOver(event,this)" ondrop="return deckDrop(event,this)" flex="1" />
+      <richlistbox id="sidedeck" class="deck" onselect="Deckbuilder.setCard(this.selectedItem.firstChild.getAttribute('card_id'));" onclick="Deckbuilder.setCard(this.selectedItem.firstChild.getAttribute('card_id'));" ondragenter="return deckDragEnter(event,this)" ondragover="return deckDragOver(event,this)" ondrop="return deckDrop(event,this)" flex="1" />
+      <richlistbox id="extradeck" class="deck" onselect="Deckbuilder.setCard(this.selectedItem.firstChild.getAttribute('card_id'));" onclick="Deckbuilder.setCard(this.selectedItem.firstChild.getAttribute('card_id'));" ondragenter="return deckDragEnter(event,this)" ondragover="return deckDragOver(event,this)" ondrop="return deckDrop(event,this)" flex="1" />
+    </deck>
+  </vbox>
+  <!-- ######################################## PANNEAU CENTRAL : DETAIL DE LA CARTE ######################################## -->
+  <vbox class="panel">
+    <radiogroup id="card_tabs" orient="horizontal" oncommand="Deckbuilder.setCardTab(this.selectedIndex);">
+      <radio id="tab_card" class="button left" value="tab_card" flex="1">
+        <spacer flex="1" />
+        <image id="tab_card_flag" />
+        <label id="tab_card_reference" class="button_label" />
+        <spacer flex="1" />
+      </radio>
+      <radio id="tab_translation" class="button middle" value="tab_translation" flex="1">
+        <spacer flex="1" />
+        <image id="tab_translation_flag" />
+        <label value="&translation;" class="button_label" />
+        <spacer flex="1" />
+      </radio>
+      <radio id="tab_rulings" class="button middle" value="tab_rulings" flex="1">
+        <spacer flex="1" />
+        <image src="chrome://ylifecore/skin/icons/buttons/rulings.png" />
+        <label value="&rulings;" class="button_label" />
+        <spacer flex="1" />
+      </radio>
+      <radio id="tab_more" class="button right" value="tab_more" tooltiptext="&more;" flex="1">
+        <spacer flex="1" />
+        <image src="chrome://ylifecore/skin/icons/buttons/more.png" />
+        <spacer flex="1" />
+      </radio>
+    </radiogroup>
+    <deck id="card_panels" style="margin: 4px;" flex="1" ondragover="return cardpanelDragOver(event)" ondrop="return cardpanelDrop(event)">
+      <vbox>
+        <hbox>
+          <spacer flex="1" />
+          <vbox id="card" ondragstart="return cardDragStart(event)" ondragend="return cardDragEnd(event)" />
+        </hbox>
+        <groupbox flex="1">
+        <caption id="nb_reprints" label="&reprints;" />
+          <tree id="reprintlist" flags="dont-build-content" hidecolumnpicker="true" flex="1" onclick="Deckbuilder.setCard(reprints[this.currentIndex].card_id);">
+            <treecols>
+              <treecol id="reprintlist_type"  hideheader="true" width="22" persist="width ordinal hidden" />
+              <treecol id="reprintlist_name" hideheader="true" flex="1" persist="width ordinal hidden" />
+              <splitter class="tree-splitter" />
+              <treecol id="reprintlist_reference"  hideheader="true" width="110" persist="width ordinal hidden" />
+              <splitter class="tree-splitter" />
+            </treecols>
+            <treechildren />
+          </tree>
+        </groupbox>
+      </vbox>
+      <vbox>
+        <hbox>
+          <spacer flex="1" />
+          <vbox id="card_translation" />
+        </hbox>
+        <spacer flex="1" />
+      </vbox>
+      <vbox>
+        <hbox align="center">
+          <label value="&rulings; :" />
+          <radiogroup id="ruling_language" orient="horizontal" flex="1" oncommand="Deckbuilder.refreshRulings();">
+            <radio id="language_en-US" class="button left" value="1" selected="true" flex="1">
+              <spacer flex="1" />
+              <image src="chrome://ylifecore/skin/icons/flags/en-US.png" />
+              <label value="en-US" class="button_label" />
+              <spacer flex="1" />
+            </radio>
+            <radio id="language_fr-FR" class="button right" value="2" flex="1">
+              <spacer flex="1" />
+              <image src="chrome://ylifecore/skin/icons/flags/fr-FR.png" />
+              <label value="fr-FR" class="button_label" />
+              <spacer flex="1" />
+            </radio>
+          </radiogroup>
+        </hbox>
+        <textbox id="card_rulings" multiline="true" flex="1" />
+      </vbox>
+      <vbox>
+        <groupbox>
+        <caption label="&rarities;" />
+          <textbox id="card_rarities" multiline="true" />
+        </groupbox>
+        <groupbox>
+        <caption label="&tags.ycd;" />
+          <textbox id="card_tags_ycd" multiline="true" flex="1" />
+        </groupbox>
+        <groupbox>
+        <caption label="&tags.ylife;" />
+          <textbox id="card_tags_ylife" multiline="true" flex="1" />
+        </groupbox>
+      </vbox>
+    </deck>
+  </vbox>
+  <!-- ######################################## PANNEAU DE DROITE : FILTRE ET CARTES ######################################## -->
+  <vbox class="panel" width="260">
+    <hbox id="hbox_cards_filtered" align="center">
+      <image src="chrome://ylifecore/skin/icons/various/filter.png" width="47" height="24" />
+      <label id="filter_label" value="&filter;" />
+      <spacer flex="1" />
+      <vbox id="vbox_nb_cards_filtered">
+        <spacer flex="1" />
+        <label id="nb_cards_filtered" value="0" />
+      </vbox>
+      <image id="filter_trash" src="chrome://ylifecore/skin/icons/buttons/trash.png" onclick="Deckbuilder.resetFilter();" />
+    </hbox>
+    <radiogroup id="filter_type" orient="horizontal" oncommand="Deckbuilder.setFilter(this.selectedItem.value);">
+      <radio id="filter_quick" class="button left" value="quick" flex="1">
+        <spacer flex="1" />
+        <image src="chrome://ylifecore/skin/icons/buttons/flash.png" />
+        <label value="&quick;" class="button_label" />
+        <spacer flex="1" />
+      </radio>
+      <radio id="filter_advanced" class="button right" value="advanced" flex="1">
+        <spacer flex="1" />
+        <image src="chrome://ylifecore/skin/icons/buttons/search.png" />
+        <label value="&advanced;" class="button_label" />
+        <spacer flex="1" />
+      </radio>
+    </radiogroup>
+    <grid>
+      <columns>
+        <column />
+        <column flex="1" />
+      </columns>
+      <rows>
+        <row align="center">
+          <label value="&name; :" />
+          <textbox id="name" oninput="Deckbuilder.filterCards();" />
+        </row>
+        <row align="center">
+          <label value="&description; :" />
+          <textbox id="description" oninput="Deckbuilder.filterCards();" />
+        </row>
+        <row align="center">
+          <label value="&type; :" />
+          <radiogroup id="type" orient="horizontal" oncommand="Deckbuilder.setFilterType(this.selectedItem.value);">
+            <radio id="type_0" class="button left" value="0" flex="1">
+              <spacer flex="1" />
+              <image src="chrome://ylifecore/skin/icons/cards/all.png" />
+              <label value="&type.all;" class="button_label" />
+              <spacer flex="1" />
+            </radio>
+            <radio id="type_1" class="button middle" value="1" flex="1">
+              <spacer flex="1" />
+              <image src="chrome://ylifecore/skin/icons/cards/monster_effect.png" />
+              <spacer flex="1" />
+            </radio>
+            <radio id="type_2" class="button middle" value="2" flex="1">
+              <spacer flex="1" />
+              <image src="chrome://ylifecore/skin/icons/cards/spell.png" />
+              <spacer flex="1" />
+            </radio>
+            <radio id="type_3" class="button right" value="3" flex="1">
+              <spacer flex="1" />
+              <image src="chrome://ylifecore/skin/icons/cards/trap.png" />
+              <spacer flex="1" />
+            </radio>
+          </radiogroup>
+        </row>
+      </rows>
+    </grid>
+    <vbox id="vbox_monster" collapsed="true">
+      <menulist flex="1" id="subtype_1" oncommand="Deckbuilder.filterCards();" />
+      <hbox>
+        <menulist flex="1" id="monster_attribute" oncommand="Deckbuilder.filterCards();" />
+        <menulist flex="1" id="monster_type" oncommand="Deckbuilder.filterCards();" />
+      </hbox>
+      <hbox>
+        <menulist flex="1" id="monster_subtype" oncommand="Deckbuilder.filterCards();" />
+        <menulist flex="2" id="monster_effect" oncommand="Deckbuilder.filterCards();" />
+      </hbox>
+      <hbox align="center">
+        <label value="&monster.level; :"/>
+        <menulist id="monster_level_op" oncommand="Deckbuilder.filterCards();">
+          <menupopup>
+            <menuitem label="&lt;" value="0"/>
+            <menuitem label="=" value="1" selected="true"/>
+            <menuitem label="&gt;" value="2"/>
+          </menupopup>
+        </menulist>
+        <menulist id="monster_level" flex="1" oncommand="Deckbuilder.filterCards();">
+          <menupopup>
+            <menuitem label="&monster.level.all;" value=""/>
+            <menuitem label="1" value="1"/>
+            <menuitem label="2" value="2"/>
+            <menuitem label="3" value="3"/>
+            <menuitem label="4" value="4"/>
+            <menuitem label="5" value="5"/>
+            <menuitem label="6" value="6"/>
+            <menuitem label="7" value="7"/>
+            <menuitem label="8" value="8"/>
+            <menuitem label="9" value="9"/>
+            <menuitem label="10" value="10"/>
+            <menuitem label="11" value="11"/>
+            <menuitem label="12" value="12"/>
+          </menupopup>
+        </menulist>
+      </hbox>
+      <hbox align="center">
+        <menulist id="monster_atk_op" oncommand="Deckbuilder.filterCards();">
+          <menupopup>
+            <menuitem label="&monster.atk; &lt;" value="0"/>
+            <menuitem label="&monster.atk; =" value="1" selected="true"/>
+            <menuitem label="&monster.atk; &gt;" value="2"/>
+          </menupopup>
+        </menulist>
+        <textbox id="monster_atk" maxlength="5" size="3" oninput="Deckbuilder.filterCards();" />
+        <spacer flex="1" />
+        <menulist id="monster_def_op" oncommand="Deckbuilder.filterCards();">
+          <menupopup>
+            <menuitem label="&monster.def; &lt;" value="0"/>
+            <menuitem label="&monster.def; =" value="1" selected="true"/>
+            <menuitem label="&monster.def; &gt;" value="2"/>
+          </menupopup>
+        </menulist>
+        <textbox id="monster_def" maxlength="5" size="3" oninput="Deckbuilder.filterCards();" />
+      </hbox>
+    </vbox>
+    <vbox id="vbox_spell" collapsed="true">
+      <menulist flex="1" id="subtype_2" oncommand="Deckbuilder.filterCards();" />
+    </vbox>
+    <vbox id="vbox_trap" collapsed="true">
+      <menulist flex="1" id="subtype_3" oncommand="Deckbuilder.filterCards();" />
+    </vbox>
+    <vbox id="vbox_advanced" collapsed="true">
+      <checkbox id="reprints_group" label="&reprints.group;" dir="reverse" oncommand="Deckbuilder.filterCards();" />
+      <menulist id="format" oncommand="Deckbuilder.filterCards();" />
+      <hbox align="center">
+        <menulist flex="1" id="country" oncommand="Deckbuilder.filterCards();" />
+        <menulist flex="1" id="language" oncommand="Deckbuilder.filterCards();" />
+      </hbox>
+      <hbox align="center">
+        <menulist flex="1" id="model" oncommand="Deckbuilder.filterCards();" />
+        <menulist flex="1" id="rarity" oncommand="Deckbuilder.filterCards();" />
+      </hbox>
+      <menulist id="extension" oncommand="Deckbuilder.filterCards();" />
+    </vbox>
+    <!-- ###################################### LISTE DES CARTES FILTREES ###################################### -->
+    <tree id="cardlist" flags="dont-build-content" enableColumnDrag="true" flex="1" onselect="Deckbuilder.setCard(cards[this.currentIndex].card_id);" onclick="Deckbuilder.setCard(cards[this.currentIndex].card_id);" ondblclick="Deckbuilder.addCard(document.getElementById('radio_deck').selectedItem.value,null);" ondraggesture="return cardlistDragGesture(event)" ondragenter="return cardlistDragEnter(event)" ondragover="return cardlistDragOver(event)" ondrop="return cardlistDrop(event)" style="margin-top:4px;">
+      <treecols>
+        <treecol id="cardlist_type"  label="&type;" width="22" persist="width ordinal hidden" />
+        <treecol id="cardlist_name" label="&name;" flex="1" persist="width ordinal hidden" />
+        <splitter class="tree-splitter" />
+        <treecol id="cardlist_reference"  label="&reference;" width="80" persist="width ordinal hidden" />
+      </treecols>
+      <treechildren>
+        <treeitem ondragstart="return cardlistDragStart(event)" ondragend="return cardlistDragEnd(event)">
+          <treerow ondragstart="return cardlistDragStart(event)" ondragend="return cardlistDragEnd(event)" />
+        </treeitem>
+      </treechildren>
+    </tree>
+  </vbox>
+  
+  
+
+</window>

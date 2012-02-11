@@ -1,0 +1,631 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE bindings SYSTEM "chrome://ylifecore/locale/notifications/notifications.dtd">
+
+<bindings id="Bindings_notifications"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+          xmlns:xbl="http://www.mozilla.org/xbl">
+
+
+  <!-- MAJ D'ADDONS DISPONIBLES -->
+  <binding id="addons_update_available_top">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_box">
+        <xul:image src="chrome://ylifecore/skin/notifications/internet.png" />
+        <xul:vbox flex="1">
+          <xul:label value="&addons;" class="title" />
+          <xul:label value="&addons.update.available.top;" />
+        </xul:vbox>
+        <xul:button oncommand="tabs.newAddons();">
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/update.png" />
+          <xul:spacer flex="1" />
+          <xul:label value="&addons.update;" />
+        </xul:button>
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:button xbl:inherits="notif_id=id" oncommand="notifs.del(this.getAttribute('notifications_top','notif_id'));">
+            <xul:image src="chrome://ylifecore/skin/icons/buttons/close.png" />
+            <xul:spacer flex="1" />
+            <xul:label value="&close;" />
+          </xul:button>
+          <xul:spacer flex="1" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+  <binding id="addons_update_available">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/update.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&addons.update.available;" />
+      </xul:hbox>
+    </content>
+  </binding>
+
+
+  <!-- PROFIL INITIALISE (Copie du répertoire /data) -->
+  <binding id="profile_initialized_top">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_box">
+        <xul:image src="chrome://ylifecore/skin/notifications/information.png" />
+        <xul:vbox flex="1">
+          <xul:label value="&profile;" class="title" />
+          <xul:label value="&profile.initialized.top;" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+  <binding id="profile_initialize">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/profile.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&profile.initialized;" />
+      </xul:hbox>
+    </content>
+  </binding>
+
+
+  <!-- PREFERENCES ENREGISTREES -->
+  <binding id="preferences_saved_top">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_box">
+        <xul:image src="chrome://ylifecore/skin/notifications/information.png" />
+        <xul:vbox flex="1">
+          <xul:label value="&preferences;" class="title" />
+          <xul:label value="&preferences.saved.top;" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+  <binding id="preferences_saved">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/save.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&preferences.saved;" />
+      </xul:hbox>
+    </content>
+  </binding>
+
+
+  <!-- DECKBUILDER > YCD CHARGE -->
+  <binding id="deckbuilder_ycd_loaded">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/information.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&deckbuilder.ycd.loaded;" />
+      </xul:hbox>
+    </content>
+  </binding>
+
+
+  <!-- JABBER > ERROR -->
+  <binding id="jabber_error_top">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_box">
+        <xul:image src="chrome://ylifecore/skin/notifications/error.png" />
+        <xul:vbox flex="1">
+          <xul:label value="&jabber;" class="title" />
+          <xul:label value="&jabber.error.top;" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+  <binding id="jabber_error">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/error.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&jabber.error;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- JABBER > CONNECTING -->
+  <binding id="jabber_connecting">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/power.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&jabber.connecting;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- JABBER > CONNFAIL -->
+  <binding id="jabber_connfail_top">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_box">
+        <xul:image src="chrome://ylifecore/skin/notifications/error.png" />
+        <xul:vbox flex="1">
+          <xul:label value="&jabber;" class="title" />
+          <xul:label value="&jabber.connfail.top;" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+  <binding id="jabber_connfail">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/error.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&jabber.connfail;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- JABBER > AUTHENTICATING -->
+  <binding id="jabber_authenticating">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/authenticating.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&jabber.authenticating;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- JABBER > AUTHFAIL -->
+  <binding id="jabber_authfail_top">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_box">
+        <xul:image src="chrome://ylifecore/skin/notifications/error.png" />
+        <xul:vbox flex="1">
+          <xul:label value="&jabber;" class="title" />
+          <xul:label value="&jabber.authfail.top;" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+  <binding id="jabber_authfail">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/error.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&jabber.authfail;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- JABBER > DISCONNECTING -->
+  <binding id="jabber_disconnecting">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/power.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&jabber.disconnecting;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- JABBER > DISCONNECTED -->
+  <binding id="jabber_disconnected">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/information.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&jabber.disconnected;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- JABBER > CONNECTED -->
+  <binding id="jabber_connected_top">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_box">
+        <xul:image src="chrome://ylifecore/skin/notifications/information.png" />
+        <xul:vbox flex="1">
+          <xul:label value="&jabber;" class="title" />
+          <xul:label value="&jabber.connected.top;" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+  <binding id="jabber_connected">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/power.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&jabber.connected;" />
+      </xul:hbox>
+    </content>
+  </binding>
+
+
+  <!-- JABBER > CONNECT FIRST -->
+  <binding id="jabber_connect_first">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/information.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&jabber.connect.first;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- JABBER > UPDATE > PRESENCE -->
+  <binding id="jabber_update_presence">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/information.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&jabber.update.presence;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- JABBER > UPDATE > VCARD -->
+  <binding id="jabber_update_vcard">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/information.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&jabber.update.vcard;" />
+      </xul:hbox>
+    </content>
+  </binding>
+
+
+  <!-- JABBER > CONTACT > PRESENCE -->
+  <binding id="jabber_contact_presence">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/information.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label xbl:inherits="value=contact" />
+        <xul:label value="&jabber.contact.presence;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- JABBER > CONTACT > VCARD -->
+  <binding id="jabber_contact_vcard">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/profile.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label xbl:inherits="value=contact" />
+        <xul:label value="&jabber.contact.vcard;" />
+      </xul:hbox>
+    </content>
+  </binding>
+
+
+
+  <!-- JABBER > CHAT > MESSAGE -->
+  <binding id="jabber_chat_message">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/chat.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label xbl:inherits="value=contact" />
+        <xul:label value="&jabber.chat.message;" />
+      </xul:hbox>
+    </content>
+  </binding>
+
+
+
+  <!-- JABBER > MUC > MESSAGE -->
+  <binding id="jabber_muc_message">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/chat.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label xbl:inherits="value=contact" />
+        <xul:label value="&jabber.muc.message;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  
+  <!-- JABBER > MUC > PRESENCE -->
+  <binding id="jabber_muc_presence">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/chat.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label xbl:inherits="value=contact" />
+        <xul:label value="&jabber.muc.presence;" />
+      </xul:hbox>
+    </content>
+  </binding>
+
+  <!-- JABBER > MUC > PRESENCE > ERROR -->
+  <binding id="jabber_muc_presence_error_top">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_box">
+        <xul:image src="chrome://ylifecore/skin/notifications/error.png" />
+        <xul:vbox flex="1">
+          <xul:label value="&jabber;" class="title" />
+          <xul:label value="&jabber.muc.presence.error.top;" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+  <binding id="jabber_muc_presence_error">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/error.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label xbl:inherits="value=contact" />
+        <xul:label value="&jabber.muc.presence.error;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  
+  <!-- JABBER > MUC > NO JID -->
+  <binding id="jabber_muc_no_jid_top">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_box">
+        <xul:image src="chrome://ylifecore/skin/notifications/warning.png" />
+        <xul:vbox flex="1">
+          <xul:label value="&jabber;" class="title" />
+          <xul:label value="&jabber.muc.no.jid.top;" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+  <binding id="jabber_muc_no_jid">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/warning.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&jabber.muc.no.jid;" />
+      </xul:hbox>
+    </content>
+  </binding>
+
+
+
+
+  <!-- DECKBUILDER > RESTRICTIONS -->
+  <binding id="deckbuilder_restrictions_top">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_box">
+        <xul:image src="chrome://ylifecore/skin/notifications/warning.png" />
+        <xul:vbox flex="1">
+          <xul:label value="&deckbuilder;" class="title" />
+          <xul:label value="&deckbuilder.restrictions;" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+  <binding id="deckbuilder_restrictions">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/warning.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&deckbuilder.restrictions;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- DECKBUILDER > LECTURE FICHIER > ERREUR -->
+  <binding id="deckbuilder_file_read_error">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/error.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&deckbuilder.file.read.error;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- DECKBUILDER > LECTURE FICHIER > SUCCES -->
+  <binding id="deckbuilder_file_read_success">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/ok.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&deckbuilder.file.read.success;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- DECKBUILDER > ECRITURE FICHIER > ERREUR -->
+  <binding id="deckbuilder_file_write_error">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/error.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&deckbuilder.file.write.error;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  <!-- DECKBUILDER > ECRITURE FICHIER > SUCCES -->
+  <binding id="deckbuilder_file_write_success">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/ok.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label value="&deckbuilder.file.write.success;" />
+      </xul:hbox>
+    </content>
+  </binding>
+
+
+
+</bindings>

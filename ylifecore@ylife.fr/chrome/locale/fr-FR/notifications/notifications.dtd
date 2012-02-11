@@ -1,0 +1,54 @@
+<!ENTITY close "Fermer">
+
+<!ENTITY addons "Extensions">
+<!ENTITY addons.update.available.top "Des mises à jour d'extensions ont été trouvées. Vous devriez les installer.">
+<!ENTITY addons.update "Mettre à jour">
+<!ENTITY addons.update.available "Mises à jour disponibles">
+
+<!ENTITY profile "Profil utilisateur">
+<!ENTITY profile.initialized.top "Le profil utilisateur a été initialisé (Répertoire des Decks, templates d'impressions,...)">
+<!ENTITY profile.initialized "Profil initialisé">
+
+<!ENTITY preferences "Préférences">
+<!ENTITY preferences.saved.top "Les préférences ont été correctement enregistrées (Penser à redémarrer pour un changement de langue)">
+<!ENTITY preferences.saved "Préférences enregistrées">
+
+<!ENTITY deckbuilder.ycd.loaded "YCD chargé">
+
+<!ENTITY jabber "Jabber">
+<!ENTITY jabber.error.top "Une erreur inconnue est survenue.">
+<!ENTITY jabber.error "Erreur de connexion">
+<!ENTITY jabber.connecting "Connexion au serveur Jabber...">
+<!ENTITY jabber.connfail.top "Impossible d'établir une connexion avec le serveur Jabber de l'utilisateur.">
+<!ENTITY jabber.connfail "Connexion impossible">
+<!ENTITY jabber.authenticating "Authentification...">
+<!ENTITY jabber.authfail.top "Erreur d'authentification au serveur Jabber.">
+<!ENTITY jabber.authfail "Erreur d'authentification">
+<!ENTITY jabber.disconnecting "Déconnexion du serveur Jabber...">
+<!ENTITY jabber.disconnected "Déconnecté">
+<!ENTITY jabber.connected.top "Vous êtes à présent connecté au réseau Jabber.">
+<!ENTITY jabber.connected "Connecté">
+
+<!ENTITY jabber.connect.first "Veuillez commencer par vous connecter...">
+<!ENTITY jabber.update.presence "Mise à jour de la présence">
+<!ENTITY jabber.update.vcard "Mise à jour de la vCard">
+
+<!ENTITY jabber.contact.presence "Changement de présence">
+<!ENTITY jabber.contact.vcard "Changement de vCard">
+
+<!ENTITY jabber.chat.message "Message reçu">
+
+<!ENTITY jabber.muc.message "Message reçu du salon">
+<!ENTITY jabber.muc.presence "Présence reçu du salon">
+<!ENTITY jabber.muc.presence.error.top "Erreur de connexion au salon">
+<!ENTITY jabber.muc.presence.error "Ce pseudonyme déjà utilisé">
+<!ENTITY jabber.muc.no.jid.top "JID inaccessible (salon anonyme). Il vous faut le demander à votre correspondant.">
+<!ENTITY jabber.muc.no.jid "JID inaccessible (salon anonyme)">
+
+<!ENTITY deckbuilder "Créateur de decks">
+<!ENTITY deckbuilder.restrictions "Désolé, vous avez déjà atteint le nombre limite d'exemplaires pour cette carte">
+<!ENTITY deckbuilder.file.read.error "Erreur de lecture du Deck">
+<!ENTITY deckbuilder.file.read.success "Deck chargé">
+<!ENTITY deckbuilder.file.write.error "Erreur d'écriture du Deck">
+<!ENTITY deckbuilder.file.write.success "Deck enregistré">
+

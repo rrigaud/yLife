@@ -1,0 +1,43 @@
+<!ENTITY title "Créateur de decks">
+
+<!ENTITY deck "Deck">
+<!ENTITY deck.new "Nouveau">
+<!ENTITY deck.open "Ouvrir...">
+<!ENTITY deck.open.last "Récemment ouverts">
+<!ENTITY deck.save "Enregistrer">
+<!ENTITY deck.save.as "Enregister sous...">
+<!ENTITY deck.export "Exporter">
+<!ENTITY deck.export.internet "Vers Internet (Forums, Wiki,...)">
+<!ENTITY deck.export.yvd "Vers YVD (.dek)">
+<!ENTITY deck.print "Vers papier (impression)">
+<!ENTITY deck.info "Informations">
+
+<!ENTITY maindeck "Main">
+<!ENTITY sidedeck "Side">
+<!ENTITY extradeck "Extra">
+
+<!ENTITY filter "Cartes filtrées">
+<!ENTITY quick "Rapide">
+<!ENTITY advanced "Avancé">
+<!ENTITY name "Nom">
+<!ENTITY description "Desc">
+<!ENTITY type "Type">
+<!ENTITY type.all "Tous">
+<!ENTITY monster.level "Niveau">
+<!ENTITY monster.level.all "Niveau (Tous)">
+<!ENTITY monster.atk "Atk">
+<!ENTITY monster.def "Def">
+<!ENTITY reprints.group "Cacher les rééditions">
+
+<!ENTITY type "Type">
+<!ENTITY name "Nom">
+<!ENTITY reference "Réf">
+
+<!ENTITY translation "Trad.">
+<!ENTITY rulings "Rulings">
+<!ENTITY more "Plus...">
+
+<!ENTITY rarities "Raretés">
+<!ENTITY reprints "Rééditions">
+<!ENTITY tags.ycd "Tags de YCD">
+<!ENTITY tags.ylife "Vos Tags">

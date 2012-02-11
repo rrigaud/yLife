@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<bindings id="Bindings_deckcards"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+          xmlns:xbl="http://www.mozilla.org/xbl">
+
+
+  <!-- PAS D'IMAGE : 1 ligne -->
+  <binding id="deckcard_noimage">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/deckcards.css"/>
+    </resources>
+    <content>
+      <xul:hbox id="deckcard" xbl:inherits="class=class_card,tooltiptext=name" align="center">
+        <xul:vbox id="deckcard_number_background" xbl:inherits="class=class_card">
+          <xul:spacer flex="1" />
+          <xul:label id="deckcard_number" xbl:inherits="class=class_card,value=number" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:vbox id="deckcard_name_background" xbl:inherits="class=class_card" flex="1">
+          <xul:spacer flex="1" />
+          <xul:label id="deckcard_name" xbl:inherits="class=class_card,value=name" crop="end" flex="1" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label id="deckcard_reference" xbl:inherits="class=class_card,value=reference" />
+      </xul:hbox>
+    </content>
+  </binding>
+
+  <!-- IMAGE : 2 lignes -->
+  <binding id="deckcard_image">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/deckcards_image.css"/>
+    </resources>
+    <content>
+      <xul:hbox id="deckcard" xbl:inherits="class=class_card,tooltiptext=name" align="center">
+        <xul:vbox id="deckcard_number_background" xbl:inherits="class=class_card">
+          <xul:spacer flex="1" />
+          <xul:label id="deckcard_number" xbl:inherits="class=class_card,value=number" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:vbox id="deckcard_image_background" xbl:inherits="class=class_card">
+          <xul:spacer flex="1" />
+          <xul:image id="deckcard_image" xbl:inherits="class=class_card,src=image" width="34" height="34" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:vbox flex="1">
+          <xul:vbox id="deckcard_name_background" xbl:inherits="class=class_card" flex="1">
+            <xul:spacer flex="1" />
+            <xul:label id="deckcard_name" xbl:inherits="class=class_card,value=name" crop="end" flex="1" />
+            <xul:spacer flex="1" />
+          </xul:vbox>
+          <xul:hbox id="deckcard_details_background" align="center">
+            <xul:label id="deckcard_details" xbl:inherits="class=class_card,value=details" crop="end" />
+            <xul:spacer flex="1" />
+            <xul:label xbl:inherits="class=class_card,value=reference" />
+          </xul:hbox>
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+
+</bindings>

@@ -1,0 +1,14 @@
+<!ENTITY title "Impression du deck">
+
+<!ENTITY informations "Informations pour l'impression de Decklist">
+<!ENTITY name "Nom">
+<!ENTITY ude "Numéro UDE">
+<!ENTITY event "Evènement">
+<!ENTITY date "Date">
+<!ENTITY print.preview "Aperçu avant impression">
+<!ENTITY template "Modèle">
+<!ENTITY preview "Aperçu avant impression">
+<!ENTITY code "Code source">
+<!ENTITY cancel "Annuler">
+<!ENTITY print "Imprimer">
+

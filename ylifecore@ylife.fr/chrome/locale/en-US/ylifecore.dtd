@@ -1,0 +1,36 @@
+<!ENTITY tab.home "Home">
+
+<!ENTITY module.deckbuilder "Deck Builder">
+<!ENTITY module.deckbuilder.description "Build your Decks easily">
+<!ENTITY module.ycdmanager "YCD Manager">
+<!ENTITY module.ycdmanager.description "Manage YCD (Yugioh Card Database)">
+<!ENTITY module.reports "Reports">
+<!ENTITY module.reports.description "Create tournament reports for wiki">
+<!ENTITY module.addons "Addons Manager">
+<!ENTITY module.addons.description "Manage yLife addons">
+<!ENTITY module.preferences "Preferences">
+<!ENTITY module.preferences.description "Set up your preferences">
+<!ENTITY module.about "About">
+<!ENTITY module.about.description "yLife and YCD">
+
+<!ENTITY show.available "Available">
+<!ENTITY show.dnd "Busy">
+<!ENTITY show.away "Away">
+<!ENTITY show.unavailable "Unavailable">
+<!ENTITY update.avatar "Change avatar...">
+
+<!ENTITY jabber.connection "Connection to network">
+<!ENTITY jabber.connecting "Connecting...">
+<!ENTITY jabber.authenticating "Authenticating...">
+
+<!ENTITY contact.profile "Profile">
+<!ENTITY contact.chat "Talk">
+<!ENTITY contact.duel "Duel">
+
+<!ENTITY contacts.actions "Contacts">
+<!ENTITY contacts.add "Add a contact">
+<!ENTITY contacts.chat.with "Talk to...">
+<!ENTITY contacts.duel.with "Duel with...">
+
+<!ENTITY muc.actions "Chat Rooms">
+<!ENTITY muc.join.new.room "Join a new chat room...">

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<bindings id="Bindings_occupants"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+          xmlns:xbl="http://www.mozilla.org/xbl">
+
+
+  <!-- OCCUPANT : NORMAL -->
+  <binding id="normal">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/occupants.css"/>
+    </resources>
+    <content>
+      <xul:hbox xbl:inherits="tooltiptext=ttt_occupant" flex="1">
+        <xul:stack style="margin-left:1px;">
+          <xul:vbox>
+            <xul:spacer flex="1" />
+            <xul:hbox>
+              <xul:image xbl:inherits="src=avatar_img" width="36" height="36" style="margin:6px;"/>
+            </xul:hbox>
+            <xul:spacer flex="1" />
+          </xul:vbox>
+          <xul:vbox>
+            <xul:spacer flex="1" />
+            <xul:hbox>
+              <xul:image xbl:inherits="src=show_img" width="48" height="48" />
+            </xul:hbox>
+            <xul:spacer flex="1" />
+          </xul:vbox>
+        </xul:stack>
+        <xul:vbox flex="1">
+          <xul:spacer flex="1" />
+          <xul:label xbl:inherits="value=nickname" class="normal_nickname" crop="end" />
+          <xul:label xbl:inherits="value=status" class="normal_status" crop="end" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:spacer flex="1" />
+        <xul:vbox style="margin-right:2px;">
+          <xul:spacer flex="1" />
+          <xul:hbox>
+            <xul:image xbl:inherits="src=occupant_icon" width="32" height="32" />
+          </xul:hbox>
+          <xul:spacer flex="1" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+
+
+</bindings>

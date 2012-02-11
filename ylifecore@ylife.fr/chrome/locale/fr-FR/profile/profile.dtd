@@ -1,0 +1,15 @@
+<!ENTITY title "Profil">
+
+<!ENTITY occupant "Occupant">
+<!ENTITY occupant.oid "Occupant ID">
+<!ENTITY occupant.status "Statut">
+<!ENTITY occupant.affiliation "Affiliation">
+<!ENTITY occupant.role "Role">
+
+<!ENTITY contact "Contact">
+<!ENTITY contact.jid "Contact JID">
+<!ENTITY contact.resource "Ressource">
+<!ENTITY contact.subscription "Souscription">
+<!ENTITY contact.status "Statut">
+
+<!ENTITY close "Fermer">

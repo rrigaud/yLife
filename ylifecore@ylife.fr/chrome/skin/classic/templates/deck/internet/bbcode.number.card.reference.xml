@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ygotemplate type="code">
+  <deck>[B]Monsters : {maindeck_nb_monsters}[/B]
+{maindeck_monsters}
+[B]Spells : {maindeck_nb_spells}[/B]
+{maindeck_spells}
+[B]Traps : {maindeck_nb_traps}[/B]
+{maindeck_traps}
+
+Side : {sidedeck_nb_cards}
+{sidedeck_monsters}{sidedeck_spells}{sidedeck_traps}
+
+Extra : {extradeck_nb_monsters}
+{extradeck_monsters}
+  </deck>
+  <card>{number}  x  {name} [I][{reference}][/I]</card>
+</ygotemplate>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<?xml-stylesheet href="chrome://ylifecore/skin/ylifecore.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://ylifecore/locale/ylifecore.dtd">
+
+<overlay
+  id="ylifecore"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundleset>
+    <stringbundle id="i18n" src="chrome://ylifecore/locale/ylifecore.properties"/>
+  </stringbundleset>
+
+  <script src="chrome://ylifecore/content/libs/strophe.js" />
+  <script src="chrome://ylifecore/content/ylifecore.js" />
+
+  <popuset>
+    <menupopup id="jabber_presence" position="after_start">
+      <menuitem value="available" label="&show.available;" class="menuitem-iconic show_available" oncommand="Jabber.updateShow(this.value);" />
+      <menuitem value="dnd" label="&show.dnd;" class="menuitem-iconic show_dnd" oncommand="Jabber.updateShow(this.value);" />
+      <menuitem value="away" label="&show.away;" class="menuitem-iconic show_away" oncommand="Jabber.updateShow(this.value);" />
+      <menuseparator />
+      <menuitem value="unavailable" label="&show.unavailable;" class="menuitem-iconic show_unavailable" oncommand="Jabber.disconnect();" />
+      <menuseparator />
+      <menuitem label="&update.avatar;" class="menuitem-iconic update_avatar" oncommand="Jabber.updateAvatar();" />
+    </menupopup>
+    <menupopup id="jabber_contacts" position="before_start">
+      <menuitem label="&contacts.add;" class="menuitem-iconic bt_add" oncommand="Contacts.addToContacts();" />
+      <menuseparator />
+      <menuitem label="&contacts.chat.with;" class="menuitem-iconic bt_chat" oncommand="Jabber.chatWith();" />
+      <menuitem label="&contacts.duel.with;" class="menuitem-iconic bt_duel" oncommand="Jabber.duelWith();" />
+    </menupopup>
+    <menupopup id="jabber_muc" position="before_start">
+      <menuitem label="&muc.join.new.room;" class="menuitem-iconic bt_muc" oncommand="Jabber.joinMuc();" />
+      <menuseparator />
+    </menupopup>
+    <menupopup id="jabber_contact">
+      <menuitem label="&contact.profile;" class="menuitem-iconic bt_profile" oncommand="Jabber.viewProfile(document.getElementById('contactlist').getSelectedItem(0).getAttribute('jid'));" />
+      <menuseparator />
+      <menuitem label="&contact.chat;" class="menuitem-iconic bt_chat" oncommand="Jabber.chatWith(document.getElementById('contactlist').getSelectedItem(0).getAttribute('jid'));" />
+      <menuitem label="&contact.duel;" class="menuitem-iconic bt_duel" oncommand="Jabber.duelWith(document.getElementById('contactlist').getSelectedItem(0).getAttribute('jid'));" />
+    </menupopup>
+  </popuset>
+
+<window id="yLife">
+
+  <hbox id="ylife_hbox" flex="1">
+    <!-- ####################################### ONGLETS ######################################## -->
+    <radiogroup id="tabs" orient="vertical">
+      <radio id="tab_0" oncommand="Tabs.tabs[0].viewPanel();" tooltiptext="&tab.home;">
+        <image src="chrome://ylifecore/skin/tabs/home.png" width="64" height="64" />
+      </radio>
+    </radiogroup>
+    
+    <!-- ####################################### PAGE DE DROITE ######################################## -->
+    <vbox id="content" flex="1">
+      <!-- ####################################### NOTIFICATIONS MAJEURES ######################################## -->
+      <vbox id="notifications_top" />
+      <!-- ####################################### PAGE INTERCHANGEABLE ######################################## -->
+      <deck id="deck" flex="1">
+        <!-- ############################## ONGLET PAR DEFAUT : HOME ############################# -->
+        <hbox id="iframe_0" flex="1">
+          <!-- ############################## MODULES DISPONIBLES (MENU) ############################# -->
+          <vbox flex="1">
+            <!-- ############################## MODULE : DECKBUILDER ############################# -->
+            <hbox class="module_hbox" align="center" onclick="Tabs.newModule('deckbuilder');">
+              <image src="chrome://ylifecore/skin/tabs/deckbuilder.png" width="64" height="64" />
+              <vbox flex="1">
+                <label class="module_title" value="&module.deckbuilder;" />
+                <label class="module_description" value="&module.deckbuilder.description;" />
+              </vbox>
+            </hbox>
+            <!-- ############################## MODULE : YCD MANAGER ############################# -->
+            <hbox class="module_hbox" align="center" onclick="Tabs.newModule('ycdmanager');">
+              <image src="chrome://ylifecore/skin/tabs/ycdmanager.png" width="64" height="64" />
+              <vbox flex="1">
+                <label class="module_title" value="&module.ycdmanager;" />
+                <label class="module_description" value="&module.ycdmanager.description;" />
+              </vbox>
+            </hbox>
+            <!-- ############################## MODULE : REPORTS ############################# -->
+            <hbox class="module_hbox" align="center" onclick="Tabs.newModule('reports');">
+              <image src="chrome://ylifecore/skin/tabs/reports.png" width="64" height="64" />
+              <vbox flex="1">
+                <label class="module_title" value="&module.reports;" />
+                <label class="module_description" value="&module.reports.description;" />
+              </vbox>
+            </hbox>
+            <spacer flex="1" />
+            <!-- ############################## MODULE : ADDON MANAGER ############################# -->
+            <hbox class="module_hbox" align="center" onclick="Tabs.newAddons();">
+              <image src="chrome://ylifecore/skin/tabs/addons.png" width="64" height="64" />
+              <vbox flex="1">
+                <label class="module_title" value="&module.addons;" />
+                <label class="module_description" value="&module.addons.description;" />
+              </vbox>
+            </hbox>
+            <hbox>
+              <!-- ############################## MODULE : PREFERENCES ############################# -->
+              <hbox class="module_hbox" align="center" onclick="Tabs.newPreferences();" flex="1">
+                <image src="chrome://ylifecore/skin/tabs/preferences.png" width="64" height="64" />
+                <vbox flex="1">
+                  <label class="module_title" value="&module.preferences;" />
+                  <label class="module_description" value="&module.preferences.description;" />
+                </vbox>
+              </hbox>
+              <!-- ############################## MODULE : A PROPOS ############################# -->
+              <hbox class="module_hbox" align="center" onclick="Tabs.newAbout();" flex="1">
+                <image src="chrome://ylifecore/skin/tabs/about.png" width="64" height="64" />
+                <vbox flex="1">
+                  <label class="module_title" value="&module.about;" />
+                  <label class="module_description" value="&module.about.description;" />
+                </vbox>
+              </hbox>
+            </hbox>
+          </vbox>
+          <!-- ############################## MODULE : JABBER ############################# -->
+          <vbox id="jabber_vbox" width="400">
+            <hbox id="jabber_hbox_account">
+              <vbox id="avatar_home" class="avatar_me" avatar_img="chrome://ylifecore/skin/avatars/default.jpg" show_img="chrome://ylifecore/skin/icons/show_borders/unavailable.png" popup="jabber_presence" />
+              <vbox flex="1">
+                <hbox id="hbox_nickname" align="center">
+                  <button class="button left" onclick="Jabber.updateNickname();" flex="1">
+                    <image src="chrome://ylifecore/skin/icons/buttons/nickname.png" />
+                    <label id="nickname_home" class="button_label" crop="end" flex="1"  />
+                    <spacer flex="1" />
+                  </button>
+                  <button id="jabber_connect" class="button right" onclick="Jabber.updateShow('available');" collapsed="false">
+                    <image src="chrome://ylifecore/skin/icons/buttons/login.png" />
+                  </button>
+                  <button id="jabber_connecting" class="button right" collapsed="true">
+                    <image src="chrome://ylifecore/skin/icons/buttons/connecting.png" />
+                  </button>
+                  <button id="jabber_disconnect" class="button right" onclick="Jabber.disconnect();" collapsed="true">
+                    <image src="chrome://ylifecore/skin/icons/buttons/logout.png" />
+                  </button>
+                </hbox>
+                <description id="jabber_status" onclick="Jabber.updateStatus();" flex="1"></description>
+              </vbox>
+            </hbox>
+            <richlistbox id="contactlist" context="jabber_contact" flex="1" />
+            <textbox id="debug_jabber" multiline="true" height="300" collapsed="true" />
+            <hbox id="jabber_actions">
+              <button class="button left" popup="jabber_contacts" flex="1">
+                <spacer flex="1" />
+                <image src="chrome://ylifecore/skin/icons/buttons/contacts.png" />
+                <label value="&contacts.actions;" class="button_label" />
+                <spacer flex="1" />
+              </button>
+              <button class="button right" popup="jabber_muc" flex="1">
+                <spacer flex="1" />
+                <image src="chrome://ylifecore/skin/icons/buttons/muc.png" />
+                <label value="&muc.actions;" class="button_label" />
+                <spacer flex="1" />
+              </button>
+            </hbox>
+          </vbox>
+        </hbox>
+      </deck>
+    </vbox>
+  </hbox>
+
+  <!-- ###################################### STATUS BAR ###################################### -->
+  <hbox id="statusbar" align="center">
+    <stack id="notifications" flex="1" />
+    <label id="ylife_version" />
+    <image src="chrome://ylifecore/skin/icons/buttons/statusbar.png" />
+    <label value="/" />
+    <image src="chrome://ylifecore/skin/icons/buttons/statusbar.png" />
+    <label id="ycd_version" />
+  </hbox>
+
+</window>
+</overlay>

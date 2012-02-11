@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>ylifecore@ylife.fr</em:id>
+    <em:unpack>true</em:unpack>
+    <em:version>2.0a1</em:version>
+    <em:type>2</em:type>
+
+    <!-- yLife -->
+    <em:targetApplication>
+      <Description>
+        <em:id>ylife@ylife.fr</em:id>
+        <em:minVersion>2.0</em:minVersion>
+        <em:maxVersion>3.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <!-- yLife (Version de Développement) -->
+    <em:targetApplication>
+      <Description>
+        <em:id>ylife@ylifedev.fr</em:id>
+        <em:minVersion>2.0</em:minVersion>
+        <em:maxVersion>3.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <em:name>yLife [Core]</em:name>
+    <em:description>Card Explorer, Deck Manager, Online duel, YCD Manager, Tournament Report,...</em:description>
+
+    <em:localized>
+      <Description>
+        <em:locale>fr-FR</em:locale>
+        <em:name>yLife [Noyau]</em:name>
+        <em:description>Explorateur de Cartes, Créateur de Decks, Duel en ligne, Gestionnaire de YCD, Créateur de reports pour les tournois,...</em:description>
+      </Description>
+    </em:localized>
+
+    <em:optionsURL>chrome://ylifecore/content/modules/preferences/preferences.xul</em:optionsURL>
+    <em:aboutURL>chrome://ylifecore/content/modules/about/about_ylife.xul</em:aboutURL>
+    <em:iconURL>chrome://ylifecore/skin/logos/ylifecore_48.png</em:iconURL>
+    <em:icon64URL>chrome://ylifecore/skin/logos/ylifecore_64.png</em:icon64URL>
+
+
+    <em:creator>yLife Project</em:creator>
+    <em:homepageURL>http://kingyugi.fr/ylife</em:homepageURL>
+    <em:updateURL>http://kingyugi.fr/ylife/updates/update_ylifecore.rdf</em:updateURL>
+    <em:updateKey>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDOXuOWqQYDYStw3rTUS1ecSMidNFXOUSI80KO6sZolgEhZakoQGOF8Av6nb+f7owrmsrWCDC9gl0LiWCwVfZfM2GrTSky/PPuAb67s/X2Wil5qR6y2B1SYtI4PgvU4dOwqqm/yRZrUPCgPOKUIm1sh0oAm2ebGu3pFqZLYrXMD2QIDAQAB</em:updateKey>
+
+  </Description>
+</RDF>

@@ -1,0 +1,5 @@
+content ylifecore chrome/content/
+skin ylifecore classic chrome/skin/classic/
+locale ylifecore fr-FR chrome/locale/fr-FR/
+locale ylifecore en-US chrome/locale/en-US/
+overlay chrome://ylife/content/yLife.xul chrome://ylifecore/content/ylifecore_overlay.xul

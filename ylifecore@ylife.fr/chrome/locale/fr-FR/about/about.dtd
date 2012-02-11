@@ -1,0 +1,33 @@
+<!ENTITY title "A propos">
+
+<!ENTITY ylife.main "A propos d'yLife">
+<!ENTITY ylife.project "Nom du projet">
+<!ENTITY ylife.version "Version">
+<!ENTITY ylife.website "Site internet">
+<!ENTITY ylife.license "Licence">
+
+<!ENTITY ylife.credits "Crédits d'yLife">
+
+
+<!ENTITY ycd.main "A propos de YCD">
+<!ENTITY ycd.project "Nom du projet">
+<!ENTITY ycd.website "Site internet">
+<!ENTITY ycd.license "Licence">
+<!ENTITY ycd.creation "Date de Création">
+<!ENTITY ycd.lastupdate "Dernière M.A.J.">
+
+<!ENTITY ycd.changelog "Historique de YCD">
+<!ENTITY ycd.changelog.date "Date">
+<!ENTITY ycd.changelog.member "Membre">
+<!ENTITY ycd.changelog.nickname "Pseudo">
+<!ENTITY ycd.changelog.description "Changements effectués">
+
+<!ENTITY ycd.credits "Crédits de YCD">
+<!ENTITY ycd.credits.member "Membre">
+<!ENTITY ycd.credits.nickname "Pseudo">
+<!ENTITY ycd.credits.email "Email">
+<!ENTITY ycd.credits.statute "Statut">
+<!ENTITY ycd.credits.description "Description du travail effectué">
+
+<!ENTITY ycd.sources "Sources de YCD">
+

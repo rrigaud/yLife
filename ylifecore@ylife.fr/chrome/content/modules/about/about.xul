@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<?xml-stylesheet href="chrome://ylifecore/skin/about.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://ylifecore/locale/about/about.dtd">
+
+<window
+  id="about"
+  title="&title;"
+  orient="vertical"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+  <stringbundleset>
+    <stringbundle id="i18n" src="chrome://ylifecore/locale/about/about.properties"/>
+  </stringbundleset>
+
+  <script src="chrome://ylifecore/content/modules/about/libs/about.js" />
+  
+  <vbox class="background" flex="1">
+    <hbox align="center" style="margin-bottom : 10px;">
+      <spacer flex="1" />
+      <radiogroup orient="horizontal" oncommand="document.getElementById('ylife').setAttribute('selectedIndex',this.selectedIndex);">
+        <radio class="button left">
+          <spacer flex="1" />
+          <label value="&ylife.main;" class="button_label" />
+          <spacer flex="1" />
+        </radio>
+        <radio class="button right">
+          <spacer flex="1" />
+          <label value="&ylife.credits;" class="button_label" />
+          <spacer flex="1" />
+        </radio>
+      </radiogroup>
+      <spacer flex="1" />
+    </hbox>
+    <deck id="ylife" flex="1">
+      <grid>
+        <columns>
+          <column />
+          <column flex="1" />
+        </columns>
+        <rows>
+          <row align="center">
+            <label value="&ylife.project; :" />
+            <textbox id="ylife_project" value="yLife : Yu-Gi-Oh! Life" />
+          </row>
+          <row align="center">
+            <label value="&ylife.version; :" />
+            <textbox id="ylife_version" />
+          </row>
+          <row align="center">
+            <label value="&ylife.website; :" />
+            <textbox id="ylife_website" value="http://kingyugi.fr/ylife" />
+          </row>
+          <row align="center">
+            <label value="&ylife.license; :" />
+            <textbox id="ylife_license" value="GNU GPL 2" />
+          </row>
+        </rows>
+      </grid>
+      <vbox>
+        <hbox align="center">
+          <image src="chrome://ylifecore/skin/icons/flags/fr-FR.png" />
+          <textbox value="Raphaël Rigaud (Développeur principal)" flex="1" />
+        </hbox>
+        <hbox align="center">
+          <image src="chrome://ylifecore/skin/icons/flags/fr-FR.png" />
+          <textbox value="Simon Huet (Logo yLife)" flex="1" />
+        </hbox>
+      </vbox>
+    </deck>
+    
+    <hbox align="center" style="margin-bottom : 10px;">
+      <spacer flex="1" />
+      <radiogroup orient="horizontal" oncommand="document.getElementById('ycd').setAttribute('selectedIndex',this.selectedIndex);">
+        <radio class="button left">
+          <spacer flex="1" />
+          <label value="&ycd.main;" class="button_label" />
+          <spacer flex="1" />
+        </radio>
+        <radio class="button middle">
+          <spacer flex="1" />
+          <label value="&ycd.changelog;" class="button_label" />
+          <spacer flex="1" />
+        </radio>
+        <radio class="button middle">
+          <spacer flex="1" />
+          <label value="&ycd.credits;" class="button_label" />
+          <spacer flex="1" />
+        </radio>
+        <radio class="button right">
+          <spacer flex="1" />
+          <label value="&ycd.sources;" class="button_label" />
+          <spacer flex="1" />
+        </radio>
+      </radiogroup>
+      <spacer flex="1" />
+    </hbox>
+    <deck id="ycd" flex="1">
+      <grid>
+        <columns>
+          <column />
+          <column flex="1" />
+        </columns>
+        <rows>
+          <row align="center">
+            <label value="&ycd.project; :" />
+            <textbox id="ycd_project" />
+          </row>
+          <row align="center">
+            <label value="&ycd.website; :" />
+            <textbox id="ycd_website" />
+          </row>
+          <row align="center">
+            <label value="&ycd.license; :" />
+            <textbox id="ycd_license" />
+          </row>
+          <row align="center">
+            <label value="&ycd.creation; :" />
+            <textbox id="ycd_creation" />
+          </row>
+          <row align="center">
+            <label value="&ycd.lastupdate; :" />
+            <textbox id="ycd_lastupdate" />
+          </row>
+        </rows>
+      </grid>
+      <vbox>
+        <tree id="changeloglist" flags="dont-build-content" enableColumnDrag="true" flex="1" onselect="setChangelog(this.currentIndex);" onclick="setChangelog(this.currentIndex);">
+          <treecols>
+            <treecol id="changeloglist_date" label="&ycd.changelog.date;" flex="1" persist="width ordinal hidden" />
+            <splitter class="tree-splitter" />
+            <treecol id="changeloglist_member" label="&ycd.changelog.member;" flex="1" persist="width ordinal hidden" />
+            <splitter class="tree-splitter" />
+            <treecol id="changeloglist_nickname" label="&ycd.changelog.nickname;" flex="1" persist="width ordinal hidden" />
+          </treecols>
+          <treechildren />
+        </tree>
+        <label value="&ycd.changelog.description; :" />
+        <textbox id="changelog" multiline="true" rows="4" value="&ycd.changelog.description;" />
+      </vbox>
+      <vbox>
+        <tree id="creditlist" flags="dont-build-content" enableColumnDrag="true" flex="1" onselect="setCredits(this.currentIndex);" onclick="setCredits(this.currentIndex);">
+          <treecols>
+            <treecol id="creditlist_country" label="&ycd.credits.member;" width="22" persist="width ordinal hidden" />
+            <treecol id="creditlist_member" label="&ycd.credits.member;" flex="1" persist="width ordinal hidden" />
+            <splitter class="tree-splitter" />
+            <treecol id="creditlist_nickname" label="&ycd.credits.nickname;" flex="1" persist="width ordinal hidden" />
+            <splitter class="tree-splitter" />
+            <treecol id="creditlist_email" label="&ycd.credits.email;" flex="1" persist="width ordinal hidden" />
+            <splitter class="tree-splitter" />
+            <treecol id="creditlist_statute" label="&ycd.credits.statute;" flex="1" persist="width ordinal hidden" />
+          </treecols>
+          <treechildren />
+        </tree>
+        <label value="&ycd.credits.description; :" />
+        <textbox id="credits" multiline="true" rows="4" value="&ycd.credits.description;" />
+      </vbox>
+      <textbox id="ycd_sources" multiline="true" rows="4" value="&ycd.sources;" />
+    </deck>
+  </vbox>
+</window>

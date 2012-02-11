@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<?xml-stylesheet href="chrome://ylifecore/skin/printdeck.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://ylifecore/locale/deckbuilder/printdeck.dtd">
+
+<dialog
+  id="printdeck"
+  title="&title;"
+  width="900"
+  height="600"
+  orient="vertical"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  buttons="accept,cancel"
+  ondialogaccept="return print();"
+  ondialogcancel="return true;">
+
+  <script src="chrome://ylifecore/content/modules/deckbuilder/libs/printdeck.js" />
+  <script type="application/x-javascript" src="chrome://ylifecore/content/libs/printUtils.js"/>
+  <script type="application/x-javascript" src="chrome://ylifecore/content/libs/printPreview.js"/>
+
+
+  <groupbox>
+  <caption label="&informations;" />
+    <hbox align="center">
+      <textbox id="name" value="&name;" flex="1" oninput="refresh();" />
+      <textbox id="ude" value="&ude;" flex="1" oninput="refresh();" />
+      <textbox id="event" value="&event;" flex="1" oninput="refresh();" />
+      <textbox id="date" value="&date;" flex="1" oninput="refresh();" />
+    </hbox>
+  </groupbox>
+  
+  
+  
+  
+  <groupbox flex="1">
+  <caption label="&print.preview;" />
+    <hbox align="center">
+      <label value="&template; :" />
+      <menulist id="template" oncommand="refresh();">
+        <menupopup>
+          <menuitem value="decklist.1col.reference.xhtml" label="decklist.1col.reference.xhtml" />
+          <menuitem value="decklist.2col.reference.xhtml" label="decklist.2col.reference.xhtml" selected="true" />
+          <menuitem value="decklist.2col.noreference.xhtml" label="decklist.2col.noreference.xhtml" />
+          <menuitem value="proxies.economic.xhtml" label="proxies.economic.xhtml" />
+          <menuseparator />
+        </menupopup>
+      </menulist>
+      <spacer flex="1" />
+    </hbox>
+    <iframe id="preview" flex="1" />
+  </groupbox>
+
+  <hbox align="center" style="padding-top : 10px;">
+    <spacer flex="1" />
+    <button dlgtype="cancel">
+      <image class="bt_cancel" />
+      <spacer flex="1" />
+      <label value="&cancel;" />
+    </button>
+    <button dlgtype="accept">
+      <image class="bt_print" />
+      <spacer flex="1" />
+      <label value="&print;" />
+    </button>
+  </hbox>
+</dialog>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<bindings id="Bindings_avatars"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+          xmlns:xbl="http://www.mozilla.org/xbl">
+
+
+  <!-- AVATAR : ME (Le mien) -->
+  <binding id="me">
+    <content>
+      <xul:hbox>
+        <xul:stack>
+          <xul:image xbl:inherits="src=avatar_img" width="72" height="72" style="margin:12px;"/>
+          <xul:image xbl:inherits="src=show_img" width="96" height="96" />
+        </xul:stack>
+      </xul:hbox>
+    </content>
+  </binding>
+
+  <!-- AVATAR : CONTACT -->
+  <binding id="contact">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/avatars.css"/>
+    </resources>
+    <content>
+      <xul:hbox xbl:inherits="tooltiptext=ttt_contact,class=class_newmessage">
+        <xul:stack>
+          <xul:image xbl:inherits="src=avatar_img" width="48" height="48" style="margin:8px;"/>
+          <xul:image xbl:inherits="src=show_img" width="64" height="64" />
+        </xul:stack>
+      </xul:hbox>
+    </content>
+  </binding>
+
+</bindings>

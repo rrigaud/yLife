@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Proxies générés par yLife</title>
+    <style>
+      body {
+        background-color: #FFFFFF;
+        color: black;
+        font-size: 12px;
+      }
+      #decklisttoclone {
+        display: none;
+      }
+      #cardtoclone {
+        display: none;
+      }
+      hr {
+        border: 1px solid #000000;
+        margin-top: 8px;
+      }
+      .card {
+        margin: 6px;
+        padding: 10px;
+        border: 1px solid;
+        display: block;
+        width: 190px;
+        float: left;
+        page-break-inside:avoid;
+      }
+      .name {
+        font-weight: bolder;
+      }
+      .type {
+        float: right;
+      }
+      .description {
+        margin-top: 8px;
+        font-style: italic;
+        font-size: 11px;
+      }
+      .monster_level_attribute_type {
+        margin-top: 16px;
+      }
+      .monster_atk_def {
+        float: right;
+      }
+  </style>
+</head>
+
+<body>
+  <div id="content">
+    <div id="decklisttoclone">
+      <div id="deckcontent">
+        <div id="cardtoclone" class="card">
+          <div class="name">{name}</div><br />
+          <div class="type"><strong>[</strong> {type} <strong>]</strong></div>
+          <br />{monster_level_attribute_type}
+          <div class="description">{description}</div>
+          {monster_atk_def}
+        </div>
+        {maindeck_monsters}
+        {maindeck_spells}
+        {maindeck_traps}
+        {sidedeck_monsters}
+        {sidedeck_spells}
+        {sidedeck_traps}
+        {extradeck_monsters}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

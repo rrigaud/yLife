@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<bindings id="Bindings_contacts"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+          xmlns:xbl="http://www.mozilla.org/xbl">
+
+
+  <!-- CONTACT : NORMAL -->
+  <binding id="normal">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/contacts.css"/>
+    </resources>
+    <content>
+      <xul:hbox xbl:inherits="tooltiptext=ttt_contact" flex="1">
+        <xul:stack>
+          <xul:image xbl:inherits="src=avatar_img" width="48" height="48" style="margin:8px;"/>
+          <xul:image xbl:inherits="src=show_img" width="64" height="64" />
+        </xul:stack>
+        <xul:vbox flex="1">
+          <xul:spacer flex="1" />
+          <xul:label xbl:inherits="value=nickname" class="normal_nickname" crop="end" />
+          <xul:label xbl:inherits="value=status" class="normal_status" crop="end" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:spacer flex="1" />
+        <xul:vbox style="margin-right:4px;">
+          <xul:spacer flex="1" />
+          <xul:hbox>
+            <xul:image xbl:inherits="collapsed=ylife_deconnected" src="chrome://ylifecore/skin/icons/various/ylife_connected.png" width="62" height="32" />
+          </xul:hbox>
+          <xul:spacer flex="1" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+
+  <!-- CONTACT : COMPACT -->
+  <binding id="compact">
+    <content>
+      <xul:hbox xbl:inherits="tooltiptext=ttt_contact">
+        <xul:stack>
+          <xul:image xbl:inherits="src=avatar_img" width="48" height="48" style="margin:8px;"/>
+          <xul:image xbl:inherits="src=show_img" width="64" height="64" />
+        </xul:stack>
+        <xul:vbox flex="1">
+          <xul:label xbl:inherits="value=nickname" class="compact_nickname" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+
+</bindings>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<?xml-stylesheet href="chrome://ylifecore/skin/profile.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://ylifecore/locale/profile/profile.dtd">
+
+<window
+  id="profile"
+  title="&title;"
+  orient="vertical"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+  <stringbundleset>
+    <stringbundle id="i18n" src="chrome://ylifecore/locale/profile/profile.properties"/>
+  </stringbundleset>
+
+  <script src="chrome://ylifecore/content/modules/duel/profile/profile.js" />
+
+  <hbox>
+    <vbox id="avatar" class="avatar" avatar_img="chrome://ylifecore/skin/avatars/default.jpg" show_img="chrome://ylifecore/skin/icons/show_borders/unavailable.png" />
+    <vbox width="400">
+      <groupbox id="occupant" collapsed="true" orient="vertical" flex="1">
+      <caption orient="horizontal" align="center">
+        <vbox>
+          <image class="bt_muc" />
+        </vbox>
+        <label value=" &occupant;" />
+      </caption>
+        <grid>
+          <columns>
+            <column />
+            <column flex="1" />
+          </columns>
+          <rows>
+            <row align="center">
+              <label value="&occupant.oid; :" />
+              <textbox id="occupant_oid" />
+            </row>
+            <row align="center">
+              <label value="&occupant.status; :" />
+              <textbox id="occupant_status" crop="end" />
+            </row>
+            <row align="center">
+              <label value="&occupant.affiliation; :" />
+              <textbox id="occupant_affiliation" />
+            </row>
+            <row align="center">
+              <label value="&occupant.role; :" />
+              <textbox id="occupant_role" />
+            </row>
+          </rows>
+        </grid>
+      </groupbox>
+      <groupbox id="contact" collapsed="true" orient="vertical" flex="1">
+      <caption orient="horizontal" align="center">
+        <vbox>
+          <image class="bt_profile" />
+        </vbox>
+        <label value=" &contact;" />
+      </caption>
+        <grid>
+          <columns>
+            <column />
+            <column flex="1" />
+          </columns>
+          <rows>
+            <row align="center">
+              <label value="&contact.jid; :" />
+              <textbox id="contact_jid" />
+            </row>
+            <row align="center">
+              <label value="&contact.resource; :" />
+              <textbox id="contact_resource" />
+            </row>
+            <row align="center">
+              <label value="&contact.subscription; :" />
+              <textbox id="contact_subscription" />
+            </row>
+            <row align="center">
+              <label value="&contact.status; :" />
+              <textbox id="contact_status" crop="end" />
+            </row>
+          </rows>
+        </grid>
+      </groupbox>
+    </vbox>
+  </hbox>
+  <hbox>
+    <spacer flex="1" />
+    <button oncommand="window.close();">
+      <image class="bt_close" />
+      <spacer flex="1" />
+      <label value="&close;" />
+    </button>
+  </hbox>
+</window>

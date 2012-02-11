@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<?xml-stylesheet href="chrome://ylifecore/skin/internetdeck.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://ylifecore/locale/deckbuilder/internetdeck.dtd">
+
+<dialog
+  id="internetdeck"
+  title="&title;"
+  width="700"
+  height="500"
+  orient="vertical"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  buttons="accept,cancel"
+  ondialogaccept="return copy();"
+  ondialogcancel="return true;">
+
+  <script src="chrome://ylifecore/content/modules/deckbuilder/libs/internetdeck.js" />
+  
+  <hbox align="center">
+    <label value="&template; :" />
+    <menulist id="template" oncommand="refresh();" flex="1">
+      <menupopup>
+        <menuitem value="bbcode.number.card.reference.xml" label="bbcode.number.card.reference.xml" selected="true" />
+        <menuitem value="bbcode.number.card.reference.description.xml" label="bbcode.number.card.reference.description.xml" />
+        <menuitem value="dokuwiki.kingyugi.xml" label="dokuwiki.kingyugi.xml" />
+        <menuseparator />
+      </menupopup>
+    </menulist>
+  </hbox>
+  <groupbox flex="1">
+  <caption label="&template.deck;" />
+    <textbox id="template_deck" multiline="true" flex="1" />
+  </groupbox>
+  <groupbox>
+  <caption label="&template.card;" />
+    <textbox id="template_card" multiline="true" rows="2" />
+  </groupbox>
+
+  <hbox align="center" style="padding-top : 10px;">
+    <spacer flex="1" />
+    <button dlgtype="cancel">
+      <image class="bt_cancel" />
+      <spacer flex="1" />
+      <label value="&cancel;" />
+    </button>
+    <button dlgtype="accept">
+      <image class="bt_copy" />
+      <spacer flex="1" />
+      <label value="&copy;" />
+    </button>
+  </hbox>
+</dialog>

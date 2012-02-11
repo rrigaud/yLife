@@ -1,0 +1,286 @@
+<?xml version="1.0"?>
+
+<bindings id="Bindings_cards"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+          xmlns:xbl="http://www.mozilla.org/xbl">
+
+
+  <!-- OLDISH > 0 (pour du 1024x768) -->
+  <binding id="card_oldish_0">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/cards_oldish.css"/>
+    </resources>
+    <content>
+      <xul:vbox xbl:inherits="tooltiptext=name">
+        <xul:hbox>
+          <xul:stack id="card_stack">
+            <xul:hbox id="card_hbox_image">
+              <xul:vbox>
+                <xul:image id="card_image" xbl:inherits="src=image" />
+              </xul:vbox>
+            </xul:hbox>
+            <xul:image id="card_background" xbl:inherits="src=background" />
+            <xul:hbox id="card_hbox_name" xbl:inherits="class=class_card_name,value=name">
+              <xul:label id="card_name" xbl:inherits="value=name" crop="end" width="242" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_attribute">
+              <xul:spacer flex="1" />
+              <xul:vbox>
+                <xul:image id="card_attribute" xbl:inherits="src=attribute" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+            </xul:hbox>
+            <xul:hbox id="card_hbox_level">
+              <xul:spacer flex="1" />
+              <xul:vbox>
+                <xul:image id="card_level_12" xbl:inherits="src=level_12" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_11" xbl:inherits="src=level_11" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_10" xbl:inherits="src=level_10" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_9" xbl:inherits="src=level_9" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_8" xbl:inherits="src=level_8" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_7" xbl:inherits="src=level_7" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_6" xbl:inherits="src=level_6" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_5" xbl:inherits="src=level_5" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_4" xbl:inherits="src=level_4" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_3" xbl:inherits="src=level_3" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_2" xbl:inherits="src=level_2" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_1" xbl:inherits="src=level_1" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+            </xul:hbox>
+            <xul:hbox id="card_hbox_type">
+              <xul:spacer flex="1" />
+              <xul:label id="card_type_bracket_left" xbl:inherits="value=type_bracket_left" class="small-margin" />
+              <xul:vbox id="card_hbox_type_name">
+                <xul:label id="card_type_name" xbl:inherits="value=type_name" class="small-margin" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_type_icon" xbl:inherits="src=type_icon,collapsed=type_icon_hide" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:label id="card_type_bracket_right" xbl:inherits="value=type_bracket_right" class="small-margin" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_reference">
+              <xul:spacer flex="1" />
+              <xul:label id="card_reference" xbl:inherits="value=reference" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_description_spelltrap">
+              <xul:spacer flex="1" />
+              <xul:textbox id="card_description_spelltrap" xbl:inherits="value=description_spelltrap" multiline="true" rows="3" readonly="true" />
+              <xul:spacer flex="1" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_monster_type" xbl:inherits="collapsed=monster_atk_hide">
+              <xul:label id="card_monster_type_bracket_left" xbl:inherits="value=monster_type_bracket_left" class="small-margin" />
+              <xul:vbox id="card_vbox_monster_type">
+                <xul:label id="card_monster_type" xbl:inherits="value=monster_type" class="plain" />
+              </xul:vbox>
+              <xul:label id="card_monster_type_bracket_right" xbl:inherits="value=monster_type_bracket_right" class="small-margin" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_description_monster" xbl:inherits="collapsed=monster_atk_hide">
+              <xul:spacer flex="1" />
+              <xul:textbox id="card_description_monster" xbl:inherits="value=description_monster" multiline="true" rows="3" readonly="true" />
+              <xul:spacer flex="1" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_monster_atk_label">
+              <xul:label id="card_monster_atk_label" xbl:inherits="collapsed=monster_atk_hide" value="ATK/" />
+              <xul:spacer flex="1" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_monster_atk">
+              <xul:spacer flex="1" />
+              <xul:label id="card_monster_atk" xbl:inherits="value=monster_atk" class="plain" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_monster_def_label">
+              <xul:label id="card_monster_def_label" xbl:inherits="collapsed=monster_def_hide" value="DEF/" />
+              <xul:spacer flex="1" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_monster_def">
+              <xul:spacer flex="1" />
+              <xul:label id="card_monster_def" xbl:inherits="value=monster_def" class="plain" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_code">
+              <xul:label id="card_code" xbl:inherits="value=code" />
+            </xul:hbox>
+          </xul:stack>
+        </xul:hbox>
+      </xul:vbox>
+    </content>
+  </binding>
+  
+  
+  
+  
+  
+  
+  <!-- SCALABLE > 0 (pour du 1024x768) -->
+  <binding id="card_scalable_0">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/cards_scalable.css"/>
+    </resources>
+    <content>
+      <xul:vbox xbl:inherits="tooltiptext=name">
+        <xul:hbox>
+          <xul:stack id="card_stack">
+            <xul:hbox id="card_hbox_image">
+              <xul:vbox>
+                <xul:image id="card_image" xbl:inherits="src=image" />
+              </xul:vbox>
+            </xul:hbox>
+            <xul:image id="card_background" xbl:inherits="src=background" />
+            <xul:hbox id="card_hbox_name" xbl:inherits="class=class_card_name,value=name">
+              <xul:label id="card_name" xbl:inherits="value=name" crop="end" width="238" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_attribute">
+              <xul:spacer flex="1" />
+              <xul:vbox>
+                <xul:image id="card_attribute" xbl:inherits="src=attribute" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+            </xul:hbox>
+            <xul:hbox id="card_hbox_level">
+              <xul:spacer flex="1" />
+              <xul:vbox>
+                <xul:image id="card_level_12" xbl:inherits="src=level_12" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_11" xbl:inherits="src=level_11" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_10" xbl:inherits="src=level_10" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_9" xbl:inherits="src=level_9" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_8" xbl:inherits="src=level_8" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_7" xbl:inherits="src=level_7" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_6" xbl:inherits="src=level_6" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_5" xbl:inherits="src=level_5" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_4" xbl:inherits="src=level_4" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_3" xbl:inherits="src=level_3" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_2" xbl:inherits="src=level_2" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_level_1" xbl:inherits="src=level_1" class="card_level" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+            </xul:hbox>
+            <xul:hbox id="card_hbox_type">
+              <xul:spacer flex="1" />
+              <xul:label id="card_type_bracket_left" xbl:inherits="value=type_bracket_left" class="small-margin" />
+              <xul:vbox id="card_hbox_type_name">
+                <xul:label id="card_type_name" xbl:inherits="value=type_name" class="small-margin" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:vbox>
+                <xul:image id="card_type_icon" xbl:inherits="src=type_icon,collapsed=type_icon_hide" />
+                <xul:spacer flex="1" />
+              </xul:vbox>
+              <xul:label id="card_type_bracket_right" xbl:inherits="value=type_bracket_right" class="small-margin" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_reference">
+              <xul:spacer flex="1" />
+              <xul:label id="card_reference" xbl:inherits="value=reference" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_description_spelltrap">
+              <xul:spacer flex="1" />
+              <xul:textbox id="card_description_spelltrap" xbl:inherits="value=description_spelltrap" multiline="true" rows="3" readonly="true" />
+              <xul:spacer flex="1" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_monster_type" xbl:inherits="collapsed=monster_atk_hide">
+              <xul:label id="card_monster_type_bracket_left" xbl:inherits="value=monster_type_bracket_left" class="small-margin" />
+              <xul:vbox id="card_vbox_monster_type">
+                <xul:label id="card_monster_type" xbl:inherits="value=monster_type" class="plain" />
+              </xul:vbox>
+              <xul:label id="card_monster_type_bracket_right" xbl:inherits="value=monster_type_bracket_right" class="small-margin" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_description_monster" xbl:inherits="collapsed=monster_atk_hide">
+              <xul:spacer flex="1" />
+              <xul:textbox id="card_description_monster" xbl:inherits="value=description_monster" multiline="true" rows="3" readonly="true" />
+              <xul:spacer flex="1" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_monster_atk_label">
+              <xul:label id="card_monster_atk_label" xbl:inherits="collapsed=monster_atk_hide" value="ATK/" />
+              <xul:spacer flex="1" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_monster_atk">
+              <xul:spacer flex="1" />
+              <xul:label id="card_monster_atk" xbl:inherits="value=monster_atk" class="plain" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_monster_def_label">
+              <xul:label id="card_monster_def_label" xbl:inherits="collapsed=monster_def_hide" value="DEF/" />
+              <xul:spacer flex="1" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_monster_def">
+              <xul:spacer flex="1" />
+              <xul:label id="card_monster_def" xbl:inherits="value=monster_def" class="plain" />
+            </xul:hbox>
+            <xul:hbox id="card_hbox_code">
+              <xul:label id="card_code" xbl:inherits="value=code" />
+            </xul:hbox>
+          </xul:stack>
+        </xul:hbox>
+      </xul:vbox>
+    </content>
+  </binding>
+
+
+
+</bindings>

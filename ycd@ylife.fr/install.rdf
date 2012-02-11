@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>ycd@ylife.fr</em:id>
+    <em:version>2010.11.01</em:version>
+    <em:type>2</em:type>
+
+    <!-- yLife -->
+    <em:targetApplication>
+      <Description>
+        <em:id>ylife@ylife.fr</em:id>
+        <em:minVersion>0.7</em:minVersion>
+        <em:maxVersion>3.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <!-- yLife (Version de Développement) -->
+    <em:targetApplication>
+      <Description>
+        <em:id>ylife@ylifedev.fr</em:id>
+        <em:minVersion>0.7</em:minVersion>
+        <em:maxVersion>3.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <em:name>YCD : Yu-Gi-Oh! Card Database</em:name>
+    <em:description>Universal and multilingual Yu-Gi-Oh! Card Database</em:description>
+
+    <em:localized>
+      <Description>
+        <em:locale>fr-FR</em:locale>
+        <em:name>YCD : Yu-Gi-Oh! Card Database</em:name>
+        <em:description>Base de Données universelle et multilingue pour les cartes Yu-Gi-Oh!</em:description>
+      </Description>
+    </em:localized>
+
+    <em:optionsURL>chrome://ylifecore/content/modules/preferences/preferences.xul</em:optionsURL>
+    <em:aboutURL>chrome://ylifecore/content/modules/about/about_ycd.xul</em:aboutURL>
+    <em:iconURL>chrome://ylifecore/skin/logos/ycd_48.png</em:iconURL>
+    <em:icon64URL>chrome://ylifecore/skin/logos/ycd_64.png</em:icon64URL>
+    
+    
+    <em:creator>YCD Project</em:creator>
+    <em:homepageURL>http://kingyugi.fr/ycd</em:homepageURL>
+    <em:updateURL>http://kingyugi.fr/ylife/updates/update_ycd.rdf</em:updateURL>
+    <em:updateKey>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCYnpjPLkdDE2CWubI2/IGoHKkLIPszlpKN9K/nJX7fxAZgJ3NbnOtPT1qOUhmLjEIGjBOMbGbbSkJuE0C2gQT6lzo94spYdNYlm3aYqP9ukp8VH7LVByWaWf6rgIFiAnPXD9VrrSadEIcend5/MXEGjHyMRYaH6Q2XTEC/uGHEPQIDAQAB</em:updateKey>
+
+  </Description>      
+</RDF>

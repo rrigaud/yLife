@@ -1,0 +1,9 @@
+<!ENTITY title "Deck informations">
+
+<!ENTITY name "Name">
+<!ENTITY created "Created">
+<!ENTITY updated "Updated">
+<!ENTITY format "Game format">
+<!ENTITY notes "Notes">
+<!ENTITY close "Close">
+<!ENTITY save "Save">

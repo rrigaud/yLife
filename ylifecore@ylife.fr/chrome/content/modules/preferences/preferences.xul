@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<?xml-stylesheet href="chrome://ylifecore/skin/preferences.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://ylifecore/locale/preferences/preferences.dtd">
+
+<window
+  id="preferences"
+  title="&title;"
+  orient="vertical"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+  <stringbundleset>
+    <stringbundle id="i18n" src="chrome://ylifecore/locale/preferences/preferences.properties"/>
+  </stringbundleset>
+
+  <script src="chrome://ylifecore/content/modules/preferences/libs/preferences.js" />
+  
+  <vbox class="background" flex="1">
+    <hbox>
+      <!-- ####################################### INFORMATIONS PERSONNELLES ######################################## -->
+      <groupbox orient="vertical" width="260">
+        <caption label="&personal.informations;" />
+        <grid>
+          <columns>
+            <column />
+            <column flex="1" />
+          </columns>
+          <rows>
+            <row align="center">
+              <label value="&language; :" />
+              <radiogroup id="language" class="mac" orient="horizontal">
+                <radio class="button left" id="language_en-US" value="en-US" flex="1">
+                  <spacer flex="1" />
+                  <image src="chrome://ylifecore/skin/icons/flags/en-US.png" />
+                  <label value="en-US" class="button_label" />
+                  <spacer flex="1" />
+                </radio>
+                <radio class="button right" id="language_fr-FR" value="fr-FR" flex="1">
+                  <spacer flex="1" />
+                  <image src="chrome://ylifecore/skin/icons/flags/fr-FR.png" />
+                  <label value="fr-FR" class="button_label" />
+                  <spacer flex="1" />
+                </radio>
+              </radiogroup>
+            </row>
+            <row align="center">
+              <label value="&lastname; :" />
+              <textbox id="lastname" />
+            </row>
+            <row align="center">
+              <label value="&firstname; :" />
+              <textbox id="firstname" />
+            </row>
+            <row align="center">
+              <label value="&ude; :" />
+              <textbox id="ude" />
+            </row>
+            <row align="center">
+              <label value="&jabber.jid; :" />
+              <textbox id="jabber_jid" />
+            </row>
+            <row align="center">
+              <label value="&jabber.pwd; :" />
+              <textbox id="jabber_pwd" type="password" />
+            </row>
+          </rows>
+        </grid>
+        <label value="&jabber.status; :" />
+        <textbox id="jabber_status" multiline="true" rows="2" />
+      </groupbox>
+      <vbox width="300">
+        <!-- ####################################### PARAMETRES DES DECKS ######################################## -->
+        <groupbox orient="vertical">
+          <caption label="&decks.settings;" />
+          <grid>
+            <columns>
+              <column />
+              <column flex="1" />
+            </columns>
+            <rows>
+              <row align="center">
+                <label value="&decks.format; :" />
+                <menulist id="decks_format" />
+              </row>
+              <row align="center">
+                <label value="&decks.folder; :" />
+                <hbox align="center">
+                  <textbox id="decks_folder" flex="1" />
+                  <toolbarbutton class="bt_browse" oncommand="Prefs.browseDecksFolder();" />
+                </hbox>
+              </row>
+            </rows>
+          </grid>
+        </groupbox>
+        <!-- ####################################### FILTRES PAR DEFAUT ######################################## -->
+        <groupbox orient="vertical">
+          <caption label="&filter.settings;" />
+          <grid>
+            <columns>
+              <column />
+              <column flex="1" />
+            </columns>
+            <rows>
+              <row align="center">
+                <label value="&filter.reprints; :" />
+                <checkbox id="filter_reprints_group" label="&filter.reprints.group;" dir="reverse" />
+              </row>
+              <row align="center">
+                <label value="&filter.format; :" />
+                <menulist id="filter_format" />
+              </row>
+              <row align="center">
+                <label value="&filter.country; :" />
+                <menulist id="filter_country" />
+              </row>
+              <row align="center">
+                <label value="&filter.language; :" />
+                <menulist id="filter_language" />
+              </row>
+            </rows>
+          </grid>
+        </groupbox>
+      </vbox>
+      <vbox flex="1">
+        <!-- ####################################### PARAMETRES D'AFFICHAGE ######################################## -->
+        <groupbox orient="vertical">
+          <caption label="&display.settings;" />
+          <grid>
+            <columns>
+              <column />
+              <column flex="1" />
+            </columns>
+            <rows>
+              <row align="center">
+                <label value="&template.card; :" />
+                <menulist id="template_card" flex="1">
+                  <menupopup>
+                    <menuitem value="oldish" label="&template.card.oldish;" />
+                    <menuitem value="scalable" label="&template.card.scalable;" />
+                  </menupopup>
+                </menulist>
+              </row>
+              <row align="center">
+                <label value="&resolution.card; :" />
+                <menulist id="resolution_card" flex="1">
+                  <menupopup>
+                    <menuitem value="0" label="&resolution.card.0;" />
+                  </menupopup>
+                </menulist>
+              </row>
+              <row align="center">
+                <label value="&template.deck; :" />
+                <menulist id="template_deck" flex="1">
+                  <menupopup>
+                    <menuitem value="noimage" label="&template.deck.noimage;" />
+                    <menuitem value="image" label="&template.deck.image;" />
+                  </menupopup>
+                </menulist>
+              </row>
+              <row align="center">
+                <label value="&template.chat; :" />
+                <hbox align="center">
+                  <menulist id="template_chat" flex="1">
+                    <menupopup>
+                      <menuitem value="simple.xhtml" label="simple.xhtml" />
+                      <menuseparator />
+                    </menupopup>
+                  </menulist>
+                  <toolbarbutton class="bt_add" oncommand="Prefs.addTemplate('chat');" />
+                </hbox>
+              </row>
+              <row align="center">
+                <label value="&template.muc; :" />
+                <hbox align="center">
+                  <menulist id="template_muc" flex="1">
+                    <menupopup>
+                      <menuitem value="simple.xhtml" label="simple.xhtml" />
+                      <menuseparator />
+                    </menupopup>
+                  </menulist>
+                  <toolbarbutton class="bt_add" oncommand="Prefs.addTemplate('muc');" />
+                </hbox>
+              </row>
+              <row align="center">
+                <label value="&template.duel; :" />
+                <hbox align="center">
+                  <menulist id="template_duel" flex="1">
+                    <menupopup>
+                      <menuitem value="simple.xhtml" label="simple.xhtml" />
+                      <menuseparator />
+                    </menupopup>
+                  </menulist>
+                  <toolbarbutton class="bt_add" oncommand="Prefs.addTemplate('duel');" />
+                </hbox>
+              </row>
+              <row align="center">
+                <label value="&resolution.duel; :" />
+                <menulist id="resolution_duel" flex="1">
+                  <menupopup>
+                    <menuitem value="0" label="&resolution.duel.0;" />
+                  </menupopup>
+                </menulist>
+              </row>
+            </rows>
+          </grid>
+        </groupbox>
+        <!-- ####################################### PARAMETRES DE DEBUGGAGE ######################################## -->
+        <groupbox orient="vertical">
+          <caption label="&debug.settings;" />
+          <checkbox id="debug_javascript" label="&debug.javascript;" dir="reverse" />
+          <checkbox id="debug_jabber" label="&debug.jabber;" dir="reverse" />
+        </groupbox>
+      </vbox>
+    </hbox>
+    <!-- ####################################### SALONS DE DISCUSSIONS ######################################## -->
+    <groupbox orient="vertical">
+      <caption label="&muc.rooms;" />
+      <grid>
+        <columns>
+          <column />
+          <column flex="1" />
+          <column />
+          <column flex="1" />
+          <column />
+          <column flex="1" />
+        </columns>
+        <rows>
+          <row align="center">
+            <label value="1 :" />
+            <textbox id="room_1" />
+            <label value="2 :" />
+            <textbox id="room_2" />
+            <label value="3 :" />
+            <textbox id="room_3" />
+          </row>
+          <row align="center">
+            <label value="4 :" />
+            <textbox id="room_4" />
+            <label value="5 :" />
+            <textbox id="room_5" />
+            <label value="6 :" />
+            <textbox id="room_6" />
+          </row>
+          <row align="center">
+            <label value="7 :" />
+            <textbox id="room_7" />
+            <label value="8 :" />
+            <textbox id="room_8" />
+            <label value="9 :" />
+            <textbox id="room_9" />
+          </row>
+          <row align="center">
+            <label value="10 :" />
+            <textbox id="room_10" />
+            <label value="11 :" />
+            <textbox id="room_11" />
+            <label value="12 :" />
+            <textbox id="room_12" />
+          </row>
+        </rows>
+      </grid>
+    </groupbox>
+
+    <hbox align="center" style="margin-top:20px;">
+      <spacer flex="1" />
+      <button oncommand="Prefs.save();">
+        <image class="bt_save" />
+        <spacer flex="1" />
+        <label value="&save;" />
+      </button>
+      <spacer flex="1" />
+    </hbox>
+  </vbox>
+</window>
