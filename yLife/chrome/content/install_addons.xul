@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<?xml-stylesheet href="chrome://ylife/skin/install_addons.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://ylife/locale/install_addons.dtd">
+
+<window
+  id="install_addons"
+  title="&title;"
+  orient="vertical"
+  width="600"
+  height="500"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+  <script src="chrome://ylife/content/install_addons.js" />
+  
+  <vbox class="installbox" height="300">
+    <hbox>
+      <image id="image" src="chrome://ylife/skin/addons.png" />
+      <vbox flex="1">
+        <spacer flex="1" />
+        <label value="&install.addons;" class="title" />
+        <label id="installing" value="&installing;" />
+        <label id="installed" value="&installed;" collapsed="true" />
+        <spacer flex="1" />
+      </vbox>
+    </hbox>
+    <tree id="addonlist" flags="dont-build-content" enableColumnDrag="true" flex="1" style="margin-top:20px;">
+      <treecols>
+        <treecol id="addonlist_name" label="&name;" flex="1" persist="width ordinal hidden" />
+        <splitter class="tree-splitter" />
+        <treecol id="addonlist_status"  label="&status;" width="22" persist="width ordinal hidden" />
+      </treecols>
+      <treechildren />
+    </tree>
+  </vbox>
+  
+  <spacer flex="1" />
+  
+  <hbox align="center">
+    <spacer flex="1" />
+    <button id="reboot" collapsed="true" oncommand="reboot();">
+      <image class="reboot" />
+      <spacer flex="1" />
+      <label value="&reboot;" />
+    </button>
+  </hbox>
+  
+
+</window>

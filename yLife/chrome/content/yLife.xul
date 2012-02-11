@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://ylife/locale/yLife.dtd">
+
+<window
+	id="yLife"
+	title="&title;"
+	orient="vertical"
+	width="1000"
+	height="700"
+	persist="width height sizemode screenX screenY"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<script src="chrome://ylife/content/yLife.js" />
+
+</window>

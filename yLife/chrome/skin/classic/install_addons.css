@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "MatrixBookSmallCaps";
+  src: url("chrome://ylife/skin/MatrixBookSmallCaps.ttf");
+}
+
+.installbox {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #7f7f7f;
+  border-radius: 4px;
+}
+
+.title {
+  font: bold 30px "MatrixBookSmallCaps";
+  text-shadow: 0 1px 0 #fff;
+  margin-bottom: 4px;
+}
+
+#installing {
+  padding-top: 6px;
+  font: bold 14px "MatrixBookSmallCaps";
+  border-top: 1px solid #7f7f7f;
+}
+
+#installed {
+  padding-top: 6px;
+  font: bold 14px "MatrixBookSmallCaps";
+  border-top: 1px solid #7f7f7f;
+}
+
+
+#reboot { margin: 20px; }
+.reboot { list-style-image: url(reboot.png); }

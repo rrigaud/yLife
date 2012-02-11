@@ -1,0 +1,7 @@
+<!ENTITY title "yLife : Installation">
+<!ENTITY install.addons "Installation des extensions">
+<!ENTITY installing "Cela pourrait prendre quelques minutes, merci de patienter...">
+<!ENTITY installed "Extensions installées. Vous pouvez à présent redémarrer !">
+<!ENTITY name "Extensions">
+<!ENTITY status "Statut">
+<!ENTITY reboot "Redémarrer">

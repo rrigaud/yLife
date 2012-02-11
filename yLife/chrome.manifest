@@ -1,0 +1,7 @@
+content ylife chrome/content/
+content branding chrome/branding/
+skin ylife classic chrome/skin/classic/
+locale ylife fr-FR chrome/locale/fr-FR/
+locale ylife en-US chrome/locale/en-US/
+locale branding fr-FR chrome/locale/fr-FR/branding/
+locale branding en-US chrome/locale/en-US/branding/
