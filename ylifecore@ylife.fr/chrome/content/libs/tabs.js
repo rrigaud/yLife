@@ -285,7 +285,7 @@ var Tabs = {
       // Ajout vbox_avatar à l'onglet
       radiotab.appendChild(vbox_avatar);
     $("tabs").appendChild(radiotab);
-    // Création de chat_vbox
+    // Création de duel_hbox
     var duel_hbox = document.createElement('hbox');
     duel_hbox.setAttribute('id', "iframe_" + tab_id);
     duel_hbox.setAttribute('flex', "1");
@@ -333,7 +333,7 @@ var Tabs = {
       
       // Ajout vbox_sidebar au duel_hbox
       duel_hbox.appendChild(vbox_sidebar);
-    // Ajout chat_vbox au deck
+    // Ajout duel_hbox au deck
     $("deck").appendChild(duel_hbox);
     
     
