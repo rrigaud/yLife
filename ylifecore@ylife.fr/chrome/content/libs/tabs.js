@@ -316,7 +316,134 @@ var Tabs = {
         field_me.setAttribute('left', duel.dimensions.field_me.x);
         // Ajout field_me au Stack
         stack.appendChild(field_me);
-      
+        // Création field_centralbar
+        var field_centralbar = document.createElement('hbox');
+        field_centralbar.setAttribute('id', "field_centralbar_" + tab_id);
+        field_centralbar.setAttribute('src',"chrome://ylifecore/skin/duels/" + duel.resolution + "/field_me.png");
+        field_centralbar.setAttribute('width', duel.dimensions.field_centralbar.width);
+        field_centralbar.setAttribute('height', duel.dimensions.field_centralbar.height);
+        field_centralbar.setAttribute('top', duel.dimensions.field_centralbar.y);
+        field_centralbar.setAttribute('left', duel.dimensions.field_centralbar.x);
+          // Création button_game
+          var button_game = document.createElement('button');
+          button_game.setAttribute('class', "button");
+          button_game.setAttribute('popup',"_child");
+            // Création button_game_spacer1
+            var button_game_spacer1 = document.createElement('spacer');
+            button_game_spacer1.setAttribute('flex', "1");
+            // Ajout button_game_spacer1 à button_game
+            button_game.appendChild(button_game_spacer1);
+            // Création button_game_image
+            var button_game_image = document.createElement('image');
+            button_game_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/duel.png");
+            // Ajout button_game_image à button_game
+            button_game.appendChild(button_game_image);
+            // Création button_game_label
+            var button_game_label = document.createElement('label');
+            button_game_label.setAttribute('value', $("i18n").getString("duel.game"));
+            // Ajout button_game_label à button_game
+            button_game.appendChild(button_game_label);
+            // Création button_game_spacer2
+            var button_game_spacer2 = document.createElement('spacer');
+            button_game_spacer2.setAttribute('flex', "1");
+            // Ajout button_game_spacer2 à button_game
+            button_game.appendChild(button_game_spacer2);
+            // Création button_game_popup
+            var button_game_popup = document.createElement('menupopup');
+            button_game_popup.setAttribute('position', "before_start");
+              // Création button_game_menuitem_newduel
+              var button_game_menuitem_newduel = document.createElement('menuitem');
+              button_game_menuitem_newduel.setAttribute('class', "menuitem-iconic newduel");
+              button_game_menuitem_newduel.setAttribute('label', $("i18n").getString("duel.newduel"));
+              button_game_menuitem_newduel.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.newDuel();");
+              // Ajout button_game_menuitem_newduel à button_game_popup
+              button_game_popup.appendChild(button_game_menuitem_newduel);
+              // Création button_game_menuitem_invite
+              var button_game_menuitem_invite = document.createElement('menuitem');
+              button_game_menuitem_invite.setAttribute('class', "menuitem-iconic invite");
+              button_game_menuitem_invite.setAttribute('label', $("i18n").getString("duel.invite"));
+              button_game_menuitem_invite.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.invite();");
+              // Ajout button_game_menuitem_invite à button_game_popup
+              button_game_popup.appendChild(button_game_menuitem_invite);
+            // Ajout button_game_popup à button_game
+            button_game.appendChild(button_game_popup);
+          
+          
+          // Ajout button_game au field_centralbar
+          field_centralbar.appendChild(button_game);
+          // Création field_centralbar_spacer1
+          var field_centralbar_spacer1 = document.createElement('spacer');
+          field_centralbar_spacer1.setAttribute('flex', "1");
+          // Ajout field_centralbar_spacer1 à field_centralbar
+          field_centralbar.appendChild(field_centralbar_spacer1);
+          
+          // Création phases
+          var phases = document.createElement('radiogroup');
+          phases.setAttribute('id', "phase_" + tab_id);
+          phases.setAttribute('orient', "horizontal");
+          phases.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.setPhaseTo(this.selectedIndex);");
+            // Création de phase_draw
+            var phase_draw = document.createElement('radio');
+            phase_draw.setAttribute('id', "phase_draw_" + tab_id);
+            phase_draw.setAttribute('class', "button left");
+            phase_draw.setAttribute('label', $("i18n").getString("duel.phase.draw"));
+            // Ajout phase_draw à phases
+            phases.appendChild(phase_draw);
+            // Création de phase_standby
+            var phase_standby = document.createElement('radio');
+            phase_standby.setAttribute('id', "phase_standby_" + tab_id);
+            phase_standby.setAttribute('class', "button middle");
+            phase_standby.setAttribute('label', $("i18n").getString("duel.phase.standby"));
+            // Ajout phase_standby à phases
+            phases.appendChild(phase_standby);
+            // Création de phase_main1
+            var phase_main1 = document.createElement('radio');
+            phase_main1.setAttribute('id', "phase_main1_" + tab_id);
+            phase_main1.setAttribute('class', "button middle");
+            phase_main1.setAttribute('label', $("i18n").getString("duel.phase.main1"));
+            // Ajout phase_main1 à phases
+            phases.appendChild(phase_main1);
+            // Création de phase_battle
+            var phase_battle = document.createElement('radio');
+            phase_battle.setAttribute('id', "phase_battle_" + tab_id);
+            phase_battle.setAttribute('class', "button middle");
+            phase_battle.setAttribute('label', $("i18n").getString("duel.phase.battle"));
+            // Ajout phase_battle à phases
+            phases.appendChild(phase_battle);
+            // Création de phase_main2
+            var phase_main2 = document.createElement('radio');
+            phase_main2.setAttribute('id', "phase_main2_" + tab_id);
+            phase_main2.setAttribute('class', "button middle");
+            phase_main2.setAttribute('label', $("i18n").getString("duel.phase.main2"));
+            // Ajout phase_main2 à phases
+            phases.appendChild(phase_main2);
+            // Création de phase_end
+            var phase_end = document.createElement('radio');
+            phase_end.setAttribute('id', "phase_end_" + tab_id);
+            phase_end.setAttribute('class', "button right");
+            phase_end.setAttribute('label', $("i18n").getString("duel.phase.end"));
+            // Ajout phase_end à phases
+            phases.appendChild(phase_end);
+          // Ajout phases à field_centralbar
+          field_centralbar.appendChild(phases);
+          // Création field_centralbar_spacer2
+          var field_centralbar_spacer2 = document.createElement('spacer');
+          field_centralbar_spacer2.setAttribute('flex', "1");
+          // Ajout field_centralbar_spacer2 à field_centralbar
+          field_centralbar.appendChild(field_centralbar_spacer2);
+          
+          
+          // Création hbox_buttons
+          var hbox_buttons = document.createElement('hbox');
+          hbox_buttons.setAttribute('id', "hbox_buttons_" + tab_id);
+          // Ajout hbox_buttons au field_centralbar
+          field_centralbar.appendChild(hbox_buttons);
+          
+          
+          
+          
+        // Ajout field_centralbar au Stack
+        stack.appendChild(field_centralbar);
       
       
       

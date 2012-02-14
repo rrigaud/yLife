@@ -27,7 +27,10 @@ loader.loadSubScript("chrome://ylifecore/content/modules/duel/jabber/contact.js"
 loader.loadSubScript("chrome://ylifecore/content/modules/duel/jabber/chat.js");
 loader.loadSubScript("chrome://ylifecore/content/modules/duel/muc/muc.js");
 loader.loadSubScript("chrome://ylifecore/content/modules/duel/muc/occupant.js");
+loader.loadSubScript("chrome://ylifecore/content/modules/duel/duel/dimensions.js");
 loader.loadSubScript("chrome://ylifecore/content/modules/duel/duel/duel.js");
+loader.loadSubScript("chrome://ylifecore/content/modules/duel/duel/coordinates.js");
+loader.loadSubScript("chrome://ylifecore/content/modules/duel/duel/zones.js");
 
 
 /***************************************************************************************************************

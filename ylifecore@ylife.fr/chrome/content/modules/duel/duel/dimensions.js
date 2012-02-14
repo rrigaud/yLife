@@ -16,7 +16,7 @@ Dimension.push({"name": "1024 x 768",
                 // Coordonnées du Terrain adverse
                 "field_op": { "x": 0, "y": 40 },
                 // Taille de la barre centrale et coordonnées
-                "central_bar": { "width": 6400, "height": 40, "x": 0, "y": 241 },
+                "field_centralbar": { "width": 640, "height": 40, "x": 0, "y": 241 },
                 // Coordonnées de mon terrain
                 "field_me": { "x": 0, "y": 280 },
                 // Taille d'une carte
@@ -54,7 +54,7 @@ Dimension.push({"name": "1680 x 1050",
                 // Coordonnées du Terrain adverse
                 "field_op": { "x": 0, "y": 50 },
                 // Taille de la barre centrale et coordonnées
-                "central_bar": { "width": 800, "height": 64, "x": 0, "y": 302 },
+                "field_centralbar": { "width": 800, "height": 64, "x": 0, "y": 302 },
                 // Coordonnées de mon terrain
                 "field_me": { "x": 0, "y": 370 },
                 // Taille d'une carte
