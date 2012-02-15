@@ -321,56 +321,71 @@ var Tabs = {
         field_centralbar.setAttribute('id', "field_centralbar_" + tab_id);
         field_centralbar.setAttribute('src',"chrome://ylifecore/skin/duels/" + duel.resolution + "/field_me.png");
         field_centralbar.setAttribute('width', duel.dimensions.field_centralbar.width);
-        field_centralbar.setAttribute('height', duel.dimensions.field_centralbar.height);
+        //field_centralbar.setAttribute('height', duel.dimensions.field_centralbar.height);
         field_centralbar.setAttribute('top', duel.dimensions.field_centralbar.y);
         field_centralbar.setAttribute('left', duel.dimensions.field_centralbar.x);
-          // Création button_game
-          var button_game = document.createElement('button');
-          button_game.setAttribute('class', "button");
-          button_game.setAttribute('popup',"_child");
-            // Création button_game_spacer1
-            var button_game_spacer1 = document.createElement('spacer');
-            button_game_spacer1.setAttribute('flex', "1");
-            // Ajout button_game_spacer1 à button_game
-            button_game.appendChild(button_game_spacer1);
-            // Création button_game_image
-            var button_game_image = document.createElement('image');
-            button_game_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/duel.png");
-            // Ajout button_game_image à button_game
-            button_game.appendChild(button_game_image);
-            // Création button_game_label
-            var button_game_label = document.createElement('label');
-            button_game_label.setAttribute('value', $("i18n").getString("duel.game"));
-            // Ajout button_game_label à button_game
-            button_game.appendChild(button_game_label);
-            // Création button_game_spacer2
-            var button_game_spacer2 = document.createElement('spacer');
-            button_game_spacer2.setAttribute('flex', "1");
-            // Ajout button_game_spacer2 à button_game
-            button_game.appendChild(button_game_spacer2);
-            // Création button_game_popup
-            var button_game_popup = document.createElement('menupopup');
-            button_game_popup.setAttribute('position', "before_start");
-              // Création button_game_menuitem_newduel
-              var button_game_menuitem_newduel = document.createElement('menuitem');
-              button_game_menuitem_newduel.setAttribute('class', "menuitem-iconic newduel");
-              button_game_menuitem_newduel.setAttribute('label', $("i18n").getString("duel.newduel"));
-              button_game_menuitem_newduel.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.newDuel();");
-              // Ajout button_game_menuitem_newduel à button_game_popup
-              button_game_popup.appendChild(button_game_menuitem_newduel);
-              // Création button_game_menuitem_invite
-              var button_game_menuitem_invite = document.createElement('menuitem');
-              button_game_menuitem_invite.setAttribute('class', "menuitem-iconic invite");
-              button_game_menuitem_invite.setAttribute('label', $("i18n").getString("duel.invite"));
-              button_game_menuitem_invite.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.invite();");
-              // Ajout button_game_menuitem_invite à button_game_popup
-              button_game_popup.appendChild(button_game_menuitem_invite);
-            // Ajout button_game_popup à button_game
-            button_game.appendChild(button_game_popup);
+          // Création hbox_button_game
+          var hbox_button_game = document.createElement('hbox');
+            // Création button_game
+            var button_game = document.createElement('button');
+            button_game.setAttribute('class', "button");
+            button_game.setAttribute('popup',"_child");
+              // Création button_game_spacer1
+              var button_game_spacer1 = document.createElement('spacer');
+              button_game_spacer1.setAttribute('flex', "1");
+              // Ajout button_game_spacer1 à button_game
+              button_game.appendChild(button_game_spacer1);
+              // Création button_game_image
+              var button_game_image = document.createElement('image');
+              button_game_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/duel.png");
+              // Ajout button_game_image à button_game
+              button_game.appendChild(button_game_image);
+              // Création button_game_label
+              /*var button_game_label = document.createElement('label');
+              button_game_label.setAttribute('value', $("i18n").getString("duel.game"));
+              button_game_label.setAttribute('class', "button_label");
+              // Ajout button_game_label à button_game
+              button_game.appendChild(button_game_label);*/
+              // Création button_game_spacer2
+              var button_game_spacer2 = document.createElement('spacer');
+              button_game_spacer2.setAttribute('flex', "1");
+              // Ajout button_game_spacer2 à button_game
+              button_game.appendChild(button_game_spacer2);
+              // Création button_game_popup
+              var button_game_popup = document.createElement('menupopup');
+              button_game_popup.setAttribute('position', "after_start");
+                // Création button_game_menuitem_newduel
+                var button_game_menuitem_newduel = document.createElement('menuitem');
+                button_game_menuitem_newduel.setAttribute('class', "menuitem-iconic bt_newduel");
+                button_game_menuitem_newduel.setAttribute('label', $("i18n").getString("duel.newduel"));
+                button_game_menuitem_newduel.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.newDuel();");
+                // Ajout button_game_menuitem_newduel à button_game_popup
+                button_game_popup.appendChild(button_game_menuitem_newduel);
+                // Création button_game_menuitem_newmatch
+                var button_game_menuitem_newmatch = document.createElement('menuitem');
+                button_game_menuitem_newmatch.setAttribute('class', "menuitem-iconic bt_newmatch");
+                button_game_menuitem_newmatch.setAttribute('label', $("i18n").getString("duel.newmatch"));
+                button_game_menuitem_newmatch.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.newMatch();");
+                // Ajout button_game_menuitem_newmatch à button_game_popup
+                button_game_popup.appendChild(button_game_menuitem_newmatch);
+                // Création button_game_menuseparator
+                var button_game_menuseparator = document.createElement('menuseparator');
+                // Ajout button_game_menuseparator à button_game_popup
+                button_game_popup.appendChild(button_game_menuseparator);
+                // Création button_game_menuitem_invite
+                var button_game_menuitem_invite = document.createElement('menuitem');
+                button_game_menuitem_invite.setAttribute('class', "menuitem-iconic bt_invite");
+                button_game_menuitem_invite.setAttribute('label', $("i18n").getString("duel.invite"));
+                button_game_menuitem_invite.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.invite();");
+                // Ajout button_game_menuitem_invite à button_game_popup
+                button_game_popup.appendChild(button_game_menuitem_invite);
+              // Ajout button_game_popup à button_game
+              button_game.appendChild(button_game_popup);
+            // Ajout button_game à hbox_button_game
+            hbox_button_game.appendChild(button_game);
+          // Ajout hbox_button_game au field_centralbar
+          field_centralbar.appendChild(hbox_button_game);
           
-          
-          // Ajout button_game au field_centralbar
-          field_centralbar.appendChild(button_game);
           // Création field_centralbar_spacer1
           var field_centralbar_spacer1 = document.createElement('spacer');
           field_centralbar_spacer1.setAttribute('flex', "1");
@@ -386,70 +401,247 @@ var Tabs = {
             var phase_draw = document.createElement('radio');
             phase_draw.setAttribute('id', "phase_draw_" + tab_id);
             phase_draw.setAttribute('class', "button left");
-            phase_draw.setAttribute('label', $("i18n").getString("duel.phase.draw"));
+              // Création phase_draw_spacer1
+              var phase_draw_spacer1 = document.createElement('spacer');
+              phase_draw_spacer1.setAttribute('flex', "1");
+              // Ajout phase_draw_spacer1 à phase_draw
+              phase_draw.appendChild(phase_draw_spacer1);
+              // Création phase_draw_label
+              var phase_draw_label = document.createElement('label');
+              phase_draw_label.setAttribute('value', $("i18n").getString("duel.phase.draw"));
+              // Ajout phase_draw_label à phase_draw
+              phase_draw.appendChild(phase_draw_label);
+              // Création phase_draw_spacer2
+              var phase_draw_spacer2 = document.createElement('spacer');
+              phase_draw_spacer2.setAttribute('flex', "1");
+              // Ajout phase_draw_spacer2 à phase_draw
+              phase_draw.appendChild(phase_draw_spacer2);
             // Ajout phase_draw à phases
             phases.appendChild(phase_draw);
             // Création de phase_standby
             var phase_standby = document.createElement('radio');
             phase_standby.setAttribute('id', "phase_standby_" + tab_id);
             phase_standby.setAttribute('class', "button middle");
-            phase_standby.setAttribute('label', $("i18n").getString("duel.phase.standby"));
+              // Création phase_standby_spacer1
+              var phase_standby_spacer1 = document.createElement('spacer');
+              phase_standby_spacer1.setAttribute('flex', "1");
+              // Ajout phase_standby_spacer1 à phase_standby
+              phase_standby.appendChild(phase_standby_spacer1);
+              // Création phase_standby_label
+              var phase_standby_label = document.createElement('label');
+              phase_standby_label.setAttribute('value', $("i18n").getString("duel.phase.standby"));
+              // Ajout phase_standby_label à phase_standby
+              phase_standby.appendChild(phase_standby_label);
+              // Création phase_standby_spacer2
+              var phase_standby_spacer2 = document.createElement('spacer');
+              phase_standby_spacer2.setAttribute('flex', "1");
+              // Ajout phase_standby_spacer2 à phase_standby
+              phase_standby.appendChild(phase_standby_spacer2);
             // Ajout phase_standby à phases
             phases.appendChild(phase_standby);
             // Création de phase_main1
             var phase_main1 = document.createElement('radio');
             phase_main1.setAttribute('id', "phase_main1_" + tab_id);
             phase_main1.setAttribute('class', "button middle");
-            phase_main1.setAttribute('label', $("i18n").getString("duel.phase.main1"));
+              // Création phase_main1_spacer1
+              var phase_main1_spacer1 = document.createElement('spacer');
+              phase_main1_spacer1.setAttribute('flex', "1");
+              // Ajout phase_main1_spacer1 à phase_main1
+              phase_main1.appendChild(phase_main1_spacer1);
+              // Création phase_main1_label
+              var phase_main1_label = document.createElement('label');
+              phase_main1_label.setAttribute('value', $("i18n").getString("duel.phase.main1"));
+              // Ajout phase_main1_label à phase_main1
+              phase_main1.appendChild(phase_main1_label);
+              // Création phase_main1_spacer2
+              var phase_main1_spacer2 = document.createElement('spacer');
+              phase_main1_spacer2.setAttribute('flex', "1");
+              // Ajout phase_main1_spacer2 à phase_main1
+              phase_main1.appendChild(phase_main1_spacer2);
             // Ajout phase_main1 à phases
             phases.appendChild(phase_main1);
             // Création de phase_battle
             var phase_battle = document.createElement('radio');
             phase_battle.setAttribute('id', "phase_battle_" + tab_id);
             phase_battle.setAttribute('class', "button middle");
-            phase_battle.setAttribute('label', $("i18n").getString("duel.phase.battle"));
+              // Création phase_battle_spacer1
+              var phase_battle_spacer1 = document.createElement('spacer');
+              phase_battle_spacer1.setAttribute('flex', "1");
+              // Ajout phase_battle_spacer1 à phase_battle
+              phase_battle.appendChild(phase_battle_spacer1);
+              // Création phase_battle_label
+              var phase_battle_label = document.createElement('label');
+              phase_battle_label.setAttribute('value', $("i18n").getString("duel.phase.battle"));
+              // Ajout phase_battle_label à phase_battle
+              phase_battle.appendChild(phase_battle_label);
+              // Création phase_battle_spacer2
+              var phase_battle_spacer2 = document.createElement('spacer');
+              phase_battle_spacer2.setAttribute('flex', "1");
+              // Ajout phase_battle_spacer2 à phase_battle
+              phase_battle.appendChild(phase_battle_spacer2);
             // Ajout phase_battle à phases
             phases.appendChild(phase_battle);
             // Création de phase_main2
             var phase_main2 = document.createElement('radio');
             phase_main2.setAttribute('id', "phase_main2_" + tab_id);
             phase_main2.setAttribute('class', "button middle");
-            phase_main2.setAttribute('label', $("i18n").getString("duel.phase.main2"));
+              // Création phase_main2_spacer1
+              var phase_main2_spacer1 = document.createElement('spacer');
+              phase_main2_spacer1.setAttribute('flex', "1");
+              // Ajout phase_main2_spacer1 à phase_main2
+              phase_main2.appendChild(phase_main2_spacer1);
+              // Création phase_main2_label
+              var phase_main2_label = document.createElement('label');
+              phase_main2_label.setAttribute('value', $("i18n").getString("duel.phase.main2"));
+              // Ajout phase_main2_label à phase_main2
+              phase_main2.appendChild(phase_main2_label);
+              // Création phase_main2_spacer2
+              var phase_main2_spacer2 = document.createElement('spacer');
+              phase_main2_spacer2.setAttribute('flex', "1");
+              // Ajout phase_main2_spacer2 à phase_main2
+              phase_main2.appendChild(phase_main2_spacer2);
             // Ajout phase_main2 à phases
             phases.appendChild(phase_main2);
             // Création de phase_end
             var phase_end = document.createElement('radio');
             phase_end.setAttribute('id', "phase_end_" + tab_id);
             phase_end.setAttribute('class', "button right");
-            phase_end.setAttribute('label', $("i18n").getString("duel.phase.end"));
+              // Création phase_end_spacer1
+              var phase_end_spacer1 = document.createElement('spacer');
+              phase_end_spacer1.setAttribute('flex', "1");
+              // Ajout phase_end_spacer1 à phase_end
+              phase_end.appendChild(phase_end_spacer1);
+              // Création phase_end_label
+              var phase_end_label = document.createElement('label');
+              phase_end_label.setAttribute('value', $("i18n").getString("duel.phase.end"));
+              // Ajout phase_end_label à phase_end
+              phase_end.appendChild(phase_end_label);
+              // Création phase_end_spacer2
+              var phase_end_spacer2 = document.createElement('spacer');
+              phase_end_spacer2.setAttribute('flex', "1");
+              // Ajout phase_end_spacer2 à phase_end
+              phase_end.appendChild(phase_end_spacer2);
             // Ajout phase_end à phases
             phases.appendChild(phase_end);
           // Ajout phases à field_centralbar
           field_centralbar.appendChild(phases);
+          
           // Création field_centralbar_spacer2
           var field_centralbar_spacer2 = document.createElement('spacer');
           field_centralbar_spacer2.setAttribute('flex', "1");
           // Ajout field_centralbar_spacer2 à field_centralbar
           field_centralbar.appendChild(field_centralbar_spacer2);
           
-          
           // Création hbox_buttons
           var hbox_buttons = document.createElement('hbox');
-          hbox_buttons.setAttribute('id', "hbox_buttons_" + tab_id);
+            // Création button_gamble
+            var button_gamble = document.createElement('button');
+            button_gamble.setAttribute('class', "button left");
+            button_gamble.setAttribute('popup',"_child");
+              // Création button_gamble_spacer1
+              var button_gamble_spacer1 = document.createElement('spacer');
+              button_gamble_spacer1.setAttribute('flex', "1");
+              // Ajout button_gamble_spacer1 à button_gamble
+              button_gamble.appendChild(button_gamble_spacer1);
+              // Création button_gamble_image
+              var button_gamble_image = document.createElement('image');
+              button_gamble_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/gamble.png");
+              // Ajout button_gamble_image à button_gamble
+              button_gamble.appendChild(button_gamble_image);
+              // Création button_gamble_spacer2
+              var button_gamble_spacer2 = document.createElement('spacer');
+              button_gamble_spacer2.setAttribute('flex', "1");
+              // Ajout button_gamble_spacer2 à button_gamble
+              button_gamble.appendChild(button_gamble_spacer2);
+              // Création button_gamble_popup
+              var button_gamble_popup = document.createElement('menupopup');
+              button_gamble_popup.setAttribute('position', "after_start");
+                // Création button_gamble_menuitem_player
+                var button_gamble_menuitem_player = document.createElement('menuitem');
+                button_gamble_menuitem_player.setAttribute('class', "menuitem-iconic bt_player");
+                button_gamble_menuitem_player.setAttribute('label', $("i18n").getString("duel.gamble.player"));
+                button_gamble_menuitem_player.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.gamblePlayer();");
+                // Ajout button_gamble_menuitem_player à button_gamble_popup
+                button_gamble_popup.appendChild(button_gamble_menuitem_player);
+                // Création button_gamble_menuitem_coin
+                var button_gamble_menuitem_coin = document.createElement('menuitem');
+                button_gamble_menuitem_coin.setAttribute('class', "menuitem-iconic bt_coin");
+                button_gamble_menuitem_coin.setAttribute('label', $("i18n").getString("duel.gamble.coin"));
+                button_gamble_menuitem_coin.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.gambleCoin();");
+                // Ajout button_gamble_menuitem_coin à button_gamble_popup
+                button_gamble_popup.appendChild(button_gamble_menuitem_coin);
+                // Création button_gamble_menuitem_dice
+                var button_gamble_menuitem_dice = document.createElement('menuitem');
+                button_gamble_menuitem_dice.setAttribute('class', "menuitem-iconic bt_dice");
+                button_gamble_menuitem_dice.setAttribute('label', $("i18n").getString("duel.gamble.dice"));
+                button_gamble_menuitem_dice.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.gambleDice();");
+                // Ajout button_gamble_menuitem_dice à button_gamble_popup
+                button_gamble_popup.appendChild(button_gamble_menuitem_dice);
+              // Ajout button_gamble_popup à button_gamble
+              button_gamble.appendChild(button_gamble_popup);
+            // Ajout button_gamble à hbox_buttons
+            hbox_buttons.appendChild(button_gamble);
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            // Création button_token
+            var button_token = document.createElement('button');
+            button_token.setAttribute('class', "button right");
+            button_token.setAttribute('popup',"_child");
+              // Création button_token_spacer1
+              var button_token_spacer1 = document.createElement('spacer');
+              button_token_spacer1.setAttribute('flex', "1");
+              // Ajout button_token_spacer1 à button_token
+              button_token.appendChild(button_token_spacer1);
+              // Création button_token_image
+              var button_token_image = document.createElement('image');
+              button_token_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/token.png");
+              // Ajout button_token_image à button_token
+              button_token.appendChild(button_token_image);
+              // Création button_token_spacer2
+              var button_token_spacer2 = document.createElement('spacer');
+              button_token_spacer2.setAttribute('flex', "1");
+              // Ajout button_token_spacer2 à button_token
+              button_token.appendChild(button_token_spacer2);
+              // Création button_token_popup
+              var button_token_popup = document.createElement('menupopup');
+              button_token_popup.setAttribute('position', "after_start");
+                // Création button_token_menuitem_token1
+                var button_token_menuitem_token1 = document.createElement('menuitem');
+                button_token_menuitem_token1.setAttribute('class', "menuitem-iconic bt_add");
+                button_token_menuitem_token1.setAttribute('label', $("i18n").getString("duel.token.token1"));
+                button_token_menuitem_token1.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.addToken1();");
+                // Ajout button_token_menuitem_token1 à button_token_popup
+                button_token_popup.appendChild(button_token_menuitem_token1);
+              // Ajout button_token_popup à button_token
+              button_token.appendChild(button_token_popup);
+            // Ajout button_token à hbox_buttons
+            hbox_buttons.appendChild(button_token);
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
           // Ajout hbox_buttons au field_centralbar
           field_centralbar.appendChild(hbox_buttons);
-          
-          
-          
-          
         // Ajout field_centralbar au Stack
         stack.appendChild(field_centralbar);
-      
-      
-      
-      
-      
-      
       // Ajout stack au duel_hbox
       duel_hbox.appendChild(stack);
       // Création vbox_sidebar

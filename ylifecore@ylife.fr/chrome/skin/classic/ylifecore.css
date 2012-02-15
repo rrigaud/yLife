@@ -458,3 +458,12 @@ vbox.occupant_compact {
 .bt_chat { list-style-image: url(chrome://ylifecore/skin/icons/buttons/chat.png); }
 .bt_duel { list-style-image: url(chrome://ylifecore/skin/icons/buttons/duel.png); }
 .bt_profile { list-style-image: url(chrome://ylifecore/skin/icons/buttons/profile.png); }
+
+.bt_newduel { list-style-image: url(chrome://ylifecore/skin/icons/buttons/newduel.png); }
+.bt_newmatch { list-style-image: url(chrome://ylifecore/skin/icons/buttons/newmatch.png); }
+.bt_invite { list-style-image: url(chrome://ylifecore/skin/icons/buttons/invite.png); }
+.bt_gamble { list-style-image: url(chrome://ylifecore/skin/icons/buttons/gamble.png); }
+.bt_player { list-style-image: url(chrome://ylifecore/skin/icons/buttons/player.png); }
+.bt_coin { list-style-image: url(chrome://ylifecore/skin/icons/buttons/coin.png); }
+.bt_dice { list-style-image: url(chrome://ylifecore/skin/icons/buttons/dice.png); }
+.bt_token { list-style-image: url(chrome://ylifecore/skin/icons/buttons/token.png); }

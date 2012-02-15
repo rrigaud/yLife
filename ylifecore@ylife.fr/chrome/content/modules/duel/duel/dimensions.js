@@ -16,7 +16,7 @@ Dimension.push({"name": "1024 x 768",
                 // Coordonnées du Terrain adverse
                 "field_op": { "x": 0, "y": 40 },
                 // Taille de la barre centrale et coordonnées
-                "field_centralbar": { "width": 640, "height": 40, "x": 0, "y": 241 },
+                "field_centralbar": { "width": 640, "height": 30, "x": 0, "y": 247 },
                 // Coordonnées de mon terrain
                 "field_me": { "x": 0, "y": 280 },
                 // Taille d'une carte
