@@ -447,6 +447,43 @@ vbox.occupant_compact {
   background-color: #FFFFFF;
 }
 
+.duellog {
+  margin: 4px;
+  border: solid 1px #7f7f7f;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+}
+
+
+
+/****************************************************************************************************************************************************************************************/
+/** ZONE DE DUEL
+/****************************************************************************************************************************************************************************************/
+
+hbox.hbox_player {
+  margin: 4px;
+  padding: 4px;
+  font: bold 22px "MatrixBookSmallCaps";
+  text-decoration: none;
+  text-shadow: 0 1px 0 #fff;
+  border-radius: 4px;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #000;
+  border: solid 1px #7f7f7f;
+  background: #d0d0d0;
+  background: -moz-linear-gradient(top, #a8a8a8, #c6c6c6 15%, #d8d8d8);
+}
+
+.lifepoints {
+  padding-left: 6px;
+  padding-top: 7px;
+  font: bold 32px "MatrixBookSmallCaps";
+}
+
+
+
 
 /****************************************************************************************************************************************************************************************/
 /** BOUTONS

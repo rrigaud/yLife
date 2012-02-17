@@ -319,15 +319,19 @@ var Tabs = {
         // Création field_centralbar
         var field_centralbar = document.createElement('hbox');
         field_centralbar.setAttribute('id', "field_centralbar_" + tab_id);
-        field_centralbar.setAttribute('src',"chrome://ylifecore/skin/duels/" + duel.resolution + "/field_me.png");
         field_centralbar.setAttribute('width', duel.dimensions.field_centralbar.width);
-        //field_centralbar.setAttribute('height', duel.dimensions.field_centralbar.height);
         field_centralbar.setAttribute('top', duel.dimensions.field_centralbar.y);
         field_centralbar.setAttribute('left', duel.dimensions.field_centralbar.x);
+          // Création field_centralbar_spacer0
+          var field_centralbar_spacer0 = document.createElement('spacer');
+          field_centralbar_spacer0.setAttribute('flex', "1");
+          // Ajout field_centralbar_spacer0 à field_centralbar
+          field_centralbar.appendChild(field_centralbar_spacer0);
+          
           // Création hbox_button_game
           var hbox_button_game = document.createElement('hbox');
             // Création button_game
-            var button_game = document.createElement('button');
+            var button_game = document.createElement('box');
             button_game.setAttribute('class', "button");
             button_game.setAttribute('popup',"_child");
               // Création button_game_spacer1
@@ -338,14 +342,9 @@ var Tabs = {
               // Création button_game_image
               var button_game_image = document.createElement('image');
               button_game_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/duel.png");
+              button_game_image.setAttribute('style', "margin-top: 3px;");
               // Ajout button_game_image à button_game
               button_game.appendChild(button_game_image);
-              // Création button_game_label
-              /*var button_game_label = document.createElement('label');
-              button_game_label.setAttribute('value', $("i18n").getString("duel.game"));
-              button_game_label.setAttribute('class', "button_label");
-              // Ajout button_game_label à button_game
-              button_game.appendChild(button_game_label);*/
               // Création button_game_spacer2
               var button_game_spacer2 = document.createElement('spacer');
               button_game_spacer2.setAttribute('flex', "1");
@@ -409,6 +408,8 @@ var Tabs = {
               // Création phase_draw_label
               var phase_draw_label = document.createElement('label');
               phase_draw_label.setAttribute('value', $("i18n").getString("duel.phase.draw"));
+              phase_draw_label.setAttribute('class', "button_label");
+              phase_draw_label.setAttribute('style', "margin-left:0px; margin-right:0px;");
               // Ajout phase_draw_label à phase_draw
               phase_draw.appendChild(phase_draw_label);
               // Création phase_draw_spacer2
@@ -430,6 +431,8 @@ var Tabs = {
               // Création phase_standby_label
               var phase_standby_label = document.createElement('label');
               phase_standby_label.setAttribute('value', $("i18n").getString("duel.phase.standby"));
+              phase_standby_label.setAttribute('class', "button_label");
+              phase_standby_label.setAttribute('style', "margin-left:0px; margin-right:0px;");
               // Ajout phase_standby_label à phase_standby
               phase_standby.appendChild(phase_standby_label);
               // Création phase_standby_spacer2
@@ -451,6 +454,8 @@ var Tabs = {
               // Création phase_main1_label
               var phase_main1_label = document.createElement('label');
               phase_main1_label.setAttribute('value', $("i18n").getString("duel.phase.main1"));
+              phase_main1_label.setAttribute('class', "button_label");
+              phase_main1_label.setAttribute('style', "margin-left:0px; margin-right:0px;");
               // Ajout phase_main1_label à phase_main1
               phase_main1.appendChild(phase_main1_label);
               // Création phase_main1_spacer2
@@ -472,6 +477,8 @@ var Tabs = {
               // Création phase_battle_label
               var phase_battle_label = document.createElement('label');
               phase_battle_label.setAttribute('value', $("i18n").getString("duel.phase.battle"));
+              phase_battle_label.setAttribute('class', "button_label");
+              phase_battle_label.setAttribute('style', "margin-left:0px; margin-right:0px;");
               // Ajout phase_battle_label à phase_battle
               phase_battle.appendChild(phase_battle_label);
               // Création phase_battle_spacer2
@@ -493,6 +500,8 @@ var Tabs = {
               // Création phase_main2_label
               var phase_main2_label = document.createElement('label');
               phase_main2_label.setAttribute('value', $("i18n").getString("duel.phase.main2"));
+              phase_main2_label.setAttribute('class', "button_label");
+              phase_main2_label.setAttribute('style', "margin-left:0px; margin-right:0px;");
               // Ajout phase_main2_label à phase_main2
               phase_main2.appendChild(phase_main2_label);
               // Création phase_main2_spacer2
@@ -514,6 +523,8 @@ var Tabs = {
               // Création phase_end_label
               var phase_end_label = document.createElement('label');
               phase_end_label.setAttribute('value', $("i18n").getString("duel.phase.end"));
+              phase_end_label.setAttribute('class', "button_label");
+              phase_end_label.setAttribute('style', "margin-left:0px; margin-right:0px;");
               // Ajout phase_end_label à phase_end
               phase_end.appendChild(phase_end_label);
               // Création phase_end_spacer2
@@ -532,114 +543,104 @@ var Tabs = {
           // Ajout field_centralbar_spacer2 à field_centralbar
           field_centralbar.appendChild(field_centralbar_spacer2);
           
-          // Création hbox_buttons
-          var hbox_buttons = document.createElement('hbox');
-            // Création button_gamble
-            var button_gamble = document.createElement('button');
-            button_gamble.setAttribute('class', "button left");
-            button_gamble.setAttribute('popup',"_child");
-              // Création button_gamble_spacer1
-              var button_gamble_spacer1 = document.createElement('spacer');
-              button_gamble_spacer1.setAttribute('flex', "1");
-              // Ajout button_gamble_spacer1 à button_gamble
-              button_gamble.appendChild(button_gamble_spacer1);
-              // Création button_gamble_image
-              var button_gamble_image = document.createElement('image');
-              button_gamble_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/gamble.png");
-              // Ajout button_gamble_image à button_gamble
-              button_gamble.appendChild(button_gamble_image);
-              // Création button_gamble_spacer2
-              var button_gamble_spacer2 = document.createElement('spacer');
-              button_gamble_spacer2.setAttribute('flex', "1");
-              // Ajout button_gamble_spacer2 à button_gamble
-              button_gamble.appendChild(button_gamble_spacer2);
-              // Création button_gamble_popup
-              var button_gamble_popup = document.createElement('menupopup');
-              button_gamble_popup.setAttribute('position', "after_start");
-                // Création button_gamble_menuitem_player
-                var button_gamble_menuitem_player = document.createElement('menuitem');
-                button_gamble_menuitem_player.setAttribute('class', "menuitem-iconic bt_player");
-                button_gamble_menuitem_player.setAttribute('label', $("i18n").getString("duel.gamble.player"));
-                button_gamble_menuitem_player.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.gamblePlayer();");
-                // Ajout button_gamble_menuitem_player à button_gamble_popup
-                button_gamble_popup.appendChild(button_gamble_menuitem_player);
-                // Création button_gamble_menuitem_coin
-                var button_gamble_menuitem_coin = document.createElement('menuitem');
-                button_gamble_menuitem_coin.setAttribute('class', "menuitem-iconic bt_coin");
-                button_gamble_menuitem_coin.setAttribute('label', $("i18n").getString("duel.gamble.coin"));
-                button_gamble_menuitem_coin.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.gambleCoin();");
-                // Ajout button_gamble_menuitem_coin à button_gamble_popup
-                button_gamble_popup.appendChild(button_gamble_menuitem_coin);
-                // Création button_gamble_menuitem_dice
-                var button_gamble_menuitem_dice = document.createElement('menuitem');
-                button_gamble_menuitem_dice.setAttribute('class', "menuitem-iconic bt_dice");
-                button_gamble_menuitem_dice.setAttribute('label', $("i18n").getString("duel.gamble.dice"));
-                button_gamble_menuitem_dice.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.gambleDice();");
-                // Ajout button_gamble_menuitem_dice à button_gamble_popup
-                button_gamble_popup.appendChild(button_gamble_menuitem_dice);
-              // Ajout button_gamble_popup à button_gamble
-              button_gamble.appendChild(button_gamble_popup);
-            // Ajout button_gamble à hbox_buttons
-            hbox_buttons.appendChild(button_gamble);
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            // Création button_token
-            var button_token = document.createElement('button');
-            button_token.setAttribute('class', "button right");
-            button_token.setAttribute('popup',"_child");
-              // Création button_token_spacer1
-              var button_token_spacer1 = document.createElement('spacer');
-              button_token_spacer1.setAttribute('flex', "1");
-              // Ajout button_token_spacer1 à button_token
-              button_token.appendChild(button_token_spacer1);
-              // Création button_token_image
-              var button_token_image = document.createElement('image');
-              button_token_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/token.png");
-              // Ajout button_token_image à button_token
-              button_token.appendChild(button_token_image);
-              // Création button_token_spacer2
-              var button_token_spacer2 = document.createElement('spacer');
-              button_token_spacer2.setAttribute('flex', "1");
-              // Ajout button_token_spacer2 à button_token
-              button_token.appendChild(button_token_spacer2);
-              // Création button_token_popup
-              var button_token_popup = document.createElement('menupopup');
-              button_token_popup.setAttribute('position', "after_start");
-                // Création button_token_menuitem_token1
-                var button_token_menuitem_token1 = document.createElement('menuitem');
-                button_token_menuitem_token1.setAttribute('class', "menuitem-iconic bt_add");
-                button_token_menuitem_token1.setAttribute('label', $("i18n").getString("duel.token.token1"));
-                button_token_menuitem_token1.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.addToken1();");
-                // Ajout button_token_menuitem_token1 à button_token_popup
-                button_token_popup.appendChild(button_token_menuitem_token1);
-              // Ajout button_token_popup à button_token
-              button_token.appendChild(button_token_popup);
-            // Ajout button_token à hbox_buttons
-            hbox_buttons.appendChild(button_token);
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          // Ajout hbox_buttons au field_centralbar
-          field_centralbar.appendChild(hbox_buttons);
+          // Création vbox_buttons
+          var vbox_buttons = document.createElement('vbox');
+            // Création hbox_buttons
+            var hbox_buttons = document.createElement('hbox');
+            //hbox_buttons.setAttribute('align', "center");
+              // Création button_gamble
+              var button_gamble = document.createElement('vbox');
+              button_gamble.setAttribute('class', "button left");
+              button_gamble.setAttribute('popup',"_child");
+                // Création button_gamble_spacer1
+                var button_gamble_spacer1 = document.createElement('spacer');
+                button_gamble_spacer1.setAttribute('flex', "1");
+                // Ajout button_gamble_spacer1 à button_gamble
+                button_gamble.appendChild(button_gamble_spacer1);
+                // Création button_gamble_image
+                var button_gamble_image = document.createElement('image');
+                button_gamble_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/gamble.png");
+                button_gamble_image.setAttribute('style', "margin-top: 3px;");
+                // Ajout button_gamble_image à button_gamble
+                button_gamble.appendChild(button_gamble_image);
+                // Création button_gamble_spacer2
+                var button_gamble_spacer2 = document.createElement('spacer');
+                button_gamble_spacer2.setAttribute('flex', "1");
+                // Ajout button_gamble_spacer2 à button_gamble
+                button_gamble.appendChild(button_gamble_spacer2);
+                // Création button_gamble_popup
+                var button_gamble_popup = document.createElement('menupopup');
+                button_gamble_popup.setAttribute('position', "after_start");
+                  // Création button_gamble_menuitem_player
+                  var button_gamble_menuitem_player = document.createElement('menuitem');
+                  button_gamble_menuitem_player.setAttribute('class', "menuitem-iconic bt_player");
+                  button_gamble_menuitem_player.setAttribute('label', $("i18n").getString("duel.gamble.player"));
+                  button_gamble_menuitem_player.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.gamblePlayer();");
+                  // Ajout button_gamble_menuitem_player à button_gamble_popup
+                  button_gamble_popup.appendChild(button_gamble_menuitem_player);
+                  // Création button_gamble_menuitem_coin
+                  var button_gamble_menuitem_coin = document.createElement('menuitem');
+                  button_gamble_menuitem_coin.setAttribute('class', "menuitem-iconic bt_coin");
+                  button_gamble_menuitem_coin.setAttribute('label', $("i18n").getString("duel.gamble.coin"));
+                  button_gamble_menuitem_coin.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.gambleCoin();");
+                  // Ajout button_gamble_menuitem_coin à button_gamble_popup
+                  button_gamble_popup.appendChild(button_gamble_menuitem_coin);
+                  // Création button_gamble_menuitem_dice
+                  var button_gamble_menuitem_dice = document.createElement('menuitem');
+                  button_gamble_menuitem_dice.setAttribute('class', "menuitem-iconic bt_dice");
+                  button_gamble_menuitem_dice.setAttribute('label', $("i18n").getString("duel.gamble.dice"));
+                  button_gamble_menuitem_dice.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.gambleDice();");
+                  // Ajout button_gamble_menuitem_dice à button_gamble_popup
+                  button_gamble_popup.appendChild(button_gamble_menuitem_dice);
+                // Ajout button_gamble_popup à button_gamble
+                button_gamble.appendChild(button_gamble_popup);
+              // Ajout button_gamble à hbox_buttons
+              hbox_buttons.appendChild(button_gamble);
+              // Création button_token
+              var button_token = document.createElement('vbox');
+              button_token.setAttribute('class', "button right");
+              button_token.setAttribute('popup',"_child");
+                // Création button_token_spacer1
+                var button_token_spacer1 = document.createElement('spacer');
+                button_token_spacer1.setAttribute('flex', "1");
+                // Ajout button_token_spacer1 à button_token
+                button_token.appendChild(button_token_spacer1);
+                // Création button_token_image
+                var button_token_image = document.createElement('image');
+                button_token_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/token.png");
+                button_token_image.setAttribute('style', "margin-top: 3px;");
+                // Ajout button_token_image à button_token
+                button_token.appendChild(button_token_image);
+                // Création button_token_spacer2
+                var button_token_spacer2 = document.createElement('spacer');
+                button_token_spacer2.setAttribute('flex', "1");
+                // Ajout button_token_spacer2 à button_token
+                button_token.appendChild(button_token_spacer2);
+                // Création button_token_popup
+                var button_token_popup = document.createElement('menupopup');
+                button_token_popup.setAttribute('position', "after_start");
+                  // Création button_token_menuitem_token1
+                  var button_token_menuitem_token1 = document.createElement('menuitem');
+                  button_token_menuitem_token1.setAttribute('class', "menuitem-iconic bt_add");
+                  button_token_menuitem_token1.setAttribute('label', $("i18n").getString("duel.token.token1"));
+                  button_token_menuitem_token1.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.addToken1();");
+                  // Ajout button_token_menuitem_token1 à button_token_popup
+                  button_token_popup.appendChild(button_token_menuitem_token1);
+                // Ajout button_token_popup à button_token
+                button_token.appendChild(button_token_popup);
+              // Ajout button_token à hbox_buttons
+              hbox_buttons.appendChild(button_token);
+            // Ajout hbox_buttons au vbox_buttons
+            vbox_buttons.appendChild(hbox_buttons);
+          // Ajout vbox_buttons au field_centralbar
+          field_centralbar.appendChild(vbox_buttons);
+          
+          // Création field_centralbar_spacer3
+          var field_centralbar_spacer3 = document.createElement('spacer');
+          field_centralbar_spacer3.setAttribute('flex', "1");
+          // Ajout field_centralbar_spacer3 à field_centralbar
+          field_centralbar.appendChild(field_centralbar_spacer3);
+          
         // Ajout field_centralbar au Stack
         stack.appendChild(field_centralbar);
       // Ajout stack au duel_hbox
@@ -647,8 +648,81 @@ var Tabs = {
       // Création vbox_sidebar
       var vbox_sidebar = document.createElement('vbox');
       vbox_sidebar.setAttribute('flex', "1");
-      
-      
+        // Création hbox_player_op
+        var hbox_player_op = document.createElement('hbox');
+        hbox_player_op.setAttribute('class', "hbox_player");
+        //hbox_player_op.setAttribute('align', "center");
+          // Création avatar_op
+          var avatar_op = document.createElement('vbox');
+          avatar_op.setAttribute('id', "avatar_op_" + tab_id);
+          avatar_op.setAttribute('class', "avatar_contact");
+          avatar_op.setAttribute('avatar_img', Contacts.contacts[jid].avatar);
+          avatar_op.setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/" + Contacts.contacts[jid].show + ".png");
+          avatar_op.setAttribute('tooltiptext', Contacts.contacts[jid].nickname);
+          Contacts.contacts[jid].avatars_id.push("avatar_op_" + tab_id);
+          // Ajout avatar_op à hbox_player_op
+          hbox_player_op.appendChild(avatar_op);
+          // Création vbox_player_op
+          var vbox_player_op = document.createElement('vbox');
+          vbox_player_op.setAttribute('flex', "1");
+            // Création stack_player_op
+            var stack_player_op = document.createElement('stack');
+            stack_player_op.setAttribute('style', "margin-top: 3px;");
+              // Création lifebar_player_op
+              var lifebar_player_op = document.createElement('progressmeter');
+              lifebar_player_op.setAttribute('mode', "determined");
+              lifebar_player_op.setAttribute('value', "100");
+              lifebar_player_op.setAttribute('flex', "1");
+              // Ajout lifebar_player_op à stack_player_op
+              stack_player_op.appendChild(lifebar_player_op);
+              // Création lp_player_op
+              var lp_player_op = document.createElement('label');
+              lp_player_op.setAttribute('id', "8000");
+              lp_player_op.setAttribute('class', "lifepoints");
+              lp_player_op.setAttribute('value', "8000");
+              // Ajout lp_player_op à stack_player_op
+              stack_player_op.appendChild(lp_player_op);
+            // Ajout stack_player_op à vbox_player_op
+            vbox_player_op.appendChild(stack_player_op);
+            
+            
+            
+            
+            
+            // Création nickname_player_op
+            var nickname_player_op = document.createElement('label');
+            nickname_player_op.setAttribute('value', Contacts.contacts[jid].nickname);
+            nickname_player_op.setAttribute('crop', "end");
+            nickname_player_op.setAttribute('tooltiptext', Contacts.contacts[jid].nickname);
+            // Ajout nickname_player_op à vbox_player_op
+            vbox_player_op.appendChild(nickname_player_op);
+            
+            
+            
+          // Ajout vbox_player_op à hbox_player_op
+          hbox_player_op.appendChild(vbox_player_op);
+        
+        
+        
+        
+        
+        
+        
+        
+        // Ajout hbox_player_op à vbox_sidebar
+        vbox_sidebar.appendChild(hbox_player_op);
+        
+        
+        // Création de duel_iframe
+        var duel_iframe = document.createElement('iframe');
+        duel_iframe.setAttribute('id', "duel_iframe_" + jid);
+        duel_iframe.setAttribute('class', "duellog");
+        duel_iframe.setAttribute('src', duel.template);
+        duel_iframe.setAttribute('flex', "1");
+        // Ajout duel_iframe à vbox_sidebar
+        vbox_sidebar.appendChild(duel_iframe);
+        
+        
       
       // Ajout vbox_sidebar au duel_hbox
       duel_hbox.appendChild(vbox_sidebar);
