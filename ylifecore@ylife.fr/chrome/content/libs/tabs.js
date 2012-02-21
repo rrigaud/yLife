@@ -547,7 +547,6 @@ var Tabs = {
           var vbox_buttons = document.createElement('vbox');
             // Création hbox_buttons
             var hbox_buttons = document.createElement('hbox');
-            //hbox_buttons.setAttribute('align', "center");
               // Création button_gamble
               var button_gamble = document.createElement('vbox');
               button_gamble.setAttribute('class', "button left");
@@ -651,7 +650,6 @@ var Tabs = {
         // Création hbox_player_op
         var hbox_player_op = document.createElement('hbox');
         hbox_player_op.setAttribute('class', "hbox_player");
-        //hbox_player_op.setAttribute('align', "center");
           // Création avatar_op
           var avatar_op = document.createElement('vbox');
           avatar_op.setAttribute('id', "avatar_op_" + tab_id);
@@ -670,6 +668,7 @@ var Tabs = {
             stack_player_op.setAttribute('style', "margin-top: 3px;");
               // Création lifebar_player_op
               var lifebar_player_op = document.createElement('progressmeter');
+              lifebar_player_op.setAttribute('id', "lifebar_op_" + jid);
               lifebar_player_op.setAttribute('mode', "determined");
               lifebar_player_op.setAttribute('value', "100");
               lifebar_player_op.setAttribute('flex', "1");
@@ -677,38 +676,24 @@ var Tabs = {
               stack_player_op.appendChild(lifebar_player_op);
               // Création lp_player_op
               var lp_player_op = document.createElement('label');
-              lp_player_op.setAttribute('id', "8000");
+              lp_player_op.setAttribute('id', "lp_op_" + jid);
               lp_player_op.setAttribute('class', "lifepoints");
               lp_player_op.setAttribute('value', "8000");
               // Ajout lp_player_op à stack_player_op
               stack_player_op.appendChild(lp_player_op);
             // Ajout stack_player_op à vbox_player_op
             vbox_player_op.appendChild(stack_player_op);
-            
-            
-            
-            
-            
             // Création nickname_player_op
             var nickname_player_op = document.createElement('label');
+            nickname_player_op.setAttribute('id', "nickname_op_" + tab_id);
             nickname_player_op.setAttribute('value', Contacts.contacts[jid].nickname);
             nickname_player_op.setAttribute('crop', "end");
             nickname_player_op.setAttribute('tooltiptext', Contacts.contacts[jid].nickname);
+            Contacts.contacts[jid].avatars_id.push("nickname_op_" + tab_id);
             // Ajout nickname_player_op à vbox_player_op
             vbox_player_op.appendChild(nickname_player_op);
-            
-            
-            
           // Ajout vbox_player_op à hbox_player_op
           hbox_player_op.appendChild(vbox_player_op);
-        
-        
-        
-        
-        
-        
-        
-        
         // Ajout hbox_player_op à vbox_sidebar
         vbox_sidebar.appendChild(hbox_player_op);
         
@@ -721,6 +706,141 @@ var Tabs = {
         duel_iframe.setAttribute('flex', "1");
         // Ajout duel_iframe à vbox_sidebar
         vbox_sidebar.appendChild(duel_iframe);
+        
+        
+        
+        
+        
+        
+        // Création de hbox_msg
+        var hbox_msg = document.createElement('hbox');
+        hbox_msg.setAttribute('align', "center");
+        hbox_msg.setAttribute('style', "margin-left: 4px; margin-right: 4px;");
+          // Création de textbox_msg
+          var textbox_msg = document.createElement('textbox');
+          textbox_msg.setAttribute('style', "-moz-appearance: none; border: solid 1px #7f7f7f; border-radius: 4px; margin: 0px; padding: 0px;");
+          textbox_msg.setAttribute('id', "duel_message_out_" + jid);
+          textbox_msg.setAttribute('flex', "1");
+          textbox_msg.setAttribute('onkeydown', "Tabs.tabs[" + tab_id + "].content.onKeydown(event);");
+          // Ajout textbox_msg à hbox_msg
+          hbox_msg.appendChild(textbox_msg);
+          
+          
+          // Création button_utils
+          var button_utils = document.createElement('vbox');
+          button_utils.setAttribute('class', "button middle");
+          button_utils.setAttribute('popup',"_child");
+            // Création button_utils_spacer1
+            var button_utils_spacer1 = document.createElement('spacer');
+            button_utils_spacer1.setAttribute('flex', "1");
+            // Ajout button_utils_spacer1 à button_utils
+            button_utils.appendChild(button_utils_spacer1);
+            // Création button_utils_image
+            var button_utils_image = document.createElement('image');
+            button_utils_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/actions.png");
+            button_utils_image.setAttribute('style', "margin-top: 3px;");
+            // Ajout button_utils_image à button_utils
+            button_utils.appendChild(button_utils_image);
+            // Création button_utils_spacer2
+            var button_utils_spacer2 = document.createElement('spacer');
+            button_utils_spacer2.setAttribute('flex', "1");
+            // Ajout button_utils_spacer2 à button_utils
+            button_utils.appendChild(button_utils_spacer2);
+            // Création button_utils_popup
+            var button_utils_popup = document.createElement('menupopup');
+            button_utils_popup.setAttribute('position', "after_start");
+              // Création button_utils_menuitem_senddeck
+              var button_utils_menuitem_senddeck = document.createElement('menuitem');
+              button_utils_menuitem_senddeck.setAttribute('class', "menuitem-iconic bt_player");
+              button_utils_menuitem_senddeck.setAttribute('label', $("i18n").getString("duel.gamble.player"));
+              button_utils_menuitem_senddeck.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.gamblePlayer();");
+              // Ajout button_utils_menuitem_senddeck à button_utils_popup
+              button_utils_popup.appendChild(button_utils_menuitem_senddeck);
+            // Ajout button_utils_popup à button_utils
+            button_utils.appendChild(button_utils_popup);
+          // Ajout button_utils à hbox_msg
+          hbox_msg.appendChild(button_utils);
+          // Création button_send
+          var button_send = document.createElement('vbox');
+          button_send.setAttribute('class', "button right");
+          button_send.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.sendMessage();");
+            // Création button_send_spacer1
+            var button_send_spacer1 = document.createElement('spacer');
+            button_send_spacer1.setAttribute('flex', "1");
+            // Ajout button_send_spacer1 à button_send
+            button_send.appendChild(button_send_spacer1);
+            // Création button_send_image
+            var button_send_image = document.createElement('image');
+            button_send_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/chat.png");
+            button_send_image.setAttribute('style', "margin-top: 3px;");
+            // Ajout button_send_image à button_send
+            button_send.appendChild(button_send_image);
+            // Création button_send_spacer2
+            var button_send_spacer2 = document.createElement('spacer');
+            button_send_spacer2.setAttribute('flex', "1");
+            // Ajout button_send_spacer2 à button_send
+            button_send.appendChild(button_send_spacer2);
+          // Ajout button_send à hbox_msg
+          hbox_msg.appendChild(button_send);
+        // Ajout hbox_msg à vbox_sidebar
+        vbox_sidebar.appendChild(hbox_msg);
+        
+        
+        
+        
+        
+        
+        
+        
+        // Création hbox_player_me
+        var hbox_player_me = document.createElement('hbox');
+        hbox_player_me.setAttribute('class', "hbox_player");
+          // Création avatar_me
+          var avatar_me = document.createElement('vbox');
+          avatar_me.setAttribute('id', "avatar_me_" + tab_id);
+          avatar_me.setAttribute('class', "avatar_contact");
+          avatar_me.setAttribute('avatar_img', Jabber.vcard.avatar);
+          avatar_me.setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/" + Jabber.presence.show + ".png");
+          avatar_me.setAttribute('tooltiptext', Contacts.contacts[jid].nickname);
+          Jabber.avatars_id.push("avatar_me_" + tab_id);
+          // Ajout avatar_me à hbox_player_me
+          hbox_player_me.appendChild(avatar_me);
+          // Création vbox_player_me
+          var vbox_player_me = document.createElement('vbox');
+          vbox_player_me.setAttribute('flex', "1");
+            // Création stack_player_me
+            var stack_player_me = document.createElement('stack');
+            stack_player_me.setAttribute('style', "margin-top: 3px;");
+              // Création lifebar_player_me
+              var lifebar_player_me = document.createElement('progressmeter');
+              lifebar_player_me.setAttribute('id', "lifebar_me_" + jid);
+              lifebar_player_me.setAttribute('mode', "determined");
+              lifebar_player_me.setAttribute('value', "100");
+              lifebar_player_me.setAttribute('flex', "1");
+              // Ajout lifebar_player_me à stack_player_me
+              stack_player_me.appendChild(lifebar_player_me);
+              // Création lp_player_me
+              var lp_player_me = document.createElement('label');
+              lp_player_me.setAttribute('id', "lp_me_" + jid);
+              lp_player_me.setAttribute('class', "lifepoints");
+              lp_player_me.setAttribute('value', "8000");
+              // Ajout lp_player_me à stack_player_me
+              stack_player_me.appendChild(lp_player_me);
+            // Ajout stack_player_me à vbox_player_me
+            vbox_player_me.appendChild(stack_player_me);
+            // Création nickname_player_me
+            var nickname_player_me = document.createElement('label');
+            nickname_player_me.setAttribute('id', "nickname_me_" + tab_id);
+            nickname_player_me.setAttribute('value', Jabber.vcard.nickname);
+            nickname_player_me.setAttribute('crop', "end");
+            nickname_player_me.setAttribute('tooltiptext', Jabber.vcard.nickname);
+            Jabber.nicknames_id.push("nickname_me_" + tab_id);
+            // Ajout nickname_player_me à vbox_player_me
+            vbox_player_me.appendChild(nickname_player_me);
+          // Ajout vbox_player_me à hbox_player_me
+          hbox_player_me.appendChild(vbox_player_me);
+        // Ajout hbox_player_me à vbox_sidebar
+        vbox_sidebar.appendChild(hbox_player_me);
         
         
       
