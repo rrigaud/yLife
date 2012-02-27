@@ -697,7 +697,6 @@ var Tabs = {
         // Ajout hbox_player_op à vbox_sidebar
         vbox_sidebar.appendChild(hbox_player_op);
         
-        
         // Création de duel_iframe
         var duel_iframe = document.createElement('iframe');
         duel_iframe.setAttribute('id', "duel_iframe_" + jid);
@@ -707,101 +706,46 @@ var Tabs = {
         // Ajout duel_iframe à vbox_sidebar
         vbox_sidebar.appendChild(duel_iframe);
         
-        
-        
-        
-        
-        
         // Création de hbox_msg
         var hbox_msg = document.createElement('hbox');
         hbox_msg.setAttribute('align', "center");
-        hbox_msg.setAttribute('style', "margin-left: 4px; margin-right: 4px;");
           // Création de textbox_msg
           var textbox_msg = document.createElement('textbox');
-          textbox_msg.setAttribute('style', "-moz-appearance: none; border: solid 1px #7f7f7f; border-radius: 4px; margin: 0px; padding: 0px;");
           textbox_msg.setAttribute('id', "duel_message_out_" + jid);
           textbox_msg.setAttribute('flex', "1");
           textbox_msg.setAttribute('onkeydown', "Tabs.tabs[" + tab_id + "].content.onKeydown(event);");
           // Ajout textbox_msg à hbox_msg
           hbox_msg.appendChild(textbox_msg);
-          
-          
-          // Création button_utils
-          var button_utils = document.createElement('vbox');
-          button_utils.setAttribute('class', "button middle");
-          button_utils.setAttribute('popup',"_child");
-            // Création button_utils_spacer1
-            var button_utils_spacer1 = document.createElement('spacer');
-            button_utils_spacer1.setAttribute('flex', "1");
-            // Ajout button_utils_spacer1 à button_utils
-            button_utils.appendChild(button_utils_spacer1);
-            // Création button_utils_image
-            var button_utils_image = document.createElement('image');
-            button_utils_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/actions.png");
-            button_utils_image.setAttribute('style', "margin-top: 3px;");
-            // Ajout button_utils_image à button_utils
-            button_utils.appendChild(button_utils_image);
-            // Création button_utils_spacer2
-            var button_utils_spacer2 = document.createElement('spacer');
-            button_utils_spacer2.setAttribute('flex', "1");
-            // Ajout button_utils_spacer2 à button_utils
-            button_utils.appendChild(button_utils_spacer2);
-            // Création button_utils_popup
-            var button_utils_popup = document.createElement('menupopup');
-            button_utils_popup.setAttribute('position', "after_start");
-              // Création button_utils_menuitem_senddeck
-              var button_utils_menuitem_senddeck = document.createElement('menuitem');
-              button_utils_menuitem_senddeck.setAttribute('class', "menuitem-iconic bt_player");
-              button_utils_menuitem_senddeck.setAttribute('label', $("i18n").getString("duel.gamble.player"));
-              button_utils_menuitem_senddeck.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.gamblePlayer();");
-              // Ajout button_utils_menuitem_senddeck à button_utils_popup
-              button_utils_popup.appendChild(button_utils_menuitem_senddeck);
-            // Ajout button_utils_popup à button_utils
-            button_utils.appendChild(button_utils_popup);
-          // Ajout button_utils à hbox_msg
-          hbox_msg.appendChild(button_utils);
-          // Création button_send
-          var button_send = document.createElement('vbox');
-          button_send.setAttribute('class', "button right");
-          button_send.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.sendMessage();");
-            // Création button_send_spacer1
-            var button_send_spacer1 = document.createElement('spacer');
-            button_send_spacer1.setAttribute('flex', "1");
-            // Ajout button_send_spacer1 à button_send
-            button_send.appendChild(button_send_spacer1);
-            // Création button_send_image
-            var button_send_image = document.createElement('image');
-            button_send_image.setAttribute('src', "chrome://ylifecore/skin/icons/buttons/chat.png");
-            button_send_image.setAttribute('style', "margin-top: 3px;");
-            // Ajout button_send_image à button_send
-            button_send.appendChild(button_send_image);
-            // Création button_send_spacer2
-            var button_send_spacer2 = document.createElement('spacer');
-            button_send_spacer2.setAttribute('flex', "1");
-            // Ajout button_send_spacer2 à button_send
-            button_send.appendChild(button_send_spacer2);
-          // Ajout button_send à hbox_msg
-          hbox_msg.appendChild(button_send);
         // Ajout hbox_msg à vbox_sidebar
         vbox_sidebar.appendChild(hbox_msg);
-        
-        
-        
-        
-        
-        
-        
         
         // Création hbox_player_me
         var hbox_player_me = document.createElement('hbox');
         hbox_player_me.setAttribute('class', "hbox_player");
+        hbox_player_me.setAttribute('popup',"_child");
+          // Création hbox_player_me_popup
+          var hbox_player_me_popup = document.createElement('menupopup');
+          hbox_player_me_popup.setAttribute('position', "before_start");
+            // Création hbox_player_me_menuitem_senddeck
+            var hbox_player_me_menuitem_senddeck = document.createElement('menuitem');
+            hbox_player_me_menuitem_senddeck.setAttribute('class', "menuitem-iconic bt_export");
+            hbox_player_me_menuitem_senddeck.setAttribute('label', $("i18n").getString("duel.send.deck"));
+            hbox_player_me_menuitem_senddeck.setAttribute('oncommand', "Tabs.tabs[" + tab_id + "].content.sendDeck();");
+            // Ajout hbox_player_me_menuitem_senddeck à hbox_player_me_popup
+            hbox_player_me_popup.appendChild(hbox_player_me_menuitem_senddeck);
+          // Ajout hbox_player_me_popup à hbox_player_me
+          hbox_player_me.appendChild(hbox_player_me_popup);
+          
+          
+          
+          
           // Création avatar_me
           var avatar_me = document.createElement('vbox');
           avatar_me.setAttribute('id', "avatar_me_" + tab_id);
           avatar_me.setAttribute('class', "avatar_contact");
           avatar_me.setAttribute('avatar_img', Jabber.vcard.avatar);
           avatar_me.setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/" + Jabber.presence.show + ".png");
-          avatar_me.setAttribute('tooltiptext', Contacts.contacts[jid].nickname);
+          avatar_me.setAttribute('tooltiptext', Jabber.vcard.nickname);
           Jabber.avatars_id.push("avatar_me_" + tab_id);
           // Ajout avatar_me à hbox_player_me
           hbox_player_me.appendChild(avatar_me);

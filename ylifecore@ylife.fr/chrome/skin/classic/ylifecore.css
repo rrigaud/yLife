@@ -455,7 +455,6 @@ vbox.occupant_compact {
 }
 
 
-
 /****************************************************************************************************************************************************************************************/
 /** ZONE DE DUEL
 /****************************************************************************************************************************************************************************************/
@@ -474,6 +473,12 @@ hbox.hbox_player {
   border: solid 1px #7f7f7f;
   background: #d0d0d0;
   background: -moz-linear-gradient(top, #a8a8a8, #c6c6c6 15%, #d8d8d8);
+}
+
+hbox.hbox_player:hover {
+  border: solid 1px #333;
+  color: #282828;
+  background: -moz-linear-gradient(top, #ffffff, #dfdfdf);
 }
 
 .lifepoints {
@@ -504,3 +509,4 @@ hbox.hbox_player {
 .bt_coin { list-style-image: url(chrome://ylifecore/skin/icons/buttons/coin.png); }
 .bt_dice { list-style-image: url(chrome://ylifecore/skin/icons/buttons/dice.png); }
 .bt_token { list-style-image: url(chrome://ylifecore/skin/icons/buttons/token.png); }
+.bt_export { list-style-image: url(chrome://ylifecore/skin/icons/buttons/export.png); }
