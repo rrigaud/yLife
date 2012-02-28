@@ -17,7 +17,7 @@ var Tabs = {
   /***************************************************************************************************************
    *  Array : tabs
    *
-   *  Le premier onglet est l'accueil (home) et ne peut pas être détruit)
+   *  Le premier onglet est l'accueil (home) et ne peut pas être détruit
    * 
    *    (Tab Object) Un onglet avec ses properties et ses functions (tabs[id].type, tabs[id].jid,...)
    */
@@ -262,6 +262,7 @@ var Tabs = {
    */
   newDuel : function (jid) {
     var duel = new Duel (jid.toLowerCase());
+    duel.loadYCD();
     duel.loadDimensions();
     duel.loadTemplate();
     Tabs.id++;
@@ -736,9 +737,6 @@ var Tabs = {
           // Ajout hbox_player_me_popup à hbox_player_me
           hbox_player_me.appendChild(hbox_player_me_popup);
           
-          
-          
-          
           // Création avatar_me
           var avatar_me = document.createElement('vbox');
           avatar_me.setAttribute('id', "avatar_me_" + tab_id);
@@ -948,7 +946,7 @@ var Tabs = {
    * 
    *  Parameters:
    *    (String) jid - Bare JID
-  */
+   */
   getChat : function (jid) {
     var tab = null;
     for (id in Tabs.tabs) {
@@ -969,7 +967,7 @@ var Tabs = {
    * 
    *  Parameters:
    *    (String) jid - Bare JID
-  */
+   */
   getDuel : function (jid) {
     var tab = null;
     for (id in Tabs.tabs) {
@@ -990,7 +988,7 @@ var Tabs = {
    * 
    *  Parameters:
    *    (String) rid - Room ID du Salon Jabber
-  */
+   */
   isMuc : function (rid) {
     var tab = { id : 0, exist : false };
     for (id in Tabs.tabs) {
@@ -1007,7 +1005,7 @@ var Tabs = {
    * 
    *  Parameters:
    *    (String) rid - Room ID du Salon Jabber
-  */
+   */
   getMuc : function (rid) {
     var a_muc = Tabs.isMuc(rid);
     if (a_muc.exist) { 
@@ -1026,7 +1024,7 @@ var Tabs = {
    * 
    *  Parameters:
    *    (String) jid - Bare JID d'un occupant
-  */
+   */
   getOccupantsMucOf : function (jid) {
     var result = [];
     for (id in Tabs.tabs) {

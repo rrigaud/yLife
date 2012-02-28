@@ -17,15 +17,58 @@
  */
 function Duel (jid) {
   this.jid = jid;
+  /***************************************************************************************************************
+   *  String : role
+   *
+   *  Role dans le duel :
+   *    challenger > Je propose le duel
+   *    champion > J'accepte le duel
+   *    guest_challenger > Je suis un spectateur et voit l'écran du challenger
+   *    guest_champion > Je suis un spectateur et voit l'écran du champion
+   *    guest > Je suis un spectateur et ne voit que le terrain de jeu
+   */
+  this.role = null;
   this.resolution = null;
   this.dimensions = null;
   this.template = null;
   /***************************************************************************************************************
    *  Array : guests
    *
-   *  (JID) - Tableau d'invités (contenant leur JID)
+   *  (JID String) - Tableau d'invités (contenant leur JID)
    */
   this.guests = [];
+  /***************************************************************************************************************
+   *  Object : ycd
+   *
+   *  Objet YCD, permettant d'accéder à toutes les informations sur Yugioh
+   */
+  this.ycd = {};
+  /***************************************************************************************************************
+   *  Object : deck
+   *
+   *  (deck Object) - Mon deck pour le duel
+   */
+  this.deck = {};
+  /***************************************************************************************************************
+   *  Array : cards
+   *
+   *  (card Object) - Tableau de toutes les cartes du duel (les miennes, et celles de mon adversaire) au format gamecard
+   */
+  this.cards = [];
+  /***************************************************************************************************************
+   *  Array : gamecards
+   *
+   *  (cards Array) - Tableau de tableaux de cartes (contenant leur card_index) : gamecards["main_me/hand_op"][i] = card_index
+   */
+  this.gamecards = [];
+  /***************************************************************************************************************
+   *  Function : loadYCD
+   *
+   *  Charge YCD en mémoire
+   */
+  this.loadYCD = function () {
+    this.ycd = new Ycd (Addons.ycd_file);
+  };
   /***************************************************************************************************************
    *  Function : loadDimensions
    *

@@ -1,5 +1,5 @@
 /***************************************************************************************************************
- *  File : printdeck.js
+ *  File : internetdeck.js
  * 
  *  Charge les fichiers nécessaires au module
  */

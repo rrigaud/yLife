@@ -29,7 +29,7 @@
       <menuitem label="&contacts.add;" class="menuitem-iconic bt_add" oncommand="Contacts.addToContacts();" />
       <menuseparator />
       <menuitem label="&contacts.chat.with;" class="menuitem-iconic bt_chat" oncommand="Jabber.chatWith();" />
-      <menuitem label="&contacts.duel.with;" class="menuitem-iconic bt_duel" oncommand="Jabber.duelWith();" />
+      <menuitem label="&contacts.duel.with;" class="menuitem-iconic bt_duel" oncommand="Jabber.duelWith(null,'challenger');" />
     </menupopup>
     <menupopup id="jabber_muc" position="before_start">
       <menuitem label="&muc.join.new.room;" class="menuitem-iconic bt_muc" oncommand="Jabber.joinMuc();" />
@@ -39,7 +39,7 @@
       <menuitem label="&contact.profile;" class="menuitem-iconic bt_profile" oncommand="Jabber.viewProfile(document.getElementById('contactlist').getSelectedItem(0).getAttribute('jid'));" />
       <menuseparator />
       <menuitem label="&contact.chat;" class="menuitem-iconic bt_chat" oncommand="Jabber.chatWith(document.getElementById('contactlist').getSelectedItem(0).getAttribute('jid'));" />
-      <menuitem label="&contact.duel;" class="menuitem-iconic bt_duel" oncommand="Jabber.duelWith(document.getElementById('contactlist').getSelectedItem(0).getAttribute('jid'));" />
+      <menuitem label="&contact.duel;" class="menuitem-iconic bt_duel" oncommand="Jabber.duelWith(document.getElementById('contactlist').getSelectedItem(0).getAttribute('jid'),'challenger');" />
     </menupopup>
   </popuset>
 

@@ -292,6 +292,35 @@ function Card (ycd,card_id) {
     return deckcard_item;
   };
   /***************************************************************************************************************
+   *  Function : getGamecard
+   *
+   *  Retourne une carte pour l'interface de jeu
+   * 
+   *  Parameters :
+   *    (String) op_jid - Thème de carte (image/noimage/,...)
+   *    (Integer) card_index - Nombre d'exemplaires
+   *    (String) class - Thème de carte (image/noimage/,...)
+   */
+  this.getGamecard = function (op_jid,card_index,class) {
+    var gamecard = document.createElement('vbox');
+    // ID unique de la carte en fonction du Duel et de son card_index dans le Tableau Cards du duel (ex: duel_toto@jabber.fr-card_0)
+    gamecard.setAttribute('id', "duel_" + op_jid + "-card_" + card_index);
+    // Sa classe permet d'afficher la résolution, la destination, la position,...)
+    gamecard.setAttribute('class', class);
+    gamecard.setAttribute('op_jid', op_jid);
+    gamecard.setAttribute('card_index', card_index);
+    gamecard.setAttribute('card_image', this.getImage());
+    gamecard.setAttribute('card_background', "chrome://ylifecore/skin/templates/card/oldish/backgrounds/" + ylife_type[this.subtype_id] + ".png");
+    // Pour le choix de l'affichage de ces tooltiptext, on gère ça dans les Bindings gamecard.xml
+    gamecard.setAttribute('ttt_monster_up', this.level + " * / " + this.atk + " / " + this.def);
+    gamecard.setAttribute('ttt_monster_down', this.name + " ( " + this.level + " * / " + this.atk + " / " + this.def + " )");
+    gamecard.setAttribute('ttt_spelltrap', this.name + " ( " + this.getSubtype(Prefs.getLanguage()).name + " )");
+    gamecard.setAttribute('context', "_child");
+    gamecard.setAttribute('ondragstart', "return gamecardDragStart(event)");
+    gamecard.setAttribute('ondragend', "return gamecardDragEnd(event)");
+    return gamecard;
+  };
+  /***************************************************************************************************************
    *  Function : view
    *
    *  Affiche une carte XBL reconstruite dans un vbox cible et selon un template et une résolution donnés

@@ -88,8 +88,9 @@ Jabber.chatWith = function (jid) {
  * 
  *  Parameters :
  *    (String) jid - Bare JID d'un interlocuteur (contact ou pas)
+ *    (String) role - Role dans le duel (challenger/champion/guest_challenger/guest_champion)
  */
-Jabber.duelWith = function (jid) {
+Jabber.duelWith = function (jid,role) {
   var contact = null;
   if (!jid) {
     // On demande le jid de l'interlocuteur si aucun n'est passé en paramètre
@@ -112,6 +113,8 @@ Jabber.duelWith = function (jid) {
     var tab = Tabs.getDuel(contact.jid);
     Tabs.tabs[tab.id].viewTab();
     Tabs.tabs[tab.id].viewPanel();
+    // Role dans le duel : Est-ce moi qui lance le défi ? qui l'accepte ? qui suis un spectateur ?
+    Tabs.tabs[tab.id].content.role = role;
   }
 }
 
