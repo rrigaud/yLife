@@ -11,15 +11,24 @@
  *  Class : Duel
  * 
  *  Cet classe gère les duels via Jabber
- * 
- *  Parameters:
- *    (String) jid - Bare JID
  */
-function Duel (jid) {
-  this.jid = jid;
+function Duel () {
   /***************************************************************************************************************
-   *  String : role
+   *  String : did
    *
+   *  Duel ID créée par le challenger de la forme : yyyymmdd-hhmmss-jid_challenger-jid_champion
+   */
+  this.did = null;
+  this.resolution = null;
+  this.dimensions = null;
+  this.template = null;
+  /***************************************************************************************************************
+   *  Array : players
+   *
+   *  (JID String) - Tableau de joueurs et d'invités (contenant leur role dans le duel)
+   * 
+   *  Exemple : players["challenger@jabber.com"] = "challenger";
+   * 
    *  Role dans le duel :
    *    challenger > Je propose le duel
    *    champion > J'accepte le duel
@@ -27,16 +36,7 @@ function Duel (jid) {
    *    guest_champion > Je suis un spectateur et voit l'écran du champion
    *    guest > Je suis un spectateur et ne voit que le terrain de jeu
    */
-  this.role = null;
-  this.resolution = null;
-  this.dimensions = null;
-  this.template = null;
-  /***************************************************************************************************************
-   *  Array : guests
-   *
-   *  (JID String) - Tableau d'invités (contenant leur JID)
-   */
-  this.guests = [];
+  this.players = [];
   /***************************************************************************************************************
    *  Object : ycd
    *
@@ -61,6 +61,37 @@ function Duel (jid) {
    *  (cards Array) - Tableau de tableaux de cartes (contenant leur card_index) : gamecards["main_me/hand_op"][i] = card_index
    */
   this.gamecards = [];
+  /***************************************************************************************************************
+   *  Function : init
+   *
+   *  Initialise le duel (crée un Duel ID, ajoute les joueurs,...)
+   * 
+   *  Parameters :
+   *    (DID String) did - Duel ID si le Duel existe déjà (créé par le challenger)
+   *    (JID String) jid_challenger - JID du challenger (qui demande le duel)
+   *    (JID String) jid_champion - JID du champion (qui est sollicité pour le duel)
+   */
+  this.init = function (did,challenger,champion) {
+    // Récupération de la date
+    var date =  new Date();
+    var date_year = date.getFullYear();
+    var date_month = parseInt(date.getMonth())+1;
+    if (date_month < 10) { date_month = "0" + date_month; }
+    var date_day = date.getDate();
+    if (date_day < 10) { date_day = "0" + date_day; }
+    var date_hour = date.getHours();
+    if (date_hour < 10) { date_hour = "0" + date_hour; }
+    var date_minute = date.getMinutes();
+    if (date_minute < 10) { date_minute = "0" + date_minute; }
+    var date_second = date.getSeconds();
+    if (date_second < 10) { date_second = "0" + date_second; }
+    // Génération du Duel ID
+    this.did = date_year + date_month + date_day + "-" + date_hour + date_minute + date_second + "-" + challenger + "-" + champion;
+    // Ajout des joueurs au duel
+    this.players = [];
+    this.players[jid_challenger] = "challenger";
+    this.players[jid_champion] = "champion";
+  };
   /***************************************************************************************************************
    *  Function : loadYCD
    *
