@@ -11,32 +11,48 @@
  *  Class : Duel
  * 
  *  Cet classe gère les duels via Jabber
+ * 
+ *  Parameters :
+ *    (DID String) did - Duel ID si le Duel existe déjà (créé par le challenger)
  */
-function Duel () {
+function Duel (did) {
   /***************************************************************************************************************
    *  String : did
    *
    *  Duel ID créée par le challenger de la forme : yyyymmdd-hhmmss-jid_challenger-jid_champion
    */
   this.did = null;
+  /***************************************************************************************************************
+   *  String : tid
+   *
+   *  TAB ID de l'onglet contenant ce duel (Mise en mémoire permettant un accès simplifié depuis l'instance du duel
+   */
+  this.tid = null;
+  /***************************************************************************************************************
+   *  String : resolution
+   *
+   *  Résolution de l'écran (O,1,...) : A NE PAS SYNCHRONISER (Propre à l'affichage de chacun)
+   */
   this.resolution = null;
   this.dimensions = null;
   this.template = null;
   /***************************************************************************************************************
    *  Array : players
    *
-   *  (JID String) - Tableau de joueurs et d'invités (contenant leur role dans le duel)
+   *  (JID String) - Tableau de joueurs et d'invités (contenant leur role dans le duel, leur avatar,...)
    * 
-   *  Exemple : players["challenger@jabber.com"] = "challenger";
-   * 
-   *  Role dans le duel :
-   *    challenger > Je propose le duel
-   *    champion > J'accepte le duel
-   *    guest_challenger > Je suis un spectateur et voit l'écran du challenger
-   *    guest_champion > Je suis un spectateur et voit l'écran du champion
-   *    guest > Je suis un spectateur et ne voit que le terrain de jeu
+   *  Exemple : players["challenger@jabber.com"].role = "challenger";
    */
   this.players = [];
+  /***************************************************************************************************************
+   *  Array : field
+   *
+   *  (String) - me/op : Tableau contenant le joueur (son role en réalité) à afficher en "me" (en bas) et en "op" (en haut)
+   *                     A NE PAS SYNCHRONISER (Propre à l'affichage de chacun)
+   * 
+   *  Exemple : field["me"] = "challenger";
+   */
+  this.field = [];
   /***************************************************************************************************************
    *  Object : ycd
    *
@@ -62,16 +78,26 @@ function Duel () {
    */
   this.gamecards = [];
   /***************************************************************************************************************
+   *  Function : storeTID
+   *
+   *  Charge l'ID de l'onglet du duel dans la mémoire du duel (permet un accès plus rapide et plus simple)
+   * 
+   *  Parameters :
+   *    (TAB ID Integer) tab_id - ID de l'onglet contenant ce duel
+   */
+  this.storeTID = function (tab_id) {
+    this.tid = tab_id;
+  };
+  /***************************************************************************************************************
    *  Function : init
    *
    *  Initialise le duel (crée un Duel ID, ajoute les joueurs,...)
    * 
    *  Parameters :
-   *    (DID String) did - Duel ID si le Duel existe déjà (créé par le challenger)
    *    (JID String) jid_challenger - JID du challenger (qui demande le duel)
    *    (JID String) jid_champion - JID du champion (qui est sollicité pour le duel)
    */
-  this.init = function (did,challenger,champion) {
+  this.init = function (jid_challenger,jid_champion) {
     // Récupération de la date
     var date =  new Date();
     var date_year = date.getFullYear();
@@ -86,11 +112,15 @@ function Duel () {
     var date_second = date.getSeconds();
     if (date_second < 10) { date_second = "0" + date_second; }
     // Génération du Duel ID
-    this.did = date_year + date_month + date_day + "-" + date_hour + date_minute + date_second + "-" + challenger + "-" + champion;
+    this.did = date_year + date_month + date_day + "-" + date_hour + date_minute + date_second + "-" + jid_challenger + "-" + jid_champion;
     // Ajout des joueurs au duel
     this.players = [];
     this.players[jid_challenger] = "challenger";
     this.players[jid_champion] = "champion";
+    // Terrain du bas (me) pour le challenger puisque c'est moi qui lance le duel, celui du haut pour le champion
+    this.field = [];
+    this.field["me"] = "challenger";
+    this.field["op"] = "champion";
   };
   /***************************************************************************************************************
    *  Function : loadYCD

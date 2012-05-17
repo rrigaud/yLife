@@ -110,11 +110,15 @@ Jabber.duelWith = function (jid,role) {
     var contact = Contacts.get(jid);
   }
   if (contact) {
-    var tab = Tabs.getDuel(contact.jid);
+    var tab = Tabs.getDuel("");
     Tabs.tabs[tab.id].viewTab();
     Tabs.tabs[tab.id].viewPanel();
-    // Role dans le duel : Est-ce moi qui lance le défi ? qui l'accepte ? qui suis un spectateur ?
-    Tabs.tabs[tab.id].content.role = role;
+    // Initialisation du duel (Création du Duel ID, ajout des 2 joueurs, affectation des terrains pour cet utilisateur)
+    Tabs.tabs[tab.id].content.init(Jabber.account.barejid,contact.jid);
+    // Maintenant que les terrains sont définis, on actualise les Avatars/nicknames de l'onglet et des 2 terrains
+    Tabs.tabs[tab.id].content.refreshPlayers();
+    // Demande de duel au "champion"
+    Tabs.tabs[tab.id].content.queryDuel();
   }
 }
 

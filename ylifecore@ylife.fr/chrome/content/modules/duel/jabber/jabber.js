@@ -25,10 +25,11 @@ var Jabber = {
   /***************************************************************************************************************
    *  Object : account
    *
+   *    (String) barejid - Bare JID : JID de la forme john@xmpp.com
    *    (String) jid - Full JID : barejid/resource
    *    (String) pwd - Mot de passe du compte
    */
-  account : {jid:"", pwd:""},
+  account : {barejid:"", jid:"", pwd:""},
   /***************************************************************************************************************
    *  Object : presence
    *
@@ -123,6 +124,7 @@ var Jabber = {
    *  Charge le compte Jabber contenu dans les préférences
    */
   load : function () {
+    Jabber.account.barejid = Prefs.getChar("jabber.jid");
     Jabber.account.jid = Prefs.getChar("jabber.jid") + "/" + Jabber.presence.resource;
     Jabber.account.pwd = Prefs.getChar("jabber.pwd");
     Jabber.vcard.nickname = Strophe.getNodeFromJid(Jabber.account.jid);

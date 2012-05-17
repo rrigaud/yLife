@@ -36,6 +36,9 @@ loader.loadSubScript("chrome://ylifecore/content/modules/duel/duel/dimensions.js
 loader.loadSubScript("chrome://ylifecore/content/modules/duel/duel/duel.js");
 loader.loadSubScript("chrome://ylifecore/content/modules/duel/duel/coordinates.js");
 loader.loadSubScript("chrome://ylifecore/content/modules/duel/duel/zones.js");
+loader.loadSubScript("chrome://ylifecore/content/modules/duel/duel/players.js");
+loader.loadSubScript("chrome://ylifecore/content/modules/duel/duel/player.js");
+loader.loadSubScript("chrome://ylifecore/content/modules/duel/duel/sync.js");
 
 
 /***************************************************************************************************************

@@ -258,21 +258,23 @@ var Tabs = {
    *  Ouvre un onglet en y chargeant un duel
    * 
    *  Parameters :
-   *    (String) jid - JID du contact
+   *    (DID String) did - DID (Duel ID)
    */
-  newDuel : function (jid) {
-    var duel = new Duel (jid.toLowerCase());
+  newDuel : function (did) {
+    var duel = new Duel (did);
     duel.loadYCD();
     duel.loadDimensions();
     duel.loadTemplate();
     Tabs.id++;
     var tab_id = Tabs.id;
+    // Stock l'ID de l'onglet dans l'objet Duel pour un accès facilité depuis l'intérieur.
+    duel.storeTID(tab_id);
     var tab = new Tab (tab_id,"duel",duel);
     Tabs.tabs[tab_id] = tab;
     // Création Onglet
     var radiotab = document.createElement('radio');
     radiotab.setAttribute('id', "tab_" + tab_id);
-    radiotab.setAttribute('tooltiptext', Contacts.contacts[jid].nickname);
+    radiotab.setAttribute('tooltiptext', "op_nickname");
     radiotab.setAttribute('onclick', "Tabs.tabs[" + tab_id + "].viewPanel();");
     radiotab.setAttribute('ondblclick', "Tabs.tabs[" + tab_id + "].del();");
       // Création vbox_avatar
@@ -280,9 +282,9 @@ var Tabs = {
       vbox_avatar.setAttribute('id', "tab_avatar_" + tab_id);
       vbox_avatar.setAttribute('class', "avatar_contact");
       vbox_avatar.setAttribute('class_newmessage', "");
-      vbox_avatar.setAttribute('avatar_img', Contacts.contacts[jid].avatar);
-      vbox_avatar.setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/" + Contacts.contacts[jid].show + ".png");
-      Contacts.contacts[jid].avatars_id.push("tab_avatar_" + tab_id);
+      vbox_avatar.setAttribute('avatar_img', Jabber.avatar_default);
+      vbox_avatar.setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/unavailable.png");
+      //Contacts.contacts[jid].avatars_id.push("tab_avatar_" + tab_id);
       // Ajout vbox_avatar à l'onglet
       radiotab.appendChild(vbox_avatar);
     $("tabs").appendChild(radiotab);
@@ -655,10 +657,10 @@ var Tabs = {
           var avatar_op = document.createElement('vbox');
           avatar_op.setAttribute('id', "avatar_op_" + tab_id);
           avatar_op.setAttribute('class', "avatar_contact");
-          avatar_op.setAttribute('avatar_img', Contacts.contacts[jid].avatar);
-          avatar_op.setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/" + Contacts.contacts[jid].show + ".png");
-          avatar_op.setAttribute('tooltiptext', Contacts.contacts[jid].nickname);
-          Contacts.contacts[jid].avatars_id.push("avatar_op_" + tab_id);
+          avatar_op.setAttribute('avatar_img', Jabber.avatar_default);
+          avatar_op.setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/unavailable.png");
+          avatar_op.setAttribute('tooltiptext', "op_nickname");
+          //Contacts.contacts[jid].avatars_id.push("avatar_op_" + tab_id);
           // Ajout avatar_op à hbox_player_op
           hbox_player_op.appendChild(avatar_op);
           // Création vbox_player_op
@@ -669,7 +671,7 @@ var Tabs = {
             stack_player_op.setAttribute('style', "margin-top: 3px;");
               // Création lifebar_player_op
               var lifebar_player_op = document.createElement('progressmeter');
-              lifebar_player_op.setAttribute('id', "lifebar_op_" + jid);
+              lifebar_player_op.setAttribute('id', "lifebar_op_" + tab_id);
               lifebar_player_op.setAttribute('mode', "determined");
               lifebar_player_op.setAttribute('value', "100");
               lifebar_player_op.setAttribute('flex', "1");
@@ -677,7 +679,7 @@ var Tabs = {
               stack_player_op.appendChild(lifebar_player_op);
               // Création lp_player_op
               var lp_player_op = document.createElement('label');
-              lp_player_op.setAttribute('id', "lp_op_" + jid);
+              lp_player_op.setAttribute('id', "lp_op_" + tab_id);
               lp_player_op.setAttribute('class', "lifepoints");
               lp_player_op.setAttribute('value', "8000");
               // Ajout lp_player_op à stack_player_op
@@ -687,10 +689,10 @@ var Tabs = {
             // Création nickname_player_op
             var nickname_player_op = document.createElement('label');
             nickname_player_op.setAttribute('id', "nickname_op_" + tab_id);
-            nickname_player_op.setAttribute('value', Contacts.contacts[jid].nickname);
+            nickname_player_op.setAttribute('value', "op_nickname");
             nickname_player_op.setAttribute('crop', "end");
-            nickname_player_op.setAttribute('tooltiptext', Contacts.contacts[jid].nickname);
-            Contacts.contacts[jid].avatars_id.push("nickname_op_" + tab_id);
+            nickname_player_op.setAttribute('tooltiptext', "op_nickname");
+            //Contacts.contacts[jid].avatars_id.push("nickname_op_" + tab_id);
             // Ajout nickname_player_op à vbox_player_op
             vbox_player_op.appendChild(nickname_player_op);
           // Ajout vbox_player_op à hbox_player_op
@@ -700,7 +702,7 @@ var Tabs = {
         
         // Création de duel_iframe
         var duel_iframe = document.createElement('iframe');
-        duel_iframe.setAttribute('id', "duel_iframe_" + jid);
+        duel_iframe.setAttribute('id', "duel_iframe_" + tab_id);
         duel_iframe.setAttribute('class', "duellog");
         duel_iframe.setAttribute('src', duel.template);
         duel_iframe.setAttribute('flex', "1");
@@ -712,7 +714,7 @@ var Tabs = {
         hbox_msg.setAttribute('align', "center");
           // Création de textbox_msg
           var textbox_msg = document.createElement('textbox');
-          textbox_msg.setAttribute('id', "duel_message_out_" + jid);
+          textbox_msg.setAttribute('id', "duel_message_out_" + tab_id);
           textbox_msg.setAttribute('flex', "1");
           textbox_msg.setAttribute('onkeydown', "Tabs.tabs[" + tab_id + "].content.onKeydown(event);");
           // Ajout textbox_msg à hbox_msg
@@ -741,9 +743,9 @@ var Tabs = {
           var avatar_me = document.createElement('vbox');
           avatar_me.setAttribute('id', "avatar_me_" + tab_id);
           avatar_me.setAttribute('class', "avatar_contact");
-          avatar_me.setAttribute('avatar_img', Jabber.vcard.avatar);
-          avatar_me.setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/" + Jabber.presence.show + ".png");
-          avatar_me.setAttribute('tooltiptext', Jabber.vcard.nickname);
+          avatar_me.setAttribute('avatar_img', Jabber.avatar_default);
+          avatar_me.setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/unavailable.png");
+          avatar_me.setAttribute('tooltiptext', "me_nickname");
           Jabber.avatars_id.push("avatar_me_" + tab_id);
           // Ajout avatar_me à hbox_player_me
           hbox_player_me.appendChild(avatar_me);
@@ -755,7 +757,7 @@ var Tabs = {
             stack_player_me.setAttribute('style', "margin-top: 3px;");
               // Création lifebar_player_me
               var lifebar_player_me = document.createElement('progressmeter');
-              lifebar_player_me.setAttribute('id', "lifebar_me_" + jid);
+              lifebar_player_me.setAttribute('id', "lifebar_me_" + tab_id);
               lifebar_player_me.setAttribute('mode', "determined");
               lifebar_player_me.setAttribute('value', "100");
               lifebar_player_me.setAttribute('flex', "1");
@@ -763,7 +765,7 @@ var Tabs = {
               stack_player_me.appendChild(lifebar_player_me);
               // Création lp_player_me
               var lp_player_me = document.createElement('label');
-              lp_player_me.setAttribute('id', "lp_me_" + jid);
+              lp_player_me.setAttribute('id', "lp_me_" + tab_id);
               lp_player_me.setAttribute('class', "lifepoints");
               lp_player_me.setAttribute('value', "8000");
               // Ajout lp_player_me à stack_player_me
@@ -773,9 +775,9 @@ var Tabs = {
             // Création nickname_player_me
             var nickname_player_me = document.createElement('label');
             nickname_player_me.setAttribute('id', "nickname_me_" + tab_id);
-            nickname_player_me.setAttribute('value', Jabber.vcard.nickname);
+            nickname_player_me.setAttribute('value', "me_nickname");
             nickname_player_me.setAttribute('crop', "end");
-            nickname_player_me.setAttribute('tooltiptext', Jabber.vcard.nickname);
+            nickname_player_me.setAttribute('tooltiptext', "me_nickname");
             Jabber.nicknames_id.push("nickname_me_" + tab_id);
             // Ajout nickname_player_me à vbox_player_me
             vbox_player_me.appendChild(nickname_player_me);
