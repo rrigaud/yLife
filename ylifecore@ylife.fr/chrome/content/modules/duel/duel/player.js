@@ -14,7 +14,7 @@
  * 
  *  Parameters:
  *    (DID String) did - Duel ID
- *    (JID String) jid - Bare JID (uniquement si le salon est "non-anymous")
+ *    (JID String) jid - Bare JID (uniquement si le salon est "non-anonymous")
  *    (String) role - challenger/champion/guest_challenger/guest_champion/guest
  */
 function Player (did,jid,role) {
@@ -31,8 +31,9 @@ function Player (did,jid,role) {
    *    guest > Je suis un spectateur et ne voit que le terrain de jeu
    */
   this.role = role;
-  this.nickname = (this.jid == Strophe.getBareJidFromJid(Jabber.account.jid)) ? : Strophe.getResourceFromJid(oid);
-  this.avatar = (this.jid == Strophe.getBareJidFromJid(Jabber.account.jid)) ? Jabber.vcard.avatar : Jabber.avatar_default;
+  this.nickname = (this.jid == Jabber.account.barejid) ? Jabber.vcard.nickname : Strophe.getNodeFromJid(this.jid);
+  this.avatar = (this.jid == Jabber.account.barejid) ? Jabber.vcard.avatar : Jabber.avatar_default;
+  this.show = "available";
   /***************************************************************************************************************
    *  Function : getAvatar
    *
@@ -51,7 +52,7 @@ function Player (did,jid,role) {
   /***************************************************************************************************************
    *  Function : getVcard
    *
-   *  Demande la vCard du contact à son serveur
+   *  Demande la vCard du joueur à son serveur
    */
   this.getVcard = function () {
     var iq = $iq({to: this.jid, type: "get"}).c("vCard", {xmlns: Strophe.NS.VCARD});

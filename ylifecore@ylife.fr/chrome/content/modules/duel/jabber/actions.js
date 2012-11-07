@@ -115,8 +115,8 @@ Jabber.duelWith = function (jid,role) {
     Tabs.tabs[tab.id].viewPanel();
     // Initialisation du duel (Création du Duel ID, ajout des 2 joueurs, affectation des terrains pour cet utilisateur)
     Tabs.tabs[tab.id].content.init(Jabber.account.barejid,contact.jid);
-    // Maintenant que les terrains sont définis, on actualise les Avatars/nicknames de l'onglet et des 2 terrains
-    Tabs.tabs[tab.id].content.refreshPlayers();
+    // Maintenant que les terrains sont définis, on affiche les Avatars/nicknames de l'onglet et des 2 terrains
+    Tabs.tabs[tab.id].content.displayPlayers();
     // Demande de duel au "champion"
     Tabs.tabs[tab.id].content.queryDuel();
   }

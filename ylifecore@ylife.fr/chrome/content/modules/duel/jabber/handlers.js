@@ -81,6 +81,27 @@ Jabber.onVcard = function (msg) {
       }
     }
   }
+  // Si c'est un joueur/spectateur d'un duel au moins
+  var players = Tabs.getPlayers(jid);
+  if (players.length > 0) {
+    var nickname_elements = msg.getElementsByTagName('NICKNAME');
+    if (nickname_elements.length > 0) {
+      for (var i = 0 ; i < players.length ; i++) {
+        players[i].nickname = Strophe.getText(nickname_elements[0]);
+        //players[i].refreshNickname();
+      }
+    }
+    var avatar_binval_elements = msg.getElementsByTagName('BINVAL');
+    if (avatar_binval_elements.length > 0) {
+      var avatar_type_elements = msg.getElementsByTagName('TYPE');
+      var avatar = 'data:' + Strophe.getText(avatar_type_elements[0]) + ';base64,' + Strophe.getText(avatar_binval_elements[0]);
+      for (var i = 0 ; i < players.length ; i++) {
+        players[i].avatar = avatar;
+        players[i].refreshAvatar();
+        Notifs.add({"type": "jabber_contact_vcard", "contact": players[i].nickname + " :", "top": false, "timer": true, "time": 4000});
+      }
+    }
+  }
   return true;
 }
 
@@ -225,7 +246,22 @@ Jabber.onMessage = function (msg) {
  *    (DOM Tree Object) msg - Message sous forme de tree DOM
  */
 Jabber.onDuel = function (msg) {
-  alert("Duel recu");
+  var jid = Strophe.getBareJidFromJid(msg.getAttribute('from'));
+  var did = msg.getAttribute('did');
+  var contact = Contacts.get(jid);
+  var elems = msg.getElementsByTagName('body');
+  if (elems.length > 0) {
+    var body = elems[0];
+    var tab = Tabs.getDuel(did);
+    // TODO : trier les messages arrivant, surtout au début du duel puis SYNC
+    var nickname = contact.nickname;
+    // Si l'onglet vient d'être créé, il faut un laps de temps pour que l'interface soit finie sinon bug...
+    if (tab.isNew) { setTimeout("Tabs.tabs[" + tab.id + "].content.addMessage('" + nickname + "','" + Strophe.getText(body) + "','in')",1000); }
+    // Sinon, on ajoute le message immédiatement
+    else { Tabs.tabs[tab.id].content.addMessage(nickname,Strophe.getText(body),"in"); }
+    Notifs.add({"type": "jabber_chat_message", "contact": nickname + " :", "top": false, "timer": true, "time": 2000});
+    if ($("tabs").selectedItem != $("tab_" + tab.id)) { Tabs.tabs[tab.id].newMessage(true); }
+  }
   return true;
 }
 

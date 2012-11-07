@@ -18,7 +18,7 @@
  */
 Duel.prototype.setPlayers = function (me,op) {
   this.field = [];
-  var role = this.players[Jabber.account.barejid];
+  var role = this.players[Jabber.account.barejid].role;
   // Si je suis un joueur, mon terrain est forcément "me" donc je force mon role sur le terrain "me"
   if ((role == "challenger")||(role == "champion")) {
     this.field["me"] = (role == "challenger") ? "challenger" : "champion";
@@ -35,28 +35,18 @@ Duel.prototype.setPlayers = function (me,op) {
 /***************************************************************************************************************
  *  Function : getPlayerFromField
  * 
- *  Retourne les informations personnelles d'un joueur à partir de son terrain (me ou op)
+ *  Retourne les informations personnelles (Player Object) d'un joueur à partir de son terrain (me ou op)
  * 
  *  Parameters:
  *    (String) field - me (terrain du bas) ou op (terrain du haut)
  */
 Duel.prototype.getPlayerFromField = function (field) {
-  var player = {jid : "", avatar : "", nickname : ""}
+  var player = {};
   // Pour chaque joueur/spectateur
   for (jid in this.players) {
-    // Si on trouve le joueur à qui appartient le terrain
-    if (this.players[jid] == this.field[field]) {
-      
-      
-      
-      var contact = Contacts.get(jid);
-      player.jid = jid;
-      player.avatar = jid;
-      player.nickname = jid;
-      if (Tabs.tabs[id].content.jid == jid.toLowerCase()) { tab = { id : id, isNew : false }; }
-    }
+    // Si on trouve le joueur à qui appartient le terrain, on le retourne
+    if (this.players[jid].role == this.field[field]) { player = this.players[jid]; }
   }
-  
   return player;
 }
 
@@ -82,9 +72,10 @@ Duel.prototype.displayPlayers = function () {
   // "nickname_me_" + tab_id . value
   // "nickname_me_" + tab_id . tooltiptext
   
-  
   // Il faut gérer le tableau dynamique des contacts contenant les ID des avatars/nickname pour un rafraichissement des status, du genre :
   // Contacts.contacts[jid].avatars_id.push("avatar_op_" + tab_id);
+  
+  
   
   // Récupère les joueurs "me" et "op" sous forme d'objet Contact
   var me = this.getPlayerFromField("me");
@@ -108,10 +99,9 @@ Duel.prototype.displayPlayers = function () {
   $("nickname_me_" + this.tid).setAttribute('value', me.nickname);
   $("nickname_me_" + this.tid).setAttribute('tooltiptext', me.nickname);
   
-  
-  
-  
-  
+  // Récupère la vCard des 2 joueurs
+  me.getVcard();
+  op.getVcard();
 }
 
 

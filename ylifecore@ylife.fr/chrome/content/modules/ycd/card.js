@@ -297,16 +297,16 @@ function Card (ycd,card_id) {
    *  Retourne une carte pour l'interface de jeu
    * 
    *  Parameters :
-   *    (String) op_jid - Thème de carte (image/noimage/,...)
-   *    (Integer) card_index - Nombre d'exemplaires
-   *    (String) class - Thème de carte (image/noimage/,...)
+   *    (String) op_jid - JID de l'adversaire
+   *    (Integer) card_index - Index de la carte dans le duel
+   *    (String) template - Thème de carte (image/noimage/,...)
    */
-  this.getGamecard = function (op_jid,card_index,class) {
+  this.getGamecard = function (op_jid,card_index,template) {
     var gamecard = document.createElement('vbox');
     // ID unique de la carte en fonction du Duel et de son card_index dans le Tableau Cards du duel (ex: duel_toto@jabber.fr-card_0)
     gamecard.setAttribute('id', "duel_" + op_jid + "-card_" + card_index);
     // Sa classe permet d'afficher la résolution, la destination, la position,...)
-    gamecard.setAttribute('class', class);
+    gamecard.setAttribute('class', template);
     gamecard.setAttribute('op_jid', op_jid);
     gamecard.setAttribute('card_index', card_index);
     gamecard.setAttribute('card_image', this.getImage());

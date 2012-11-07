@@ -115,8 +115,10 @@ function Duel (did) {
     this.did = date_year + date_month + date_day + "-" + date_hour + date_minute + date_second + "-" + jid_challenger + "-" + jid_champion;
     // Ajout des joueurs au duel
     this.players = [];
-    this.players[jid_challenger] = "challenger";
-    this.players[jid_champion] = "champion";
+    var challenger = new Player(this.did,jid_challenger,"challenger");
+    var champion = new Player(this.did,jid_champion,"champion");
+    this.players[jid_challenger] = challenger;
+    this.players[jid_champion] = champion;
     // Terrain du bas (me) pour le challenger puisque c'est moi qui lance le duel, celui du haut pour le champion
     this.field = [];
     this.field["me"] = "challenger";

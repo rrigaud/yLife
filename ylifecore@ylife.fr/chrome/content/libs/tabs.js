@@ -984,6 +984,25 @@ var Tabs = {
     return tab;
   },
   /***************************************************************************************************************
+   *  Function : getPlayers
+   *
+   *    Retourne un tableau de (Player Object) repérés dans des duels ouverts grâce à leur JID
+   * 
+   *  Parameters:
+   *    (String) barejid - Bare JID d'un joueur
+   */
+  getPlayers : function (barejid) {
+    var result = [];
+    for (id in Tabs.tabs) {
+      if (Tabs.tabs[id].type == "duel") {
+        for (jid in Tabs.tabs[id].content.players) {
+          if (jid == barejid) { result.push(Tabs.tabs[id].content.players[jid]); }
+        }
+      }
+    }
+    return result;
+  },
+  /***************************************************************************************************************
    *  Function : isMuc
    *
    *    Retourne le tab.id d'un salon (en crée un si nécessaire et retourne true)

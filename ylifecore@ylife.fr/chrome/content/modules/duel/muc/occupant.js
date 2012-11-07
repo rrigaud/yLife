@@ -14,7 +14,7 @@
  * 
  *  Parameters:
  *    (String) oid - Occupant ID (ylife@chat.jabberfr.org/nickname)
- *    (String) jid - Bare JID (uniquement si le salon est "non-anymous")
+ *    (String) jid - Bare JID (uniquement si le salon est "non-anonymous")
  *    (String) affiliation - owner/admin/member/none/outcast
  *    (String) role - moderator/participant/visitor/none
  */
