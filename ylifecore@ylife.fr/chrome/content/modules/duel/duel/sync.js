@@ -16,37 +16,20 @@
  *    (DOM Tree Object) msg - Message sous forme de tree DOM
  */
 Duel.prototype.sync = function (msg) {
-  var result = {"x": 0, "y": 0};
-  // Field Zone
-  if (Zone == "F") { result = {"x": parseInt(this.dimensions.zone_F.x), "y": parseInt(this.dimensions.zone_F.y)}; }
-  // Monster Zone 1
-  if (Zone == "M1") { result = {"x": parseInt(this.dimensions.zone_M1.x), "y": parseInt(this.dimensions.zone_M1.y)}; }
-  // Monster Zone 2
-  if (Zone == "M2") { result = {"x": parseInt(this.dimensions.zone_M2.x), "y": parseInt(this.dimensions.zone_M2.y)}; }
-  // Monster Zone 3
-  if (Zone == "M3") { result = {"x": parseInt(this.dimensions.zone_M3.x), "y": parseInt(this.dimensions.zone_M3.y)}; }
-  // Monster Zone 4
-  if (Zone == "M4") { result = {"x": parseInt(this.dimensions.zone_M4.x), "y": parseInt(this.dimensions.zone_M4.y)}; }
-  // Monster Zone 5
-  if (Zone == "M5") { result = {"x": parseInt(this.dimensions.zone_M5.x), "y": parseInt(this.dimensions.zone_M5.y)}; }
-  // Graveyard Zone
-  if (Zone == "G") { result = {"x": parseInt(this.dimensions.zone_G.x), "y": parseInt(this.dimensions.zone_G.y)}; }
-  // Extra Zone
-  if (Zone == "E") { result = {"x": parseInt(this.dimensions.zone_E.x), "y": parseInt(this.dimensions.zone_E.y)}; }
-  // Spell/Trap Zone 1
-  if (Zone == "ST1") { result = {"x": parseInt(this.dimensions.zone_ST1.x), "y": parseInt(this.dimensions.zone_ST1.y)}; }
-  // Spell/Trap Zone 2
-  if (Zone == "ST2") { result = {"x": parseInt(this.dimensions.zone_ST2.x), "y": parseInt(this.dimensions.zone_ST2.y)}; }
-  // Spell/Trap Zone 3
-  if (Zone == "ST3") { result = {"x": parseInt(this.dimensions.zone_ST3.x), "y": parseInt(this.dimensions.zone_ST3.y)}; }
-  // Spell/Trap Zone 4
-  if (Zone == "ST4") { result = {"x": parseInt(this.dimensions.zone_ST4.x), "y": parseInt(this.dimensions.zone_ST4.y)}; }
-  // Spell/Trap Zone 5
-  if (Zone == "ST5") { result = {"x": parseInt(this.dimensions.zone_ST5.x), "y": parseInt(this.dimensions.zone_ST5.y)}; }
-  // Deck Zone
-  if (Zone == "D") { result = {"x": parseInt(this.dimensions.zone_D.x), "y": parseInt(this.dimensions.zone_D.y)}; }
-  
-  return result;
+  var jid = Strophe.getBareJidFromJid(msg.getAttribute('from'));
+  var contact = Contacts.get(jid);
+  var elems = msg.getElementsByTagName('body');
+  if (elems.length > 0) {
+    var body = elems[0];
+    var tab = Tabs.getChat(contact.jid);
+    var nickname = contact.nickname;
+    // Si l'onglet vient d'être créé, il faut un laps de temps pour que l'interface soit finie sinon bug...
+    if (tab.isNew) { setTimeout("Tabs.tabs[" + tab.id + "].content.addMessage('" + nickname + "','" + Strophe.getText(body) + "','in')",1000); }
+    // Sinon, on ajoute le message immédiatement
+    else { Tabs.tabs[tab.id].content.addMessage(nickname,Strophe.getText(body),"in"); }
+    Notifs.add({"type": "jabber_chat_message", "contact": nickname + " :", "top": false, "timer": true, "time": 2000});
+    if ($("tabs").selectedItem != $("tab_" + tab.id)) { Tabs.tabs[tab.id].newMessage(true); }
+  }
 }
 
 

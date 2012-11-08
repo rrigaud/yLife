@@ -38,6 +38,8 @@
 
 <!ENTITY jabber.chat.message "Message reçu">
 
+<!ENTITY jabber.duel.message "Message / Action de Duel reçu">
+
 <!ENTITY jabber.muc.message "Message reçu du salon">
 <!ENTITY jabber.muc.presence "Présence reçu du salon">
 <!ENTITY jabber.muc.presence.error.top "Erreur de connexion au salon">

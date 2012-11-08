@@ -37,9 +37,17 @@ function Duel (did) {
   this.dimensions = null;
   this.template = null;
   /***************************************************************************************************************
+   *  Array : logs
+   *
+   *  (log Object) - Tableau de logs (contenant l'historique de chaque action)
+   * 
+   *  Exemple : logs[0].role = "challenger";
+   */
+  this.logs = [];
+  /***************************************************************************************************************
    *  Array : players
    *
-   *  (JID String) - Tableau de joueurs et d'invités (contenant leur role dans le duel, leur avatar,...)
+   *  (JID String) - Tableau d'objets "player" (contenant leur role dans le duel, leur avatar,...)
    * 
    *  Exemple : players["challenger@jabber.com"].role = "challenger";
    */

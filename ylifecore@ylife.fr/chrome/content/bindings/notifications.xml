@@ -426,6 +426,25 @@
       </xul:hbox>
     </content>
   </binding>
+  
+  
+  <!-- JABBER > DUEL > MESSAGE -->
+  <binding id="jabber_duel_message">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/duel.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label xbl:inherits="value=contact" />
+        <xul:label value="&jabber.duel.message;" />
+      </xul:hbox>
+    </content>
+  </binding>
 
 
 

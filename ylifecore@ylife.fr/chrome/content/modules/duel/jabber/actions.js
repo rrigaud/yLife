@@ -118,7 +118,7 @@ Jabber.duelWith = function (jid,role) {
     // Maintenant que les terrains sont définis, on affiche les Avatars/nicknames de l'onglet et des 2 terrains
     Tabs.tabs[tab.id].content.displayPlayers();
     // Demande de duel au "champion"
-    Tabs.tabs[tab.id].content.queryDuel();
+    Tabs.tabs[tab.id].content.queryDuel(contact.jid);
   }
 }
 

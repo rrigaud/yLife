@@ -38,6 +38,8 @@
 
 <!ENTITY jabber.chat.message "Message received">
 
+<!ENTITY jabber.duel.message "Duel Message / Action received">
+
 <!ENTITY jabber.muc.message "Message received from room">
 <!ENTITY jabber.muc.presence "Presence received from room">
 <!ENTITY jabber.muc.presence.error.top "A connection error has occured">

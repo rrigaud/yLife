@@ -253,13 +253,12 @@ Jabber.onDuel = function (msg) {
   if (elems.length > 0) {
     var body = elems[0];
     var tab = Tabs.getDuel(did);
-    // TODO : trier les messages arrivant, surtout au début du duel puis SYNC
     var nickname = contact.nickname;
     // Si l'onglet vient d'être créé, il faut un laps de temps pour que l'interface soit finie sinon bug...
-    if (tab.isNew) { setTimeout("Tabs.tabs[" + tab.id + "].content.addMessage('" + nickname + "','" + Strophe.getText(body) + "','in')",1000); }
-    // Sinon, on ajoute le message immédiatement
-    else { Tabs.tabs[tab.id].content.addMessage(nickname,Strophe.getText(body),"in"); }
-    Notifs.add({"type": "jabber_chat_message", "contact": nickname + " :", "top": false, "timer": true, "time": 2000});
+    if (tab.isNew) { setTimeout("Tabs.tabs[" + tab.id + "].content.sync(" + msg + ")",1000); }
+    // Sinon, on synchronise immédiatement
+    else { Tabs.tabs[tab.id].content.sync(msg); }
+    Notifs.add({"type": "jabber_duel_message", "contact": nickname + " :", "top": false, "timer": true, "time": 2000});
     if ($("tabs").selectedItem != $("tab_" + tab.id)) { Tabs.tabs[tab.id].newMessage(true); }
   }
   return true;
