@@ -246,21 +246,50 @@ Jabber.onMessage = function (msg) {
  *    (DOM Tree Object) msg - Message sous forme de tree DOM
  */
 Jabber.onDuel = function (msg) {
+  alert("Jabber.onDuel : OK !");
   var jid = Strophe.getBareJidFromJid(msg.getAttribute('from'));
-  var did = msg.getAttribute('did');
+  
+  
+  // Ne passe pas par Bosh... Je dois parser le message pour y avoir accès
+  //var did = msg.getAttribute('did');
+  //var datastring = msg.getAttribute('data');
+  //var msg_type = (msg.getAttribute('class') == "action") ? "neutral" : "in" ;
+  
+  
+  
+  
   var contact = Contacts.get(jid);
+  var nickname = contact.nickname;
+  // Par défaut, il n'y pas de datastring
+  var datastring = "";
   var elems = msg.getElementsByTagName('body');
   if (elems.length > 0) {
     var body = elems[0];
-    var tab = Tabs.getDuel(did);
-    var nickname = contact.nickname;
-    // Si l'onglet vient d'être créé, il faut un laps de temps pour que l'interface soit finie sinon bug...
-    if (tab.isNew) { setTimeout("Tabs.tabs[" + tab.id + "].content.sync(" + msg + ")",1000); }
-    // Sinon, on synchronise immédiatement
-    else { Tabs.tabs[tab.id].content.sync(msg); }
-    Notifs.add({"type": "jabber_duel_message", "contact": nickname + " :", "top": false, "timer": true, "time": 2000});
-    if ($("tabs").selectedItem != $("tab_" + tab.id)) { Tabs.tabs[tab.id].newMessage(true); }
+    datastring = Strophe.getText(body);
   }
+  alert(datastring);
+  var temp = datastring.split('#msg#');
+  var message = "";
+  // Si il y a bien des données (pas un simple message)
+  if (temp.length == 2) {
+    message = temp[1];
+    var temp1 = temp[0].split('#type#');
+    var did = temp1[0];
+    alert("DID : " + did);
+  }
+  else { message = datastring; }
+  
+  var msg_type = "neutral";
+  
+  var tab = Tabs.getDuel(did);
+  alert(Tabs.tabs[tab.id].content.did);
+  Tabs.tabs[tab.id].content.sync(jid,datastring,message,msg_type);
+  // Si l'onglet vient d'être créé, il faut un laps de temps pour que l'interface soit finie sinon bug...
+  //if (tab.isNew) { setTimeout("Tabs.tabs[" + tab.id + "].content.sync(" + jid + ", " + datastring + ", coucou, " + msg_type + ")",1000); }
+  // Sinon, on synchronise immédiatement
+  //else { Tabs.tabs[tab.id].content.sync(jid,datastring,message,msg_type); }
+  Notifs.add({"type": "jabber_duel_message", "contact": nickname + " :", "top": false, "timer": true, "time": 2000});
+  if ($("tabs").selectedItem != $("tab_" + tab.id)) { Tabs.tabs[tab.id].newMessage(true); }
   return true;
 }
 

@@ -94,7 +94,7 @@ var Jabber = {
     Strophe.addNamespace("VCARD","vcard-temp");
     Strophe.addNamespace("VCARD_UPDATE","vcard-temp:x:update");
     Strophe.addNamespace("MUC_USER","http://jabber.org/protocol/muc#user");
-    Strophe.addNamespace("YLIFE","http://ylife.sourceforge.net");
+    Strophe.addNamespace("YLIFE","https://github.com/rrigaud/yLife");
     Strophe.addNamespace("XHTML","http://www.w3.org/1999/xhtml");
   },
   /***************************************************************************************************************
@@ -112,7 +112,8 @@ var Jabber = {
     Jabber.connection.addHandler(Jabber.onUnsubscribed, null, "presence", "unsubscribed", null,  null);
     Jabber.connection.addHandler(Jabber.onUnsubscribe, null, "presence", "unsubscribe", null,  null);
     Jabber.connection.addHandler(Jabber.onMessage, null, "message", "chat", null,  null); 
-    Jabber.connection.addHandler(Jabber.onDuel, Strophe.NS.YLIFE, "message", "duel", null,  null); 
+    // Utiliser le Namespace de yLife ne passe pas par le serveur BOSH apparemment)
+    Jabber.connection.addHandler(Jabber.onDuel, null, "message", "duel", null,  null); 
     Jabber.connection.addHandler(Jabber.onMucMessage, null, "message", "groupchat", null,  null); 
     Jabber.connection.addHandler(Jabber.onMucPresence, Strophe.NS.MUC_USER, "presence", null, null,  null);
     Jabber.connection.addHandler(Jabber.onMucPresenceError, Strophe.NS.MUC, "presence", "error", null,  null);

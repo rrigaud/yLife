@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>Chat</title>
+    <title>Duel</title>
     <style>
       #chat-area {
         overflow-y: auto;
@@ -12,6 +12,15 @@
       
       #messagetoclone {
         display: none;
+      }
+      
+      a {
+        color: red;
+        cursor: pointer;
+      }
+      
+      a:hover {
+        color: green;
       }
 
       .date {
@@ -52,7 +61,7 @@
       <table width="100%" border="0" cellspacing="0" id="messages">
         <tr id="messagetoclone" class="message_{type}">
           <td class="nickname"><span class="date">[{h}:{m}:{s}]</span><![CDATA[{nickname}]]></td>
-          <td class="message"><![CDATA[ {message} ]]></td>
+          <td class="message">{message}</td>
         </tr>
       </table>
     </div>

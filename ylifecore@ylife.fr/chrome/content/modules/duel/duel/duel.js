@@ -19,9 +19,9 @@ function Duel (did) {
   /***************************************************************************************************************
    *  String : did
    *
-   *  Duel ID créée par le challenger de la forme : yyyymmdd-hhmmss-jid_challenger-jid_champion
+   *  Duel ID créée par le challenger de la forme : yyyymmddhhmmss
    */
-  this.did = null;
+  this.did = did;
   /***************************************************************************************************************
    *  String : tid
    *
@@ -108,19 +108,25 @@ function Duel (did) {
   this.init = function (jid_challenger,jid_champion) {
     // Récupération de la date
     var date =  new Date();
-    var date_year = date.getFullYear();
+    var date_year = date.getFullYear() + "";
     var date_month = parseInt(date.getMonth())+1;
     if (date_month < 10) { date_month = "0" + date_month; }
+    date_month +=  "";
     var date_day = date.getDate();
     if (date_day < 10) { date_day = "0" + date_day; }
+    date_day +=  "";
     var date_hour = date.getHours();
     if (date_hour < 10) { date_hour = "0" + date_hour; }
+    date_hour +=  "";
     var date_minute = date.getMinutes();
     if (date_minute < 10) { date_minute = "0" + date_minute; }
+    date_minute +=  "";
     var date_second = date.getSeconds();
     if (date_second < 10) { date_second = "0" + date_second; }
+    date_second +=  "";
     // Génération du Duel ID
-    this.did = date_year + date_month + date_day + "-" + date_hour + date_minute + date_second + "-" + jid_challenger + "-" + jid_champion;
+    //this.did = date_year + date_month + date_day + "-" + date_hour + date_minute + date_second + "-" + jid_challenger + "-" + jid_champion;
+    this.did = date_year + date_month + date_day + date_hour + date_minute + date_second;
     // Ajout des joueurs au duel
     this.players = [];
     var challenger = new Player(this.did,jid_challenger,"challenger");
@@ -169,23 +175,22 @@ function Duel (did) {
    *  Ajoute un message à la conversation (entrant ou sortant)
    * 
    *  Parameters :
+   *    (String) nickname - Pseudo à afficher
    *    (String) message - Texte à afficher
-   *    (String) direction - in/out
+   *    (String) type - in/out
    */
-  this.addMessage = function (msg,direction) {
+  this.addMessage = function (nickname,msg,type) {
     // Récupération de la date
     var date =  new Date();
     var h = (date.getHours() < 10) ? "0" + date.getHours() : date.getHours();
     var m = (date.getMinutes() < 10) ? "0" + date.getMinutes() : date.getMinutes();
     var s = (date.getSeconds() < 10) ? "0" + date.getSeconds() : date.getSeconds();
-    // Récupération du Nom : Celui de l'envoyeur : Mon correspondant ou moi
-    var nickname = (direction == "in") ? Contacts.contacts[this.jid].nickname : Jabber.vcard.nickname;
     // Récupération du Message
-    var message_node = $("duel_iframe_" + this.jid).contentWindow.document.getElementById("messagetoclone").cloneNode(true);
+    var message_node = $("duel_iframe_" + this.tid).contentWindow.document.getElementById("messagetoclone").cloneNode(true);
     message_node.removeAttribute("id"); 
     var serializer = new XMLSerializer();
     var message = serializer.serializeToString(message_node);
-    message = message.replace("{direction}",direction);
+    message = message.replace("{type}",type);
     message = message.replace("{nickname}",nickname);
     message = message.replace("{message}",msg);
     message = message.replace("{h}",h);
@@ -194,8 +199,8 @@ function Duel (did) {
     var parser = new DOMParser ();
     var message_dom = parser.parseFromString (message, "text/xml").documentElement;
     // Ajout du message
-    $("duel_iframe_" + this.jid).contentWindow.document.getElementById("messages").appendChild(message_dom);
-    $("duel_iframe_" + this.jid).contentWindow.location = this.template + "#bottom";
+    $("duel_iframe_" + this.tid).contentWindow.document.getElementById("messages").appendChild(message_dom);
+    $("duel_iframe_" + this.tid).contentWindow.location = this.template + "#bottom";
   };
   /***************************************************************************************************************
    *  Function : sendMessage
@@ -204,13 +209,19 @@ function Duel (did) {
    */
   this.sendMessage = function () {
     // On récupère le message dans le bon textbox
-    var message = $("duel_message_out_" + jid).value;
-    // On l'envoie
-    var msg = $msg({to: this.jid, from: Jabber.account.jid, type: "duel"}).c("body").t(message);
-    Jabber.send(msg.tree());
-    this.addMessage(message,"out");
-    $("duel_message_out_" + jid).value = "";
-    $("duel_message_out_" + jid).focus();
+    var message = $("duel_message_out_" + this.tid).value;
+    var msg = "";
+    for (jid in this.players) {
+      if (jid != Jabber.account.barejid) {
+        // On envoie un message à tous les joueurs (sauf moi, évidemment)
+        msg = $msg({to: jid, from: Jabber.account.jid, type: "duel"}).c("body").t(message);
+        Jabber.send(msg.tree());
+      }
+    }
+    // On affiche le message sortant dans notre interface
+    this.addMessage(Jabber.vcard.nickname,message,"out");
+    $("duel_message_out_" + this.tid).value = "";
+    $("duel_message_out_" + this.tid).focus();
   };
   /***************************************************************************************************************
    *  Function : onKeydown

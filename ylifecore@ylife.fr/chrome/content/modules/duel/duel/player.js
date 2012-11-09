@@ -91,11 +91,11 @@ function Player (did,jid,role) {
   /***************************************************************************************************************
    *  Function : refreshAvatar
    *
-   *  Met à jour l'affichage de l'avatar dans la liste des occupants
+   *  Met à jour l'affichage de l'avatar du joueur/spectateur
    */
   this.refreshAvatar = function () {
-    $("occupant_vbox_" + this.oid).setAttribute('avatar_img', this.avatar);
-    $("occupant_vbox_" + this.oid).setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/" + this.show + ".png");
+    //$("occupant_vbox_" + this.oid).setAttribute('avatar_img', this.avatar);
+    //$("occupant_vbox_" + this.oid).setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/" + this.show + ".png");
   };
   /***************************************************************************************************************
    *  Function : viewProfile

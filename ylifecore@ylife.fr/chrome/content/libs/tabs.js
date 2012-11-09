@@ -968,17 +968,17 @@ var Tabs = {
    *    Retourne le Tab d'un duel (en crée un si nécessaire et retourne true)
    * 
    *  Parameters:
-   *    (String) jid - Bare JID
+   *    (DID String) did - Duel ID du duel à retourner
    */
-  getDuel : function (jid) {
+  getDuel : function (did) {
     var tab = null;
     for (id in Tabs.tabs) {
       if (Tabs.tabs[id].type == "duel") {
-        if (Tabs.tabs[id].content.jid == jid.toLowerCase()) { tab = { id : id, isNew : false }; }
+        if (Tabs.tabs[id].content.did == did) { tab = { id : id, isNew : false }; }
       }
     }
     if (!tab) { 
-      var a_tab = Tabs.newDuel(jid.toLowerCase());
+      var a_tab = Tabs.newDuel(did);
       tab = { id : a_tab.id, isNew : true };
     }
     return tab;

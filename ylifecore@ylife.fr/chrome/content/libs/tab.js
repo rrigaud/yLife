@@ -50,6 +50,7 @@ function Tab (id,type,content) {
    *  Supprime un onglet
    */
   this.del = function () {
+    // TODO : Problème avec le type Duel : uniformiser les ID des avatar/nicknames pour MAJ et DEL, ça bug actuellement
     if ((this.type == "chat")||(this.type == "duel")) {
       // Supprime les avatars_id et nicknames_id
       Contacts.contacts[this.content.jid].avatars_id = arrayDel(Contacts.contacts[this.content.jid].avatars_id,"tab_avatar_" + this.id);

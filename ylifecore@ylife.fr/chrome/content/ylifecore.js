@@ -188,5 +188,12 @@ function initHome()
   }
 }
 
+function test(did,text)
+{
+  alert(did);
+  var tab = Tabs.getDuel(did);
+  alert(Tabs.tabs[tab.id].content.did);
+  Tabs.tabs[tab.id].content.synctest(text);
+}
 
 

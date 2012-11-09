@@ -11,25 +11,30 @@
  *  Function : sync
  * 
  *  A partir d'une action adverse reçue par Jabber, on synchronise l'état du Duel (MAJ des tableaux,...)
+ *  Rem : Obligé d'avoir des String en paramètres, car pour éviter un Bug, on doit mettre un SetTimeOut sur sync() parfois...
+ *        Si possible, voir si on peut juste passer le (DOM Object) msg reçu à cette fonction en modifiant "handlers.js"
  * 
  *  Parameters:
- *    (DOM Tree Object) msg - Message sous forme de tree DOM
+ *    (String) jid - JID de l'éxpéditeur
+ *    (String) datastring - Données du duel sous forme d'une chaine de caractère codée/concaténée
+ *    (String) msg - Message sous forme de tree DOM
+ *    (String) msg_type - Type de message (in/neutral pour la mise en forme du texte)
  */
-Duel.prototype.sync = function (msg) {
-  var jid = Strophe.getBareJidFromJid(msg.getAttribute('from'));
+Duel.prototype.sync = function (jid,datastring,msg,msg_type) {
+  alert("SYNC !");
   var contact = Contacts.get(jid);
-  var elems = msg.getElementsByTagName('body');
-  if (elems.length > 0) {
-    var body = elems[0];
-    var tab = Tabs.getChat(contact.jid);
-    var nickname = contact.nickname;
-    // Si l'onglet vient d'être créé, il faut un laps de temps pour que l'interface soit finie sinon bug...
-    if (tab.isNew) { setTimeout("Tabs.tabs[" + tab.id + "].content.addMessage('" + nickname + "','" + Strophe.getText(body) + "','in')",1000); }
-    // Sinon, on ajoute le message immédiatement
-    else { Tabs.tabs[tab.id].content.addMessage(nickname,Strophe.getText(body),"in"); }
-    Notifs.add({"type": "jabber_chat_message", "contact": nickname + " :", "top": false, "timer": true, "time": 2000});
-    if ($("tabs").selectedItem != $("tab_" + tab.id)) { Tabs.tabs[tab.id].newMessage(true); }
-  }
+  // On synchronise le Duel à l'aide des nouvelles données de "datastring"
+  
+  
+  
+  // S'il y a un message à afficher, on l'affiche
+  if (msg != "") { this.addMessage(contact.nickname,msg,msg_type); }
 }
 
 
+
+
+
+Duel.prototype.synctest = function (text) {
+  alert("SYNCTEST Yeah : " + text + " / DID : " + this.did);
+}
