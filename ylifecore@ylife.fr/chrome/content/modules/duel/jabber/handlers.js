@@ -246,49 +246,81 @@ Jabber.onMessage = function (msg) {
  *    (DOM Tree Object) msg - Message sous forme de tree DOM
  */
 Jabber.onDuel = function (msg) {
-  alert("Jabber.onDuel : OK !");
   var jid = Strophe.getBareJidFromJid(msg.getAttribute('from'));
   
-  
-  // Ne passe pas par Bosh... Je dois parser le message pour y avoir accès
-  //var did = msg.getAttribute('did');
-  //var datastring = msg.getAttribute('data');
-  //var msg_type = (msg.getAttribute('class') == "action") ? "neutral" : "in" ;
-  
-  
-  
-  
   var contact = Contacts.get(jid);
-  var nickname = contact.nickname;
-  // Par défaut, il n'y pas de datastring
-  var datastring = "";
+  // Par défaut, il n'y pas de msg_encoded
+  var msg_encoded = "";
+  // Récupération du msg_encoded
   var elems = msg.getElementsByTagName('body');
   if (elems.length > 0) {
     var body = elems[0];
-    datastring = Strophe.getText(body);
+    msg_encoded = Strophe.getText(body);
   }
-  alert(datastring);
-  var temp = datastring.split('#msg#');
-  var message = "";
-  // Si il y a bien des données (pas un simple message)
-  if (temp.length == 2) {
-    message = temp[1];
-    var temp1 = temp[0].split('#type#');
-    var did = temp1[0];
-    alert("DID : " + did);
-  }
-  else { message = datastring; }
+  alert(msg_encoded);
   
+  var data = msg_encoded.split('##separator_message##');
+  // On décode le message, morceau par morceau
+  var message = data[0];
+  var did = data[1];
+  var type = data[2];
   var msg_type = "neutral";
+  var duel_encoded = "";
+  var action = "";
   
+  // Récupération ou création d'un nouvel onglet
   var tab = Tabs.getDuel(did);
-  alert(Tabs.tabs[tab.id].content.did);
-  Tabs.tabs[tab.id].content.sync(jid,datastring,message,msg_type);
-  // Si l'onglet vient d'être créé, il faut un laps de temps pour que l'interface soit finie sinon bug...
-  //if (tab.isNew) { setTimeout("Tabs.tabs[" + tab.id + "].content.sync(" + jid + ", " + datastring + ", coucou, " + msg_type + ")",1000); }
-  // Sinon, on synchronise immédiatement
-  //else { Tabs.tabs[tab.id].content.sync(jid,datastring,message,msg_type); }
-  Notifs.add({"type": "jabber_duel_message", "contact": nickname + " :", "top": false, "timer": true, "time": 2000});
+  // Si l'onglet vient d'être créé, on doit proposer de Commencer/Continuer le Duel
+  if (tab.isNew) {
+    // Soit c'est un nouveau duel proposé
+    if (type == "queryduel") {
+      alert("Nouveau Duel");
+      // Affichage d'un bouton permettant d'initialiser et de synchroniser le duel
+      
+    }
+    // Soit, c'est une reprise de Duel qui a peut-être buggué ou un onglet fermé par inadvertance
+    else {
+      alert("Reprise Duel");
+      // Affichage d'un bouton permettant de resynchroniser le duel
+      
+    }
+  }
+  
+  // Sinon, on affiche (et on synchronise éventuellement)
+  else {
+    // Si c'est un simple message
+    if (type == "duelmessage") {
+      // On met des précautions en désactivant les symboles gênant comme < et >
+      message = "<![CDATA[" + message + "]]>";
+      // C'est un message entrant, donc on le style en conséquence
+      msg_type = "in";
+    }
+    // Sinon, il y a des doonnées de synchronisation
+    else {
+      duel_encoded = data[3];
+      // Donc on synchronise
+      Tabs.tabs[tab.id].content.sync(duel_encoded);
+      // Si on propose une action à tout le monde (player et guest), on affiche forcément l'action
+      if (type == "duelaction") {
+        action = "<br />" + data[4];
+      }
+      // Si on propose une action uniquement au player adverse
+      if (type == "duelactionplayer") {
+        // Si je suis justement ce player (champion ou challenger, forcément), on affiche l'action
+        //if ((Tabs.tabs[tab.id].content.players[Jabber.account.barejid].role == "champion")
+        //      ||(Tabs.tabs[tab.id].content.players[Jabber.account.barejid].role == "challenger")) {
+          action = "<br />" + data[4];
+        //}
+      }
+    }
+    // Le message (+ éventuelle action) à afficher
+    message += action;
+    // On affiche le message dans la zone de conversation
+    Tabs.tabs[tab.id].content.addMessage(contact.nickname,message,msg_type);
+    
+  }
+  // On notifie la réception d'un message ou d'une action
+  Notifs.add({"type": "jabber_duel_message", "contact": contact.nickname + " :", "top": false, "timer": true, "time": 2000});
   if ($("tabs").selectedItem != $("tab_" + tab.id)) { Tabs.tabs[tab.id].newMessage(true); }
   return true;
 }
