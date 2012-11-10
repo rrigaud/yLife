@@ -257,11 +257,10 @@ Jabber.onDuel = function (msg) {
     var body = elems[0];
     msg_encoded = Strophe.getText(body);
   }
-  alert(msg_encoded);
   
   var data = msg_encoded.split('##separator_message##');
   // On décode le message, morceau par morceau
-  var message = data[0];
+  var message = "<![CDATA[" + data[0] + "]]>";
   var did = data[1];
   var type = data[2];
   var msg_type = "neutral";
@@ -274,9 +273,8 @@ Jabber.onDuel = function (msg) {
   if (tab.isNew) {
     // Soit c'est un nouveau duel proposé
     if (type == "queryduel") {
-      alert("Nouveau Duel");
-      // Affichage d'un bouton permettant d'initialiser et de synchroniser le duel
-      
+      // Affichage d'une notification de demande de duel et d'un bouton permettant d'initialiser et de synchroniser le duel
+      Notifs.add({"type": "jabber_duel_new", "contact": contact.nickname + " :", "top": true, "timer": false, "time": 2000, "did": did, "jid": jid});
     }
     // Soit, c'est une reprise de Duel qui a peut-être buggué ou un onglet fermé par inadvertance
     else {
@@ -288,13 +286,8 @@ Jabber.onDuel = function (msg) {
   
   // Sinon, on affiche (et on synchronise éventuellement)
   else {
-    // Si c'est un simple message
-    if (type == "duelmessage") {
-      // On met des précautions en désactivant les symboles gênant comme < et >
-      message = "<![CDATA[" + message + "]]>";
-      // C'est un message entrant, donc on le style en conséquence
-      msg_type = "in";
-    }
+    // Si c'est un simple message d'un utilisateur
+    if (type == "simplemessage") { msg_type = "in"; }
     // Sinon, il y a des doonnées de synchronisation
     else {
       duel_encoded = data[3];

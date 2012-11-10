@@ -100,6 +100,15 @@ vbox.jabber_contact_vcard {
 vbox.jabber_chat_message {
   -moz-binding: url("chrome://ylifecore/content/bindings/notifications.xml#jabber_chat_message");
 }
+vbox.jabber_duel_new_top {
+  -moz-binding: url("chrome://ylifecore/content/bindings/notifications.xml#jabber_duel_new_top");
+}
+vbox.jabber_duel_new {
+  -moz-binding: url("chrome://ylifecore/content/bindings/notifications.xml#jabber_duel_new");
+}
+vbox.jabber_duel_message {
+  -moz-binding: url("chrome://ylifecore/content/bindings/notifications.xml#jabber_duel_message");
+}
 vbox.jabber_muc_message {
   -moz-binding: url("chrome://ylifecore/content/bindings/notifications.xml#jabber_muc_message");
 }

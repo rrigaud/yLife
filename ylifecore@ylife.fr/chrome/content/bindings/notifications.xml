@@ -20,17 +20,21 @@
           <xul:label value="&addons;" class="title" />
           <xul:label value="&addons.update.available.top;" />
         </xul:vbox>
-        <xul:button oncommand="tabs.newAddons();">
-          <xul:image src="chrome://ylifecore/skin/icons/buttons/update.png" />
-          <xul:spacer flex="1" />
-          <xul:label value="&addons.update;" />
-        </xul:button>
         <xul:vbox>
           <xul:spacer flex="1" />
-          <xul:button xbl:inherits="notif_id=id" oncommand="notifs.del(this.getAttribute('notifications_top','notif_id'));">
+          <xul:button xbl:inherits="notif_id=id" oncommand="Notifs.del('notifications_top',this.getAttribute('notif_id'));">
             <xul:image src="chrome://ylifecore/skin/icons/buttons/close.png" />
             <xul:spacer flex="1" />
             <xul:label value="&close;" />
+          </xul:button>
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:button oncommand="tabs.newAddons();">
+            <xul:image src="chrome://ylifecore/skin/icons/buttons/update.png" />
+            <xul:spacer flex="1" />
+            <xul:label value="&addons.update;" />
           </xul:button>
           <xul:spacer flex="1" />
         </xul:vbox>
@@ -423,6 +427,62 @@
         </xul:vbox>
         <xul:label xbl:inherits="value=contact" />
         <xul:label value="&jabber.chat.message;" />
+      </xul:hbox>
+    </content>
+  </binding>
+  
+  
+  
+  
+  <!-- JABBER > DUEL > DEMANDE -->
+  <binding id="jabber_duel_new_top">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_box">
+        <xul:image src="chrome://ylifecore/skin/notifications/question.png" />
+        <xul:vbox flex="1">
+          <xul:hbox>
+            <xul:label xbl:inherits="value=contact" class="title" />
+            <xul:label value="&jabber.duel;" class="title" />
+          </xul:hbox>
+          <xul:label value="&jabber.duel.query.top;" />
+        </xul:vbox>
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:button xbl:inherits="notif_id=id,did=did,jid=jid" oncommand="Notifs.rejectDuel('notifications_top',this.getAttribute('notif_id'),this.getAttribute('did'),this.getAttribute('jid'));">
+            <xul:image src="chrome://ylifecore/skin/icons/buttons/close.png" />
+            <xul:spacer flex="1" />
+            <xul:label value="&jabber.duel.query.reject;" />
+          </xul:button>
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:button xbl:inherits="notif_id=id,did=did,jid=jid" oncommand="Notifs.acceptDuel('notifications_top',this.getAttribute('notif_id'),this.getAttribute('did'),this.getAttribute('jid'));">
+            <xul:image src="chrome://ylifecore/skin/icons/buttons/ok.png" />
+            <xul:spacer flex="1" />
+            <xul:label value="&jabber.duel.query.accept;" />
+          </xul:button>
+          <xul:spacer flex="1" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+  </binding>
+  <binding id="jabber_duel_new">
+    <resources>
+      <stylesheet src="chrome://ylifecore/skin/notifications.css"/>
+    </resources>
+    <content>
+      <xul:hbox class="notification_hbox">
+        <xul:vbox>
+          <xul:spacer flex="1" />
+          <xul:image src="chrome://ylifecore/skin/icons/buttons/duel.png" />
+          <xul:spacer flex="1" />
+        </xul:vbox>
+        <xul:label xbl:inherits="value=contact" />
+        <xul:label value="&jabber.duel.query;" />
       </xul:hbox>
     </content>
   </binding>

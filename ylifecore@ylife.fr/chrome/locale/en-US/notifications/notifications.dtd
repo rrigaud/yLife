@@ -38,6 +38,11 @@
 
 <!ENTITY jabber.chat.message "Message received">
 
+<!ENTITY jabber.duel "Online Duel">
+<!ENTITY jabber.duel.query.top "Duel Query received">
+<!ENTITY jabber.duel.query.accept "Accept">
+<!ENTITY jabber.duel.query.reject "Reject">
+<!ENTITY jabber.duel.query "Duel Query received">
 <!ENTITY jabber.duel.message "Duel Message / Action received">
 
 <!ENTITY jabber.muc.message "Message received from room">

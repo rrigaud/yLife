@@ -209,19 +209,67 @@ function Duel (did) {
    */
   this.sendMessage = function () {
     // On récupère le message dans le bon textbox
-    var message = $("duel_message_out_" + this.tid).value;
+    var message_to_display = $("duel_message_out_" + this.tid).value;
+    // Message à envoyer
+    var message_to_send = message_to_display  + "##separator_message##"
+                          + this.did + "##separator_message##"
+                          + "simplemessage";
     var msg = "";
     for (jid in this.players) {
       if (jid != Jabber.account.barejid) {
         // On envoie un message à tous les joueurs (sauf moi, évidemment)
-        msg = $msg({to: jid, from: Jabber.account.jid, type: "duel"}).c("body").t(message);
+        msg = $msg({to: jid, from: Jabber.account.jid, type: "duel"})
+                .c("html",{xmlns: "http://jabber.org/protocol/xhtml-im"})
+                .c("body",{xmlns: "http://www.w3.org/1999/xhtml"})
+                .t(message_to_send);
         Jabber.send(msg.tree());
       }
     }
     // On affiche le message sortant dans notre interface
-    this.addMessage(Jabber.vcard.nickname,message,"out");
+    this.addMessage(Jabber.vcard.nickname,message_to_display,"out");
     $("duel_message_out_" + this.tid).value = "";
     $("duel_message_out_" + this.tid).focus();
+  };
+  /***************************************************************************************************************
+   *  Function : sendAction
+   *
+   *  Envoie l'action exécutée à l'adversaire
+   * 
+   *  Parameters :
+   *    (String) message_to_display - Message à afficher
+   *    (String) type - Type d'action
+   *    (String) actions - Actions possibles (facultatives)
+   */
+  this.sendAction = function (message_to_display,type,actions) {
+    // Encodage de l'état du duel
+    var duel_encoded = this.getCode();
+    // Message à envoyer
+    var message_to_send = message_to_display  + "##separator_message##"
+                          + this.did + "##separator_message##"
+                          + type + "##separator_message##"
+                          + duel_encoded + "##separator_message##"
+                          + actions;
+    var msg = "";
+    for (jid in this.players) {
+      if (jid != Jabber.account.barejid) {
+        // On envoie un message à tous les joueurs (sauf moi, évidemment)
+        msg = $msg({to: jid, from: Jabber.account.jid, type: "duel"})
+                .c("html",{xmlns: "http://jabber.org/protocol/xhtml-im"})
+                .c("body",{xmlns: "http://www.w3.org/1999/xhtml"})
+                .t(message_to_send);
+        Jabber.send(msg.tree());
+      }
+    }
+    // On affiche le message sortant dans notre interface
+    this.addMessage(Jabber.vcard.nickname,message_to_display,"out");
+  };
+  /***************************************************************************************************************
+   *  Function : getCode
+   *
+   *  Retourne toutes les variables du duel à synchroniser sous la forme d'un code (chaine de caractère)
+   */
+  this.getCode = function () {
+    return "duelencoded";
   };
   /***************************************************************************************************************
    *  Function : onKeydown
