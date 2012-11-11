@@ -31,23 +31,30 @@ function Player (did,jid,role) {
    *    guest > Je suis un spectateur et ne voit que le terrain de jeu
    */
   this.role = role;
-  this.nickname = (this.jid == Jabber.account.barejid) ? Jabber.vcard.nickname : Strophe.getNodeFromJid(this.jid);
-  this.avatar = (this.jid == Jabber.account.barejid) ? Jabber.vcard.avatar : Jabber.avatar_default;
+  this.nickname = "";
+  this.avatar = "";
   this.show = "available";
   /***************************************************************************************************************
-   *  Function : getAvatar
+   *  Function : loadNickname
    *
-   *  Retourne l'avatar du joueur/spectateur
+   *  Charge le nickname du joueur/spectateur en mémoire
    */
-  this.getAvatar = function () {
+  this.loadNickname = function () {
+    var result = Strophe.getNodeFromJid(this.jid);
+    if (Contacts.isContact(this.jid)) { result = Contacts.contacts[jid].nickname; }
+    if (this.jid == Jabber.account.barejid) { result = Jabber.vcard.nickname; }
+    this.nickname = result;
+  };
+  /***************************************************************************************************************
+   *  Function : loadAvatar
+   *
+   *  Charge l'avatar du joueur/spectateur en mémoire
+   */
+  this.loadAvatar = function () {
     var result = Jabber.avatar_default;
-    if (Contacts.isContact(this.jid)) {
-      result = Contacts.contacts[jid].avatar;
-    }
-    if (this.jid == Strophe.getBareJidFromJid(Jabber.account.jid)) {
-      result = Jabber.vcard.avatar;
-    }
-    return result;
+    if (Contacts.isContact(this.jid)) { result = Contacts.contacts[jid].avatar; }
+    if (this.jid == Jabber.account.barejid) { result = Jabber.vcard.avatar; }
+    this.avatar = result;
   };
   /***************************************************************************************************************
    *  Function : getVcard

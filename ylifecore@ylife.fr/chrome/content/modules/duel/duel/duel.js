@@ -125,12 +125,15 @@ function Duel (did) {
     if (date_second < 10) { date_second = "0" + date_second; }
     date_second +=  "";
     // Génération du Duel ID
-    //this.did = date_year + date_month + date_day + "-" + date_hour + date_minute + date_second + "-" + jid_challenger + "-" + jid_champion;
-    this.did = date_year + date_month + date_day + date_hour + date_minute + date_second;
+    this.did = date_year + date_month + date_day + "-" + date_hour + date_minute + date_second + "-" + jid_challenger + "-" + jid_champion;
     // Ajout des joueurs au duel
     this.players = [];
     var challenger = new Player(this.did,jid_challenger,"challenger");
+    challenger.loadNickname();
+    challenger.loadAvatar();
     var champion = new Player(this.did,jid_champion,"champion");
+    champion.loadNickname();
+    champion.loadAvatar();
     this.players[jid_challenger] = challenger;
     this.players[jid_champion] = champion;
     // Terrain du bas (me) pour le challenger puisque c'est moi qui lance le duel, celui du haut pour le champion

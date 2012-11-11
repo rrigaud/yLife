@@ -77,7 +77,7 @@ Duel.prototype.displayPlayers = function () {
   
   
   
-  // Récupère les joueurs "me" et "op" sous forme d'objet Contact
+  // Récupère les joueurs "me" et "op" sous forme d'objet Player
   var me = this.getPlayerFromField("me");
   var op = this.getPlayerFromField("op");
   
@@ -85,6 +85,7 @@ Duel.prototype.displayPlayers = function () {
   $("tab_" + this.tid).setAttribute('tooltiptext', op.nickname);
   $("tab_avatar_" + this.tid).setAttribute('avatar_img', op.avatar);
   $("tab_avatar_" + this.tid).setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/" + op.show + ".png");
+  
   // Sidebar : OP
   $("avatar_op_" + this.tid).setAttribute('avatar_img', op.avatar);
   $("avatar_op_" + this.tid).setAttribute('show_img', "chrome://ylifecore/skin/icons/show_borders/" + op.show + ".png");
@@ -98,10 +99,6 @@ Duel.prototype.displayPlayers = function () {
   $("avatar_me_" + this.tid).setAttribute('tooltiptext', me.nickname);
   $("nickname_me_" + this.tid).setAttribute('value', me.nickname);
   $("nickname_me_" + this.tid).setAttribute('tooltiptext', me.nickname);
-  
-  // Récupère la vCard des 2 joueurs
-  me.getVcard();
-  op.getVcard();
 }
 
 
