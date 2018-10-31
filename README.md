@@ -9,6 +9,7 @@ Basé sur le framework de Mozilla, yLife possède un gestionnaire d'addons très
 Il est multi-plateformes, multilingue, multi-skins,...
 Il est propulsé par le projet YCD (Yu-Gi-Oh! Card Database) et s'appuie sur Jabber pour le jeu en ligne et la messagerie instantanée.
 
+[![yLife 2.0.0 Preview](https://github.com/rrigaud/yLife/blob/master/yLife-2.0.0-preview.jpg)](https://github.com/rrigaud/yLife)
 
 Installation automatique
 ------------------------
